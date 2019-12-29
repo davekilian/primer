@@ -54,6 +54,32 @@ layout: default
                         content.style.display = 'block';
                     }
                 }
+
+                (function() {
+                    function forEach(coll, cb) { Array.prototype.forEach.call(coll, cb) }
+                    function expand(url) {
+                        var temp = document.createElement('a');
+                        temp.href = url;
+                        return temp.href;
+                    }
+
+                    forEach(document.getElementsByClassName('toc'), function(toc) {
+                        forEach(toc.getElementsByTagName('li'), function(item) {
+                            forEach(item.getElementsByTagName('a'), function(link) {
+                                var match = false;
+                                if (window.location.pathname == '{{ '/' | relative_url }}') {
+                                    match = (link.href == expand('{{ '/index.html' | relative_url }}'));
+                                } else {
+                                    match = (link.href == window.location.href);
+                                }
+                                if (match) {
+                                    link.removeAttribute('href');
+                                    link.style.color = 'black';
+                                }
+                            });
+                        });
+                    });
+                })();
             </script>
         </div>
     </div>
