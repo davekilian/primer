@@ -1,5 +1,5 @@
 ---
-layout: primer-chapter
+layout: chapter
 title: About This Book
 ---
 
