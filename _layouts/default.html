@@ -5,16 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% if page.title %} {{ page.title }} | {%endif%} Dave Kilian's Blog</title>
-        <link rel="stylesheet" href="/bootstrap.min.css" />
-        <link rel="stylesheet" href="/global.css" />
-        <link rel="stylesheet" href="/highlight.css" />
+        <link rel="stylesheet" href="{{ '/assets/bootstrap.min.css' | relative_url }}" />
+        <link rel="stylesheet" href="{{ '/assets/global.css' | relative_url }}" />
+        <link rel="stylesheet" href="{{ '/assets/highlight.css' | relative_url }}" />
     </head>
     <body>
         <div class="container-fluid" style="margin: 0; padding: 0">
             {{ content }}
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="/bootstrap.min.js"></script>
+        <script src="{{ '/assets/bootstrap.min.js' | relative_url }}"></script>
         <script type="text/javascript"
           src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
