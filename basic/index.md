@@ -1,4 +1,4 @@
 ---
 layout: chapter
-title: Primer&#58; A Basic Computer
+title: A Basic Computer
 ---
