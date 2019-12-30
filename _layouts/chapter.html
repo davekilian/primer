@@ -63,21 +63,47 @@ layout: default
                         return temp.href;
                     }
 
+                    var prev, next;
                     forEach(document.getElementsByClassName('toc'), function(toc) {
-                        forEach(toc.getElementsByTagName('li'), function(item) {
-                            forEach(item.getElementsByTagName('a'), function(link) {
-                                var match = false;
-                                if (window.location.pathname == '{{ '/' | relative_url }}') {
-                                    match = (link.href == expand('{{ '/index.html' | relative_url }}'));
-                                } else {
-                                    match = (link.href == window.location.href);
-                                }
-                                if (match) {
-                                    link.removeAttribute('href');
-                                    link.style.color = 'black';
-                                }
-                            });
+                        var links = [ ];
+                        prev = undefined;
+                        next = undefined;
+
+                        forEach(toc.getElementsByTagName('a'), function(link) {
+                            links.push(link);
                         });
+
+                        for (var i = 0; i < links.length; ++i) {
+                            var link = links[i];
+
+                            var match = false;
+                            if (window.location.pathname == '{{ '/' | relative_url }}') {
+                                match = (link.href == expand('{{ '/index.html' | relative_url }}'));
+                            } else {
+                                match = (link.href == window.location.href);
+                            }
+
+                            if (match) {
+
+                                link.removeAttribute('href');
+                                link.style.color = 'black';
+
+                                if (i > 0) {
+                                    prev = links[i - 1].href;
+                                }
+                                if (i + 1 < links.length) {
+                                    next = links[i + 1].href;
+                                }
+                            }
+                        }
+                    });
+
+                    document.addEventListener('keydown', function(e) {
+                        if (e.keyCode == 37 && !!prev) {
+                            window.location.href = prev;
+                        } else if (e.keyCode == 39 && !!next) {
+                            window.location.href = next;
+                        }
                     });
                 })();
             </script>
