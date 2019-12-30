@@ -41,7 +41,7 @@
 .w { color: #bbbbbb } /* Text.Whitespace */
 .mf { color: #009999 } /* Literal.Number.Float */
 .mh { color: #009999 } /* Literal.Number.Hex */
-.mi { color: #009999 } /* Literal.Number.Integer */
+/* .mi { color: #009999 } */ /* Literal.Number.Integer */ /* removed, interferes with mathjax */
 .mo { color: #009999 } /* Literal.Number.Oct */
 .sb { color: #d01040 } /* Literal.String.Backtick */
 .sc { color: #d01040 } /* Literal.String.Char */
