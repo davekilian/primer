@@ -168,3 +168,8 @@ blockquote
 {
     font-size: 100%;
 }
+
+ol.toc li ol
+{
+    margin-top: 0;
+}
