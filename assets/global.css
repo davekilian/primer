@@ -169,6 +169,24 @@ blockquote
     font-size: 100%;
 }
 
+ol.toc, ol.toc li ol
+{
+    counter-reset: item;
+    padding-left: 20px;
+}
+
+ol.toc li
+{
+    display: block;
+}
+
+ol.toc li:before
+{
+    content: counters(item, ".") " ";
+    counter-increment: item;
+    padding-right: .5em;
+}
+
 ol.toc li ol
 {
     margin-top: 0;
