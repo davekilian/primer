@@ -26,7 +26,9 @@ layout: default
             <div class="post-content" id="content">
                 {{ content }}
                 <hr/>
-                <span style="color: #999; padding-bottom: 2em">Copyright &copy; Dave Kilian 2019</span>
+                <a id="nav-prev" style="float:left; display:none">Previous</a>
+                <a id="nav-next" style="float:right; display:none">Next</a>
+                <center><span style="color: #999; padding-bottom:3em">Copyright &copy; Dave Kilian 2019</span></center>
             </div>
             <div class="post-content" id="mobile-toc" style="display:none">
                 {% include primer-toc.html html=content %}
@@ -95,6 +97,18 @@ layout: default
                                     next = links[i + 1].href;
                                 }
                             }
+                        }
+
+                        if (!!prev) {
+                            var link = document.getElementById('nav-prev');
+                            link.href = prev;
+                            link.style.display = 'inline';
+                        }
+
+                        if (!!next) {
+                            var link = document.getElementById('nav-next');
+                            link.href = next;
+                            link.style.display = 'inline';
                         }
                     });
 
