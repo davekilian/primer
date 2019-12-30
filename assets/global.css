@@ -93,15 +93,24 @@ h1.post-title
 
 div.post-content table
 {
-    font-size: 90%;
-    width: 90%;
     margin: auto;
+    margin-bottom: 1.5em;
+    border-radius: 10px;
 }
 
 div.post-content th,
 div.post-content td
 {
-    border: 1px solid #777;
+    border: 1px solid #ccc;
+    padding-left: .7em;
+    padding-right: .7em;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
+div.post-content tr:nth-child(even)
+{
+    background-color: #f7f7f7;
 }
 
 body
