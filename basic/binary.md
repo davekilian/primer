@@ -53,10 +53,10 @@ A reasonable question to ask at this point is: why use binary to represent numbe
 
 The main reason we use binary is because it's easy to represent electronically. By convention, to represent a binary 1 on an electrical wire, the circuit sends some amount of current across that wire; to represent a binary 0, the circuit simply doesn't send any current across the wire. Using multiple wires, we can represent a binary number of any size, along as we have enough digits:
 
-> Diagram of a circuit with charged wires bolded, and digits labeled. Then next to it, show the binary number and the requivalent base-10 number for reference
+![Example circuit which uses binary to represent numbers](./binary.circuit.svg)
 
-In practice, it's nearly impossible to send absolutely no current across a wire in an electronic circuit; instead, the engineer typically chooses some voltage $V$, such that a wire with voltage greater than $V$ is by convention considered to be a 1, and a voltage less than $V$ is considered to be a 0, by convention:
+In the schematic diagram above, each of the thin vertical lines represents a wire with no current traveling across it; the thick lines represent wires with current. Each wire is labeled with a 0 or 1 depending on whether or not there's current traveling through the wire; if we read the wires from left to right, we get the binary number 01010010​, which would be 82 if you wrote it in base-10.
 
-> Same diagram, but now show varying degrees of charge by varying the boldness of the charged and non charged wires
+In practice, it's nearly impossible to send absolutely no current across a wire in an electronic circuit; instead,  the designer typically chooses some voltage $V$, such that a wire with voltage greater than $V$ is by convention considered to be a 1, and a voltage less than $V$ is considered to be a 0, by convention.
 
 On the next page, we'll take a look at what you can do with binary numbers represented on electrical circuits in this way.
