@@ -57,6 +57,6 @@ The main reason we use binary is because it's easy to represent electronically. 
 
 In the schematic diagram above, each of the thin vertical lines represents a wire with no current traveling across it; the thick lines represent wires with current. Each wire is labeled with a 0 or 1 depending on whether or not there's current traveling through the wire; if we read the wires from left to right, we get the binary number 01010010​, which would be 82 if you wrote it in base-10.
 
-In practice, it's nearly impossible to send absolutely no current across a wire in an electronic circuit; instead,  the designer typically chooses some voltage $V$, such that a wire with voltage greater than $V$ is by convention considered to be a 1, and a voltage less than $V$ is considered to be a 0, by convention.
+In practice, it's nearly impossible to send absolutely no current across a wire in an electrical circuit; instead,  the designer typically chooses some voltage $V$, such that a wire with voltage greater than $V$ is considered to be a 1 by convention, and a voltage less than $V$ considered by convention to be a 0. (If you're not familiar with the term "voltage," don't worry, we're about to define it on the next page of this book.)
 
 On the next page, we'll take a look at what you can do with binary numbers represented on electrical circuits in this way.
