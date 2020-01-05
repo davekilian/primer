@@ -3,7 +3,58 @@ layout: chapter
 title: A Basic Computer&#58; Circuits
 ---
 
-Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just two: 0 and 1, binary).
+Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just two: 0 and 1, binary). So let's start by looking at classical (i.e. non-digital) electrical circuits:
+
+## Wires and Electricity
+
+
+
+
+
+
+
+
+
+
+
+---
+
+Old content to follow. Restructure as follows:
+
+* Start with the motivating analogy about electrons 'pressure' and air pressure
+* Show a basic circuit diagram of a wire with two terminals
+* Use the physicals of electricity moving through a wire to define charge, current, amperage, voltage
+* Stress for voltage the fact that a voltage can only be defined over two things; we will often say a line has a voltage, but we really mean the voltage between the two things the line directly conects.
+* Introduce positive and negative charge and note the weird thing about how charge moves from negative to positive
+* Explain the physics of junctions and how it relates to voltages
+* Now add power sources, which are simply a device with two terminals, with a nonzero voltage across the terminals
+* Connecting the two terminals together, you get your first, most basic circuit, named that because it forms a loop. Electrons flow from the negative terminal of the power source to the positive one
+* Now introduce the ground, a huge soak for electrons that has a huge voltage. In reality, a ground just has a huge voltage difference between any other circuit element, but for ease of analysis we pretend the voltage between anything and the ground is infinite
+* Note the effects of putting a ground on one end of a junction - the ground draws all current into its own line, because the ratios are basically $V_{ground}=\infty$ and $V_{other}=0$ by comparison
+* There's one more basic circuit element we want to define: a switch, which can either be closed, completing the circuit and allowing current to flow through the switch like a regular line; or open, breaking the circuit and thus giving the circuit no way for power to pass through
+* Now we can introduce the switch's modern cousin: the transistor. For our purposes, a transistor is an electrically-operated switch. It has three terminals: an input line, an output line, and a switch line. When current flows into the switch line, the transistor acts like a closed switch; when there's no current flowing, the transistor acts like an open switch
+
+Now we're ready to segue into circuits. Phew, we're going fast, and we're about to get faster:
+
+* Introduce in passage the study of boolean mathematics, which deal with single digits of zeroes and ones. We're going to build a couple of boolean mathematic operations and build up to a calculator
+* First, the NOT gate, which inverts the value given: so passing in 0 to the gate (no current or voltage) causes the gate to output a 1 (current flows on its output line, due to a nonzero voltage)
+* A simple way to build a NOT gate is to take a power line and split it into a two-way junction, one of which is an output line, and the other goes to ground through a transistor. You hook up the input line to the transistor; now, when the input line is 1, the transistor switch is 'closed' and so the junction is exposed to ground, which sucks away all the charge, leaving nothing on the output line (0); when you input a 0, the transistor is now 'open' and there is no longer a path to the ground, so all voltage travels to the output gate.
+* Next we'll tackle the AND gate. Add a truth table for this
+* This one's easy: accept a power line, and pass it through two transistors, each of which is 
+* Next we'll build NAND, which is just `!(a & b)`, by passing the output of our AND gate through out NOT gate.
+* Now, if we have a way to easily stamp out / copy+paste our NAND gate on a circuit, we can use it to build a bunch of fundamental operations: AND, OR, XOR and NOT
+
+Now we're getting somewhere - it's time for multi-bit binary math. Note that we're done thinking about circuits in terms of lines, grounds, power sources and transistors: we've moved up to the 'logic' level, which concerns itself with boolean math.
+
+* Flipflops for storing values a user punched in
+* An adder
+* A shifter
+* A multiplier? or link out
+* A divider? or link out
+
+And now we have a calculator - finally time to make it programmable. Turn the page.
+
+---
 
 ## Electric Circuits
 
@@ -11,9 +62,7 @@ The fundamental components in an electric circuit are a power source and a wire:
 
 > Diagram of the most basic possible circuit connecting one terminal of a power source to another
 
-As we can see in the diagram above, circuits are caled circuits because they form a loop, starting at one end of the power source and ending at the other.
-
-What happens when we connect this circuit? The simple answer is that electrons flow from the **negative terminal** of the power source (labeled $-$ in the diagram above) to the **positive terminal** (labeled $+$)
+These components form a loop, starting at one end of the power source and ending at the other, which is where the name "circuit" comes from. Electrons in this circuit flow from the **negative terminal** of the power source (labeled $-$ in the diagram above) to the **positive terminal** (labeled $+$)
 
 > If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it is: the first people to study electricity and circuits guessed wrong about what direction electrons were flowing, but everyone was already using this notation by the time we figured out we had it backwards, so it ended up being too late to change it!
 
@@ -21,25 +70,63 @@ It's worth taking a quick look at the physics behind electrical circuits, so we 
 
 If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize in pressure: if you give high-pressure air a way to move to lower pressure it will &mdash; sometimes explosively! High pressure air is just air where the atoms are tightly packed, so another way of describing this phenomenon is that tightly-packed air will spread out if you give it room to.
 
-Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them room to spread out, they will. Circuits use this to move electrons through the wire in a consistent direction.
-
-To make this work, we set up a power source where one end (the negative terminal) is densely packed with electrons; the other end (the positive terminal) is more loosely packed. Then we connect both terminals with a wire, giving the densely packed electrons room to expand (into the positive terminal), so they do, flowing along the wire in the process:
+Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them room to spread out, they will. Circuits use this to move electrons through the wire in a consistent direction. To make this work, we set up a power source where one end (the negative terminal) is densely packed with electrons; the other end (the positive terminal) is more loosely packed. Then we connect both terminals with a wire, giving the densely packed electrons room to expand (into the positive terminal), flowing along the wire in the process:
 
 > Same diagram, but now we label the terminals in terms of their potential and use arrows to show the flow of electrons
 
-Much of the study of electrical engineering and circuit design is to find interesting things you can do with this predictable flow of electrons. There are quite a few interesting things it turns out you can do; notably, build computers!
+Then all that's left to do is figure out interesting things we can stick in this circuit (passing electrons through them), and stuff you accomplish by doing this (like building calculators and computers!)
 
-## Terms for Circuits
+Physicists and engineers who study electricity and circuits have terms to describe the flow of electrons:
 
-Physicists and engineers who study electronics have terms to describe the flow of electrons:
+Any time you count electrons, that quantity is called **charge**. Charge is measured in **Coulombs**, which are abbreviated $C$.
 
-Any time you count electrons, that quantity is called **charge**. Charge is measured in **Coulombs**, which are abbreviated $C$. We won't end up talking much about charge or Coulombs at the level of detail we're going to look at circuits.
+**Current** refers to the movement of electrons. If you want to measure the rate at which electrons are moving, you're measuring **amperage**. The name derives from the corresponding unit of measurement: **amperes**, often shortened to **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the number of electrons which through the circuit (from the negative terminal to the positive terminal) every second.
 
-**Current** refers to the movement of electrons; if you want to measure the rate at which electrons are moving, you're measuring **amperage**. The name derives from the corresponding unit of measurement: **amperes**, often shortened to **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the number of electrons which through the circuit (from the negative terminal to the positive terminal) every second.
+Any time you're talking about differences in charge or current in different parts of a circuit, you inevitably end up talking about **voltage**; like with amperage, the name 'voltage' comes from the unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply, but it effectively measures the tendency of electrons to move from one point to another, like measuring the differences in air pressure that causes air to want to move from higher to lower pressure.
 
-Any time you talk about a difference in charges, that quantity is often called **voltage**; like with amperage, the name 'voltage' derives from the corresponding unit of measurement: **volts** ($V$). Volts measure differences in **electrical potential**, which is analogous to measuring differences in air pressure in our example earlier.
+You always talk about voltage *between* two points, which on a circuit, means the voltage between two circuit elements connected by a wire. We often talk about voltages of or along wires in a circuit, for brevity, when what we really mean is the voltage between the two things the wire connects. For example, in the simple example circuit from the beginning of this section, there's a nonzero voltage between the negative and positive terminals of the power source; if that voltage is $V$, then we say there's a voltage of $V$ along the only wire in our circuit:
+
+> Same diagram, but label the wire with a voltage $V$ 
+
+Voltage becomes important in circuit design once you start talking about **junctions**, which are points in the circuit where one wire splits, or multiple wires join:
+
+> Diagram
+
+At a junction that splits one wire into multiple output wires, how is charge distributed? One simple thing we can say is there are only so many electrons passing through the input line per second, so the total current among all the output wires must equal that of the input wire. 
+
+
+
+
+
+
+
+
 
 In general, increasing the voltage of a circuit's power source causes the amperage to rise, because the additional 'pressure' pushes more electrons through the wire faster. However, the amperage also depends on the absolute level of charge at each terminal of the power source: adding more charge while keeping the voltage the same also increases amperage.
+
+Based on this relationship between voltage and amperage, we now see what happens when you split a wire in a circuit into two:
+
+> Diagram showing a wire on the left split into two wires on the right, labeling each wire with a voltage $V_1$ and $V_2$ 
+
+In this situation, each output gets a share of the electrons passing through the input wire, and each wire's share is proportional to the wire's voltage. So, if $V_2 = 3 * V_1$, then $1/4$ of the current will pass through wire 1, and the other $3/4$ passes through wire 2.
+
+If $V_2$ is much, much greater than $V_1$, then pretty much all of the current will pass through $V_2$. Circuit designers routline use this fact by hooking up a wire to another type of circuit element called a **ground**:
+
+> Same diagram, but now wire 2 is hooked up to a ground
+
+A ground has no charge, and have a very large amount of room for electrons to expand into; as such, the voltage between the negative terminal of the power source and the ground is enormous, causing all of the current to run to the ground (wire 2) and approxmiately not to run through the other fork in the split (wire 1).
+
+We will use this phenomenon later while designing our calculator.
+
+To summarize our understanding of circuits so far, we defined:
+
+* A **power source** with a **positive terminal** and a **negative terminal**, with a voltage between the terminals
+* A **wire**, sometimes called a **line**, which provide a path for electrons to flow
+* A **circuit**, which consists of at least one power source, and connects everything into a loop using wires
+* A **junction**, which either splits an input line into one or more output lines or joins one or more input lines into a single output line
+* A **ground**, which provides a very large capacity to soak up electrons, such that the voltage between the ground and anything connected to it is effectively infinite
+
+Feeling good with circuits so far? Then let's kick it up a notch:
 
 ## Digital Circuits and the Transistor
 
@@ -57,11 +144,11 @@ To do math on our electrical circuits, we need to add another component in addit
 
 ## Logic Gates
 
-> Define boolean logic inline and show a table laying out the and, or and xor operations.
+> Define boolean not, and as the 'fundamental' mathematical operations of a digital circuit
 >
-> Start with the not gate. I guess to do this we first need to go back and define ground. But once you do, a not gate uses a transistor connected to a ground to 'drain' current away from the output line. So when the transistor is on, current is allowed to flow to ground, resulting in infinite potential and draining current away from the output line.
+> Start with a not gate: basically, a line that forks in two, one heading towards the output and one heading towards a ground. The line heading toward a ground is mediated by a transitor, which recieves the input line. So when input is high, the transitor is open, and the current drains to ground, meaning the output is low. And when the output is low, the current has nowhere to go but the output line, so the output is high. That's a not gate. 
 >
-> There's a good diagram on this page: https://www.instructables.com/id/Logic-Gates-with-NPN-transistors/
+> We also need a diagram. There's a good diagram on this page: https://www.instructables.com/id/Logic-Gates-with-NPN-transistors/
 >
 > Then and, which is an input line which passes through two inline transistors to reach an output line - both transistors must be on for current to pass from the input line to the output line. Again, a good diagram for reference: https://www.instructables.com/id/Logic-Gates-with-NPN-transistors/
 >
@@ -71,12 +158,12 @@ To do math on our electrical circuits, we need to add another component in addit
 
 ## A Digital Calculator
 
-> Back to logical circuits, start by building a few mathematical tools, like an adder, multiplier, shifter
+> Define the not, and, or, xor gates we defined above as 'boolean' math, which deals with single digits of binary (that is, 0s and 1s, sometimes alternately called `true` (1) and `false` (0).).
 >
-> Build flipflops and maybe SRAM(?) for storing the numbers you want to input, and the numbers you want to output
+> It turns out we can use these to implement basic arithmetic on multi-digit binary numbers.
 >
-> Now we can build a calculator - almost. We currently have a separate calculator for each type of thing, which is kind of useless. Build multiplexers and demultiplexers for aggregating and selecting values. Now you can build a real calculator.
-
-## Our Proto-Computer
-
-> What we have on our hands is a sort of proto-computer. It's a calculator, but it's sure not programmable. Let's figure out how to add programmability next.
+> Build an adder, maybe a multiplier? maybe a shifter?
+>
+> Build flipflops and maybe SRAM? for storing the numbers you want to input, and the numbers you want to output
+>
+> We just built a set of digital circuits that can calculator, but it's not programmable yet, so on to the next page.
