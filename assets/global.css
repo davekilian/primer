@@ -108,9 +108,15 @@ div.post-content td
     padding-bottom: .2em;
 }
 
-div.post-content tr:nth-child(even)
+div.post-content tr:nth-child(odd)
 {
     background-color: #f7f7f7;
+}
+
+div.post-content th
+{
+    background-color: white;
+    border-bottom: 2px solid #ccc;
 }
 
 body
