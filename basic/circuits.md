@@ -3,167 +3,122 @@ layout: chapter
 title: A Basic Computer&#58; Circuits
 ---
 
-Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just two: 0 and 1, binary). So let's start by looking at classical (i.e. non-digital) electrical circuits:
+Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just two: 0 and 1, binary). 
 
-## Wires and Electricity
+Let's start by taking a look at classical analog (non-digital) electrical circuits; this will form the basis by which we build up digital logic, calculation, and eventually, computation!
 
+## Lines and Electricity
 
+If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize differences in air pressure: if you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
 
+High pressure air is just air where the atoms which make up the air are tightly packed, so another way of phrasing this tendence is that tightly-packed air will spread out if you give it room to.
 
+Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them roomt to spread out, they will! The goal of an electrical circuit is to use this fact to move electrons in a line, through components that use the electricity to do something.
 
+The most basic element of a circuit is a **line** (sometimes alternately called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the basic construction of an electrical circuit:
 
+> A horizontal line connecting two terminals as little circles. Label the left terminal $(-)$ and the right terminal $(+)$.
 
+A line is a conduit which allows electrons to pass through it. Each of the two circles at the ends of the line above are called **terminals**. Terminals are connection points between elements of a circuit. 
 
+In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want room to expand; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons and gives them room to expand. Since the line itself is a conduit for electrons, the electrons flow out from the negative terminal, where they are densely packed, expanding to fill the available space in the positive terminal. 
 
+> If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it sort of is.
+>
+> The first people to study electricity and construct circuits knew electricity was moving through the circuits, but couldn't be sure which direction it was moving, so they guessed, having a 50/50 chance of being right. It turns out they guessed wrong, but by the time we realized our notation was backwards it was already being used widely to describe existing circuits, and flipping the signs to work more intuitively would have created more confusion for existing circuits than it would have helped explain new circuits.
+>
+> And lo, to this day, electrons are thought to be 'negatively' charged and flow from the negative terminal to positive &mdash; oops!
 
-
----
-
-Old content to follow. Restructure as follows:
-
-* Start with the motivating analogy about electrons 'pressure' and air pressure
-* Show a basic circuit diagram of a wire with two terminals
-* Use the physicals of electricity moving through a wire to define charge, current, amperage, voltage
-* Stress for voltage the fact that a voltage can only be defined over two things; we will often say a line has a voltage, but we really mean the voltage between the two things the line directly conects.
-* Introduce positive and negative charge and note the weird thing about how charge moves from negative to positive
-* Explain the physics of junctions and how it relates to voltages
-* Now add power sources, which are simply a device with two terminals, with a nonzero voltage across the terminals
-* Connecting the two terminals together, you get your first, most basic circuit, named that because it forms a loop. Electrons flow from the negative terminal of the power source to the positive one
-* Now introduce the ground, a huge soak for electrons that has a huge voltage. In reality, a ground just has a huge voltage difference between any other circuit element, but for ease of analysis we pretend the voltage between anything and the ground is infinite
-* Note the effects of putting a ground on one end of a junction - the ground draws all current into its own line, because the ratios are basically $V_{ground}=\infty$ and $V_{other}=0$ by comparison
-* There's one more basic circuit element we want to define: a switch, which can either be closed, completing the circuit and allowing current to flow through the switch like a regular line; or open, breaking the circuit and thus giving the circuit no way for power to pass through
-* Now we can introduce the switch's modern cousin: the transistor. For our purposes, a transistor is an electrically-operated switch. It has three terminals: an input line, an output line, and a switch line. When current flows into the switch line, the transistor acts like a closed switch; when there's no current flowing, the transistor acts like an open switch
-
-Now we're ready to segue into circuits. Phew, we're going fast, and we're about to get faster:
-
-* Introduce in passage the study of boolean mathematics, which deal with single digits of zeroes and ones. We're going to build a couple of boolean mathematic operations and build up to a calculator
-* First, the NOT gate, which inverts the value given: so passing in 0 to the gate (no current or voltage) causes the gate to output a 1 (current flows on its output line, due to a nonzero voltage)
-* A simple way to build a NOT gate is to take a power line and split it into a two-way junction, one of which is an output line, and the other goes to ground through a transistor. You hook up the input line to the transistor; now, when the input line is 1, the transistor switch is 'closed' and so the junction is exposed to ground, which sucks away all the charge, leaving nothing on the output line (0); when you input a 0, the transistor is now 'open' and there is no longer a path to the ground, so all voltage travels to the output gate.
-* Next we'll tackle the AND gate. Add a truth table for this
-* This one's easy: accept a power line, and pass it through two transistors, each of which is 
-* Next we'll build NAND, which is just `!(a & b)`, by passing the output of our AND gate through out NOT gate.
-* Now, if we have a way to easily stamp out / copy+paste our NAND gate on a circuit, we can use it to build a bunch of fundamental operations: AND, OR, XOR and NOT
-
-Now we're getting somewhere - it's time for multi-bit binary math. Note that we're done thinking about circuits in terms of lines, grounds, power sources and transistors: we've moved up to the 'logic' level, which concerns itself with boolean math.
-
-* Flipflops for storing values a user punched in
-* An adder
-* A shifter
-* A multiplier? or link out
-* A divider? or link out
-
-And now we have a calculator - finally time to make it programmable. Turn the page.
-
----
-
-## Electric Circuits
-
-The fundamental components in an electric circuit are a power source and a wire:
-
-> Diagram of the most basic possible circuit connecting one terminal of a power source to another
-
-These components form a loop, starting at one end of the power source and ending at the other, which is where the name "circuit" comes from. Electrons in this circuit flow from the **negative terminal** of the power source (labeled $-$ in the diagram above) to the **positive terminal** (labeled $+$)
-
-> If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it is: the first people to study electricity and circuits guessed wrong about what direction electrons were flowing, but everyone was already using this notation by the time we figured out we had it backwards, so it ended up being too late to change it!
-
-It's worth taking a quick look at the physics behind electrical circuits, so we can define basic terms like *charge*, *current* and *voltage*:
-
-If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize in pressure: if you give high-pressure air a way to move to lower pressure it will &mdash; sometimes explosively! High pressure air is just air where the atoms are tightly packed, so another way of describing this phenomenon is that tightly-packed air will spread out if you give it room to.
-
-Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them room to spread out, they will. Circuits use this to move electrons through the wire in a consistent direction. To make this work, we set up a power source where one end (the negative terminal) is densely packed with electrons; the other end (the positive terminal) is more loosely packed. Then we connect both terminals with a wire, giving the densely packed electrons room to expand (into the positive terminal), flowing along the wire in the process:
-
-> Same diagram, but now we label the terminals in terms of their potential and use arrows to show the flow of electrons
-
-Then all that's left to do is figure out interesting things we can stick in this circuit (passing electrons through them), and stuff you accomplish by doing this (like building calculators and computers!)
-
-Physicists and engineers who study electricity and circuits have terms to describe the flow of electrons:
+There are a few key terms that circuit designers use to describe the flow of electrons through lines like these:
 
 Any time you count electrons, that quantity is called **charge**. Charge is measured in **Coulombs**, which are abbreviated $C$.
 
-**Current** refers to the movement of electrons. If you want to measure the rate at which electrons are moving, you're measuring **amperage**. The name derives from the corresponding unit of measurement: **amperes**, often shortened to **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the number of electrons which through the circuit (from the negative terminal to the positive terminal) every second.
+**Current** refers to the movement of electrons. Current is measured as the rate at which electrons are moving through a medium; this rate is called **amperage**. The name derives from the corresponding unit of measurement, **amperes**, which is often shorted to just **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the rate at which electrons pass through the circuit.
 
-Any time you're talking about differences in charge or current in different parts of a circuit, you inevitably end up talking about **voltage**; like with amperage, the name 'voltage' comes from the unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply, but it effectively measures the tendency of electrons to move from one point to another, like measuring the differences in air pressure that causes air to want to move from higher to lower pressure.
+Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply without breaking out the math, but it effectively measures the degree electrons 'want' to move from one point in the circuit to another, like measuring the differences in air pressure that causes air to want to move (i.e. from higher pressure to lower pressure).
 
-You always talk about voltage *between* two points, which on a circuit, means the voltage between two circuit elements connected by a wire. We often talk about voltages of or along wires in a circuit, for brevity, when what we really mean is the voltage between the two things the wire connects. For example, in the simple example circuit from the beginning of this section, there's a nonzero voltage between the negative and positive terminals of the power source; if that voltage is $V$, then we say there's a voltage of $V$ along the only wire in our circuit:
+Since a voltage desribes a difference between two points, you always need two different points on a circuit to begin talking about voltages (and you say that you're measing the voltage *between* those points). We often talk about voltages between two terminals of a line in a circuit, so for brevity we often refer to a line's "voltage," even though what we really mean is the voltage between the two terminals the line connects.
 
-> Same diagram, but label the wire with a voltage $V$ 
+Voltage and current are innately realted: increasing a line's voltage (that is, the voltage between the line's terminals) causes amperage to rise proportionally, because the additional voltage 'pressure' pushes more electrons through the wire faster. However, amperage also depends on aspects of the line itself: basically, 'thinner' lines accommodate less current for a given voltage than do 'thicker' lines.
 
-Voltage becomes important in circuit design once you start talking about **junctions**, which are points in the circuit where one wire splits, or multiple wires join:
+As an analogy, imagine water being pushed through a straw or a sewer main. For either, the amount of water pouring at the end depends on the pressure of water being pushed in; but, for any given water pressure, much less water pours out the straw than the sewer main, because the straw gives the water much less room to flow. The water pressure is analogous to voltage, and the amount of water pouring out is analogous to amperage.
+
+## Circuits and Power Sources
+
+Now that we understand the basic principles by which electriicty moves through circuitry, it's time to start working with full circuits. To do this, we need to add another element: a **power source**. Here's how we show power sources in a schematic diagram:
+
+> Diagram showing a power source by itself, with its terminals labeled $(+)$ and $(-)$
+
+The basic job of a power source is to provide two terminals with a voltage between them. The negative terminal consists of densely packed electrons, and the positive terminal consists of relatively less densely packed electrons.
+
+By connecting these two terminals together, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
 
 > Diagram
 
-At a junction that splits one wire into multiple output wires, how is charge distributed? One simple thing we can say is there are only so many electrons passing through the input line per second, so the total current among all the output wires must equal that of the input wire. 
+As we can see in the diagram above, the name 'circuit' comes from the fact that the lines in a circuit form a loop. All we need to do now is to invent some other interesting components that do something when current passes through them, and add them to our circuit such that the power source's voltage 'pull's electrons through them.
 
+## Junctions and Grounding
 
+The first component we're going to add to our circuit is called a **ground**, which is denoted using the following symbol in circuit schematics:
 
+> Diagram showing a ground by itself
 
+In essence, a ground is a soak for electrons, providing them with nearly infinite room to expand. As such, the voltage between any point in the circuit and the ground is nearly infinite. To make the math easier, we often approximate this voltage as being literally infinite.
 
+Grounds are named that way because they are often implemented by literally connecting a wire to the ground. the Earth has a lot of atoms and is not electrically charged, which means it has the ability to soak up very large number of electrons at a very high rate, effectively acting as a sink to soak up electrons provided by a power source. This is why the element is called a ground, as well as why the act of sending current to a ground called "grounding."
 
+There's just one problem with the grounding element: it only has a single terminal. How do we add a ground to our circuit, forming a full loop between both terminals of the power source, while still also connecting the ground to the circuit? To do this, we'll need to introduce our first **junction**:
 
+> Diagram showing a line which splits in two at a junction
 
+A junction is just a point at which lines are connected together. In terms of the flow of current, a junction typically either splits one line into multiple lines, or merges multiple lines into a single line:
 
-In general, increasing the voltage of a circuit's power source causes the amperage to rise, because the additional 'pressure' pushes more electrons through the wire faster. However, the amperage also depends on the absolute level of charge at each terminal of the power source: adding more charge while keeping the voltage the same also increases amperage.
+> Diagrams showing both conditions
 
-Based on this relationship between voltage and amperage, we now see what happens when you split a wire in a circuit into two:
+The amount of current that flows through a junction is a constant; so, for example, in a junction that splits current among multiple lines, the total amperge passing through the output lines is equal to the amperage entering through the input line. The portion of the current that passes through each line depends on the lines' relative voltages:
 
-> Diagram showing a wire on the left split into two wires on the right, labeling each wire with a voltage $V_1$ and $V_2$ 
+> Diagram showing a junction that splits an input into two outputs, with the outputs labeled $V_1$ and $V_2$
 
-In this situation, each output gets a share of the electrons passing through the input wire, and each wire's share is proportional to the wire's voltage. So, if $V_2 = 3 * V_1$, then $1/4$ of the current will pass through wire 1, and the other $3/4$ passes through wire 2.
+In the diagram above, we see a junction which splits an input line into two output lines, with respective voltages $V_1$ and $V_2$. Say, for example, that $V_2 = 3 * V_1$; then, at this junction, $25\%$ of the current passes through line 1, and $75\%$ of the current passes through line 2. 
 
-If $V_2$ is much, much greater than $V_1$, then pretty much all of the current will pass through $V_2$. Circuit designers routline use this fact by hooking up a wire to another type of circuit element called a **ground**:
+With junctions, we can now attach a grounding element to our circuit:
 
-> Same diagram, but now wire 2 is hooked up to a ground
+> Diagram showing the same basic circuit, but drain out to a ground using a junction
 
-A ground has no charge, and have a very large amount of room for electrons to expand into; as such, the voltage between the negative terminal of the power source and the ground is enormous, causing all of the current to run to the ground (wire 2) and approxmiately not to run through the other fork in the split (wire 1).
+What happens in this circuit? Let's zoom into just the junction that we connected to the ground:
 
-We will use this phenomenon later while designing our calculator.
+> Diagram showing the junction's input line, output line, ground line, label voltages
 
-To summarize our understanding of circuits so far, we defined:
+Remember that the purpose of a ground is to provide an 'electron sink,' such that the voltage between the input line and the ground is approximately infinite. Then we can simplify this diagram by saying the voltage at the grounding line is infinite, and by comparison, the voltage at the output line is approxmiately equal to zero:
 
-* A **power source** with a **positive terminal** and a **negative terminal**, with a voltage between the terminals
-* A **wire**, sometimes called a **line**, which provide a path for electrons to flow
-* A **circuit**, which consists of at least one power source, and connects everything into a loop using wires
-* A **junction**, which either splits an input line into one or more output lines or joins one or more input lines into a single output line
-* A **ground**, which provides a very large capacity to soak up electrons, such that the voltage between the ground and anything connected to it is effectively infinite
+> Same diagram, but label the voltages as infinite and zero
 
-Feeling good with circuits so far? Then let's kick it up a notch:
+Since the amount of current that exits through each line of a junction is proportional to the lines' relativ voltages, we see what happens here: all current passes through the grounding line, and (effectively) no current passes through the output line.
 
-## Digital Circuits and the Transistor
+> The original circuit-with-ground diagram, but bold the lines to show that all the current has passed to the ground
 
-Now that we understand electrical circuits in general, let's take a closer look at digital circuits.
+We essentially drained the current out of the circuit. It may not be obvious right now why this is useful, but keep this in your back pocket - we'll use it again later.
 
-The basic idea behind digital circuits is to represent numbers on the circuit as voltages across wires in a circuit. We typically use binary, and we typically choose some voltage threshold $v$, such that when the voltage across a wire is above $v$, we consider that wire to be a 1; otherwise, when the voltage is below $v$, we consider that wire to be a 0. We then use circuit elements to perform mathemtical operations on our binary numbers, giving us a rudimentary form of electronic calculator.
+## Switches and Transistors 
 
-To do math on our electrical circuits, we need to add another component in addition to the power source and the wire: a **transistor**.
+The final circuit element we'll need in building our computer is the switch, as well as its more modern cousin the transistor.
 
-> Mention the transistor is the basic building block of modern computers, which is why Moore's Law (link to Wikipedia again) measures computer hardware progress in transistors.
->
-> To understand transistors, first have to understand a more classic circuit element: a **switch**, which can be **open** (breaking the circuit, such that there is no path from the negative terminal to the positive terminal anymore) or **closed** (completing the circuit, allowing electrons to flow).
->
-> In digital circuitry, transistors act as electrically-driven swiches. Diagram with an emitter, collector and base. When voltage is applied to the base, it allows electricity to flow from the emitter to the collector, as if closing a switch; when no voltage is applied to the base, there is no longer flow, acting as if the switch were opened.
+A **switch** is an element that can be used to disconnect and reconnect a line in a circuit. Switches are denoted using the following symbol:
 
-## Logic Gates
+> Diagram
 
-> Define boolean not, and as the 'fundamental' mathematical operations of a digital circuit
->
-> Start with a not gate: basically, a line that forks in two, one heading towards the output and one heading towards a ground. The line heading toward a ground is mediated by a transitor, which recieves the input line. So when input is high, the transitor is open, and the current drains to ground, meaning the output is low. And when the output is low, the current has nowhere to go but the output line, so the output is high. That's a not gate. 
->
-> We also need a diagram. There's a good diagram on this page: https://www.instructables.com/id/Logic-Gates-with-NPN-transistors/
->
-> Then and, which is an input line which passes through two inline transistors to reach an output line - both transistors must be on for current to pass from the input line to the output line. Again, a good diagram for reference: https://www.instructables.com/id/Logic-Gates-with-NPN-transistors/
->
-> Now you actually have enough to build everything else: https://en.wikipedia.org/wiki/NAND_logic
->
-> With our newfound gates we can now zoom out to the logic level, looking at circuits as a sequence of logic gates and no longer worrying about lines, grounds, power sources and so on. In fact, you could even build a logic circuit out of something other than electrical charges and impulses. Link to a water computer or something.
+Switches have two states. A **closed** switch is one which 'completes' the line of the circuit, connecting the two terminals of the switch and allowing electrons to flow through. A closed switch functions exactly the same as a wire. An **open** switch, on the other hand, disconnects the two terminals, thereby preventing electrons from passing through.
 
-## A Digital Calculator
+Switches are traditionally mechanical, meaning that someone or something has to physically toggle a switch in order to open or close it. The **transistor**, a more modern cousin of the switch, does the same thing, but can be opened or closed electronically:
 
-> Define the not, and, or, xor gates we defined above as 'boolean' math, which deals with single digits of binary (that is, 0s and 1s, sometimes alternately called `true` (1) and `false` (0).).
->
-> It turns out we can use these to implement basic arithmetic on multi-digit binary numbers.
->
-> Build an adder, maybe a multiplier? maybe a shifter?
->
-> Build flipflops and maybe SRAM? for storing the numbers you want to input, and the numbers you want to output
->
-> We just built a set of digital circuits that can calculator, but it's not programmable yet, so on to the next page.
+> Diagram showing a transistor element
+
+As we see in the diagram above, each transistor consists of three terminals. The input and output terminals of a transistor work the same way as the two terminals of a switch: when the transistor is 'closed,' current is able to flow from the input terminal to the output terminal, but when the transistor is 'open,' current cannot flow between the two terminals.
+
+The third 'switching' line of the transistor determines which state the transistor is in: sending current through the switching line closes the transistor, allowing current to flow. If no current is sent through the switching line, the transistor is open, and current does not pass through the transistor's input and output lines. 
+
+> Diagram showing the same transistor twice, with current flows bolded. In one case, current is sent through the switch line and the input line, causing current to flow; in the other, current is sent to the input line but not through the switching line, so there is no current at the output line
+
+The transistor is the foundational circuit element in modern computers; the invention of the transistor allowed us to create reasonably small, cost-effective computers and can arguably be said to have driven the computing revolution. In fact, [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law), which we mentioned in a previous chapter, specifically measures the progress of computer hardware manufacturing as the number of transistors we can fit in a given space &mdash; for a long time now, we've managed to roughly double this value every two years.
+
+In the next chapter, we'll explore how to we can use electrical circuits consisting of transistors and grounding elements to build a calculator, which will become the internal calculator that drives our programmable computer.
