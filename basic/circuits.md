@@ -7,13 +7,19 @@ Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_el
 
 Let's start by taking a look at classical analog (non-digital) electrical circuits; this will form the basis by which we build up digital logic, calculation, and eventually, computation!
 
-## Lines and Electricity
+## A Metaphor for Electricity
+
+> Throughout this chapter, we're going to use a simple metaphor involving air pressure to explain how electricity works, especially in the context of circuits. We did this to simplify electricial engineering, a complex and challenging field all of its own, down to the basics you need to understand how electrical circuitry is used to build computers.
+>
+> It's important to note up front, however, that this metaphor is simple at the expense of not being quite correct, and while it'll give you the right ideas at the level of details we're going to talk about, you'll find this metaphor won't take you very far if you choose to study electrical engineering topics further on your own.
 
 If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize differences in air pressure: if you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
 
 High pressure air is just air where the atoms which make up the air are tightly packed, so another way of phrasing this tendence is that tightly-packed air will spread out if you give it room to.
 
 Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them roomt to spread out, they will! The goal of an electrical circuit is to use this fact to move electrons in a line, through components that use the electricity to do something.
+
+## Lines in a Circuit
 
 The most basic element of a circuit is a **line** (sometimes alternately called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the basic construction of an electrical circuit:
 
