@@ -7,19 +7,41 @@ Since a computer is, at its heart, a programmable calculator, we're going to nee
 
 Binary is a numbering system, which just means it's a way of writing numbers down. There are many number-writing systems, each providing its own way of writing down the same number. For example, you and I would use *our* numbering system to write down the number of days in a week as $7$, but an ancient Roman would use Roman numerals to write that as $VII$. Either way, it's the same number &mdash; the difference between the two is how you choose to represent that number in writing.
 
-The numbering system you and I use is the **base-10** numbering system, also known as **decimal** numbering. Base-10 is called that because there are 10 digits (0, 1, 2, 3, 4, 5, 6, 7, 8 and 9) for each place. The first numbers are just 0-9; then, once we run out of digits, we start counting in the 10s place (10, 11, 12, ...), and once we run out of digits for the 10s place we start to count using the 100s place (100, 101, 102, ...), and so on.
+The numbering system you and I use is ultimately based on people using fingers to count. (Have you ever noticed the word "digit" refers to both a number and a finger?) We use one digit to represent each of our fingers, rolling over to $10$ on our last finger. But what if humans had fewer fingers? Or more?
 
-Why 10, though? This system should work with any number of digits, after all. The main reason we use 10 more or less an accident: our numbering system evolved from earlier numbering systems which were based on people counting on their fingers and toes:
+Imagine what counting would be like if humans only had three fingers: we'd probably end up using the same system, but with fewer digits in each place. So we'd start by counting off 1, 2 and 10 on our fingers, and then rolling over to count further: 1, 2, 10, 11, 12, 20, 21, 22, 100, 101, 102, 110 and so on.
 
-> *Traces of the anthropomorphic origin of counting systems can be found in many languages. In the Ali language (Central Africa), for example, "five" and "ten" are respectively* moro *and* mbouna: moro *is actually the word for "hand" and* mbouna *is a contraction of* moro *("five") and* bouna, *meaning "two" (thus "ten"="two hands").*
->
-> *It is therefore very probable that the Indo-European, Semitic and Mongolian words for the first ten numbers derive from expressions related to finger-counting. But this is an unverifiable hypothesis, since the original meanings of the names of the numbers have been lost.*
->
-> [The Universal History of Numbers](http://books.google.com/books?id=FMTI7rwevZcC) Wiley, 2000, pp 21-22, via [math.stackexchange.com](https://math.stackexchange.com/questions/8734/why-have-we-chosen-our-number-system-to-be-decimal-base-10)
+Here's the kind of weird thing: when our three-fingered friends skipped ahead to 10, they weren't skipping any numbers; instead, their definition of 10 is different from ours (trippy, right?). The number that our three-fingered friends would call 10, we would call 3; and the number we would call 10, our three-fingered friends would call 101. Like with Roman numerals versus ours, in each of these pairs, we're talking about the same number, just with a (slightly) different notation system.
 
-It's possible to count in numbering systems that have more or fewer than 10 digits. For systems that have more than 10 digits, we often start using letters as additional digits; for example, a base-16 (hexadecimal) numbering system can be written using all 10 base-10 digits as well as the first 6 letters of the alphabet, for a total of 16 digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E and F (and after F comes 10, 11, ... 19, 1A, 1B, ...).
+The number of digits a numbering system like ours has to work with is called a **basis**. Our basis is technically called "base 10," but per the previous paragraph, that term is kind of meaningless: just like us, our three-fingered friends believe they have "10 fingers," and therefore counting in "base 10," because they mean a different number when they write "10." To avoid this confusion, we always expresses bases in terms of our native numbering system: so "10 base-10" is our definition of 10, whereas we'd call our three-fingered friends' definitions of 10 "10 base-3." So, to rephrase the examples from the previous paragraph:
 
-The following table demonstrates a few numbering system. Each row in the table is a single number, and each column denotes how these numbers are written in a different-base numbering system. Notably, the first column counts in binary (base-2), whereas the third column counts in our native numbering system (base-10):
+<center>"10 base-3 is equal to 3 base-10"</center>
+
+<center>"10 base-10 is equal to 101 base-3"</center>
+
+Take a moment to reread the above if it hasn't quite clicked yet, counting if needed &mdash; this is the crux of how binary numbering works!
+
+Now that we understand counting bases, we're ready to talk about binary, which is simply the base-2 system. To understand binary, you might want to imagine humans that have only two fingers, so their version 10 is our version of 2 (or, more mathematically: "10 base 2 is 2 base 10"). Our two-fingered friends count like this:
+
+<center>1, 10, 11, 100, 101, 110, 111, 1000, 1001, 1010, ...</center>
+
+To make sure you understand correctly, try to guess the next few numbers if you would continue counting. Don't move onto the next paragraph until you've done so, because the next paragraph will give you the answer:
+
+The answer is: 1011, 1100, 1101, 1110, 1111, 10000, ...
+
+If you got that right, then congratulations: you already understand binary!
+
+Since we're taling about bases already, there's another numbering system you might want to know: hexadecimal. So far we've been talking about numbering systems with fewer than 10 digits (or, should I say, "10 base-10" digits); hexadecimal is an example of a numbering system with more than 10 digits. There are 16 hexadecimal digits, which means "10" in base-16 is equal to "16" in base-10.
+
+To represent hexadecimal, we have a problem: we only invented 10 unique digits, but we need 6 more to represent hexadecimal numbers. By convention, the way you do this is usually to start co-opting letters of the alphabet. So to count in hexadecimal (or "hex," as it's sometimes called):
+
+<center>1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, 12  ...</center>
+
+Can you guess the next few digits in the sequence? Try to count to, say, 32 base-10. Don't move on to the next paragraph until you have an answer you think is right.
+
+The continuation of the sequence is: 13, 14, 15, 16, 17, 18, 19, 1A, 1B, 1C, 1D, 1E, 1F, 20. Perfect!
+
+For completeness, here's a table of all the different numbering systems we talked about so far, showing how you count in each row-by-row:
 
 | Base-2<br>(Binary) | Base-3<br>(Ternary) | Base-10<br>(Decimal) | Base-16<br>(Hexadecimal) |
 | :----------------: | :-----------------: | :------------------: | :----------------------: |
@@ -47,16 +69,16 @@ The following table demonstrates a few numbering system. Each row in the table i
 |       11011        |        1000         |          27          |            1B            |
 |        ...         |         ...         |         ...          |           ...            |
 
-If you understand how to count in binary now, well, that's really all there is to it!
+Congratulations on learning binary!
 
-A reasonable question to ask at this point is: why use binary to represent numbers on a computer instead of a more familiar numbering system like our beloved base-10?
+To close out this discussion, there's one reasonable question we need to answer: why use binary to represent numbers on a computer instead of a more familiar numbering system like our beloved base-10?
 
-The main reason we use binary is because it's easy to represent electronically. By convention, to represent a binary 1 on an electrical wire, the circuit sends some amount of current across that wire; to represent a binary 0, the circuit simply doesn't send any current across the wire. Using multiple wires, we can represent a binary number of any size, along as we have enough digits:
+The main reason we use binary is because it's easy to represent using electricity. By convention, to represent a binary 1 on an electrical wire, the circuit sends some electricity across that wire; to represent a binary 0, the circuit simply doesn't send any electricity across the wire. In other words, a binary-1 corresponds to "switched on," and a binary-0 corresponds to "switched off," accordingly.
+
+Using multiple wires, then, we can represent a binary number of any size, along as we have enough digits (i.e. wires). Here's an example of a circuit consisting of 8 wires, which represent the 8-digit binary number 01010010:
 
 ![Example circuit which uses binary to represent numbers](./binary.circuit.svg)
 
-In the schematic diagram above, each of the thin vertical lines represents a wire with no current traveling across it; the thick lines represent wires with current. Each wire is labeled with a 0 or 1 depending on whether or not there's current traveling through the wire; if we read the wires from left to right, we get the binary number 01010010​, which would be 82 if you wrote it in base-10.
+In the schematic diagram above, each of the thin vertical lines represents a wire with no electricity traveling across it; the thick lines represent wires with current. Each wire is labeled with a 0 or 1 depending on whether or not there's current traveling through the wire; if we read the wires from left to right, we get the binary number 01010010​, which would be 82 if you wrote it in base-10.
 
-In practice, it's nearly impossible to send absolutely no current across a wire in an electrical circuit; instead,  the designer typically chooses some voltage $V$, such that a wire with voltage greater than $V$ is considered to be a 1 by convention, and a voltage less than $V$ considered by convention to be a 0. (If you're not familiar with the term "voltage," don't worry, we're about to define it on the next page of this book.)
-
-On the next page, we'll take a look at what you can do with binary numbers represented on electrical circuits in this way.
+On the next page, we'll start looking at what you can do with binary numbers represented on electrical circuits in this way, eventually building ourselves a simple electricity-based digital calculator!
