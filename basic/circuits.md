@@ -3,31 +3,35 @@ layout: chapter
 title: A Basic Computer&#58; Circuits
 ---
 
-Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just two: 0 and 1, binary). 
+Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just 0 and 1, i.e. binary). 
 
-Let's start by taking a look at classical analog (non-digital) electrical circuits; this will form the basis by which we build up digital logic, calculation, and eventually, computation!
+Let's start by taking a look at classical analog (non-digital) electrical circuits; this will form the basis by which we build up digital logic, calculation, and eventually, a computer!
 
 ## A Metaphor for Electricity
 
-> Throughout this chapter, we're going to use a simple metaphor involving air pressure to explain how electricity works, especially in the context of circuits. We did this to simplify electricial engineering, a complex and challenging field all of its own, down to the basics you need to understand how electrical circuitry is used to build computers.
+> *In this chapter, we will use a simple metaphor involving air pressure to help explain the physics of electricity works, especially in circuits. Although this metaphor will work for everything we're going to do with circuits, it's not a perfect metaphor, which is why you don't usually see electrical engineers use it.
 >
-> It's important to note up front, however, that this metaphor is simple at the expense of not being quite correct, and while it'll give you the right ideas at the level of details we're going to talk about, you'll find this metaphor won't take you very far if you choose to study electrical engineering topics further on your own.
+> If you like discussion and want to learn a more correct (but somewhat more challenging) metaphor for electricity in circuits, check out TODO sometime &mdash; preferably after you finish reading this page.
 
 If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize differences in air pressure: if you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
 
-High pressure air is just air where the atoms which make up the air are tightly packed, so another way of phrasing this tendence is that tightly-packed air will spread out if you give it room to.
+> Diagram
 
-Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them roomt to spread out, they will! The goal of an electrical circuit is to use this fact to move electrons in a line, through components that use the electricity to do something.
+High pressure air is just air where the atoms which make up the air are tightly packed, so it'd be equally valid to describe this phenomenon by saying tightly-packed air will spread it out if you give it room to:
+
+> Diagram
+
+Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them roomt to spread out, they will! The goal of an electrical circuit is to use this fact to move electrons in a line, through components that use the electricity to do 'something interesting.' To understand what that means, we have to start with the most basic component of circuitry: the line.
 
 ## Lines in a Circuit
 
-The most basic element of a circuit is a **line** (sometimes alternately called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the basic construction of an electrical circuit:
+The most basic element of a circuit is a **line** (sometimes alternately called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the overall structure of an electrical circuit:
 
 > A horizontal line connecting two terminals as little circles. Label the left terminal $(-)$ and the right terminal $(+)$.
 
 A line is a conduit which allows electrons to pass through it. Each of the two circles at the ends of the line above are called **terminals**. Terminals are connection points between elements of a circuit. 
 
-In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want room to expand; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons and gives them room to expand. Since the line itself is a conduit for electrons, the electrons flow out from the negative terminal, where they are densely packed, expanding to fill the available space in the positive terminal. 
+In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want to expand, and will if given room; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons. The negative terminal has densely packed electrons, and the positive terminal provides room for the to expand; the line itself is a conduit for elecrons, giving them a path to travel from the (dense) negative terminal to the (roomy) positive terminal.
 
 > If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it sort of is.
 >
@@ -39,15 +43,19 @@ There are a few key terms that circuit designers use to describe the flow of ele
 
 Any time you count electrons, that quantity is called **charge**. Charge is measured in **Coulombs**, which are abbreviated $C$.
 
-**Current** refers to the movement of electrons. Current is measured as the rate at which electrons are moving through a medium; this rate is called **amperage**. The name derives from the corresponding unit of measurement, **amperes**, which is often shorted to just **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the rate at which electrons pass through the circuit.
+**Current** refers to the movement of electrons. Current is measured as the rate at which electrons are moving through a medium; this rate is called **amperage**. The name derives from the corresponding unit of measurement, **amperes**, which is often shorted to just **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the rate at which electrons pass through a line in a circuit.
 
-Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply without breaking out the math, but it effectively measures the degree electrons 'want' to move from one point in the circuit to another, like measuring the differences in air pressure that causes air to want to move (i.e. from higher pressure to lower pressure).
+Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply without breaking out the math, but it effectively measures the degree to which electrons 'want' to move from one point in the circuit to another, like measuring the differences in air pressure that causes air to want to move (i.e. from higher pressure to lower pressure).
 
 Since a voltage desribes a difference between two points, you always need two different points on a circuit to begin talking about voltages (and you say that you're measing the voltage *between* those points). We often talk about voltages between two terminals of a line in a circuit, so for brevity we often refer to a line's "voltage," even though what we really mean is the voltage between the two terminals the line connects.
 
-Voltage and current are innately realted: increasing a line's voltage (that is, the voltage between the line's terminals) causes amperage to rise proportionally, because the additional voltage 'pressure' pushes more electrons through the wire faster. However, amperage also depends on aspects of the line itself: basically, 'thinner' lines accommodate less current for a given voltage than do 'thicker' lines.
+Voltage and current are innately realted: increasing a line's voltage (i.e. the voltage between that line's terminals) causes amperage to rise proportionally, because the additional voltage 'pressure' pushes more electrons through the wire faster. However, amperage also depends on aspects of the line itself: basically, 'thinner' lines accommodate less current for a given voltage than do 'thicker' lines:
+
+> Diagram
 
 As an analogy, imagine water being pushed through a straw or a sewer main. For either, the amount of water pouring at the end depends on the pressure of water being pushed in; but, for any given water pressure, much less water pours out the straw than the sewer main, because the straw gives the water much less room to flow. The water pressure is analogous to voltage, and the amount of water pouring out is analogous to amperage.
+
+Make sense, at least sort of? Let's keep going, and maybe things will get clearer:
 
 ## Circuits and Power Sources
 
@@ -55,13 +63,11 @@ Now that we understand the basic principles by which electriicty moves through c
 
 > Diagram showing a power source by itself, with its terminals labeled $(+)$ and $(-)$
 
-The basic job of a power source is to provide two terminals with a voltage between them. The negative terminal consists of densely packed electrons, and the positive terminal consists of relatively less densely packed electrons.
-
-By connecting these two terminals together, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
+The basic job of a power source is to provide two terminals with a non-zero voltage between them. The negative terminal consists of densely packed electrons, and the positive terminal consists of relatively less densely packed electrons. By connecting these two terminals together with a line, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
 
 > Diagram
 
-As we can see in the diagram above, the name 'circuit' comes from the fact that the lines in a circuit form a loop. All we need to do now is to invent some other interesting components that do something when current passes through them, and add them to our circuit such that the power source's voltage 'pull's electrons through them.
+As we can see in the diagram above, the name 'circuit' comes from the fact that the lines in a circuit form a loop. All we need to do now is to invent some other interesting components that do something when current passes through them, and add them to our circuit, so that the use the power source's voltage to 'push' electrons through these new components.
 
 ## Junctions and Grounding
 
@@ -69,21 +75,27 @@ The first component we're going to add to our circuit is called a **ground**, wh
 
 > Diagram showing a ground by itself
 
-In essence, a ground is a soak for electrons, providing them with nearly infinite room to expand. As such, the voltage between any point in the circuit and the ground is nearly infinite. To make the math easier, we often approximate this voltage as being literally infinite.
+In essence, a ground is a soak for electrons, providing them with nearly infinite room to expand. As such, the voltage between any point in the circuit and the ground is nearly infinite. To make the math easier, we often even approximate this voltage as being literally infinite.
 
-Grounds are named that way because they are often implemented by literally connecting a wire to the ground. the Earth has a lot of atoms and is not electrically charged, which means it has the ability to soak up very large number of electrons at a very high rate, effectively acting as a sink to soak up electrons provided by a power source. This is why the element is called a ground, as well as why the act of sending current to a ground called "grounding."
+Grounds are named that way because you often make one by literally connecting a wire to the ground (the thing you walk on). The Earth has a lot of atoms and is not electrically charged, which means it has the ability to soak up very large number of electrons at a very high rate, effectively acting as a sink to soak up electrons provided by a circuit line. This is why the element is called a ground, as well as why the act of sending current to a ground called "grounding."
 
-There's just one problem with the grounding element: it only has a single terminal. How do we add a ground to our circuit, forming a full loop between both terminals of the power source, while still also connecting the ground to the circuit? To do this, we'll need to introduce our first **junction**:
+There's just one problem with the grounding element: it only has a single terminal. How do we make a circuit that forms a full loop while still including a connection to a ground? To do that, we'll need to invent the **junction**:
 
 > Diagram showing a line which splits in two at a junction
 
-A junction is just a point at which lines are connected together. In terms of the flow of current, a junction typically either splits one line into multiple lines, or merges multiple lines into a single line:
+A junction is just a point at which lines are connected together at the same terminal. Depending on the direction current is flowing, the result is usually to either split an "input" current across multiple "output" lines, or join multiple inputs to a single output:
 
 > Diagrams showing both conditions
 
-The amount of current that flows through a junction is a constant; so, for example, in a junction that splits current among multiple lines, the total amperge passing through the output lines is equal to the amperage entering through the input line. The portion of the current that passes through each line depends on the lines' relative voltages:
+The amount of current that flows out of a junction always has to be equal to the amount of current that flows into a junction, becuase there's nowhere else for the current to go. So, if an example junction were to split a current among multiple lines, summing the output lines' amperages should always equal the input line's amperage.
 
-> Diagram showing a junction that splits an input into two outputs, with the outputs labeled $V_1$ and $V_2$
+For us, the key rule for designing junctions will involve voltages: when you split a line into multiple lines at a junction, the amount of current that goes into each output is proportional to each line's output voltage:
+
+> Diagram showing a junction that splits an input into two outputs. The input terminal is labeled $A$ and the output terminals are labeled $B$ and $C$. Label the line that terminates in $B$ "line 1," and name the other one "line 2."
+>
+> Redo the paragraph below to define the different voltages as $V_{AB}$ and $V_{AC}$ to make it clear what we're measuring when we say it's proportional.
+
+---
 
 In the diagram above, we see a junction which splits an input line into two output lines, with respective voltages $V_1$ and $V_2$. Say, for example, that $V_2 = 3 * V_1$; then, at this junction, $25\%$ of the current passes through line 1, and $75\%$ of the current passes through line 2. 
 
@@ -95,11 +107,11 @@ What happens in this circuit? Let's zoom into just the junction that we connecte
 
 > Diagram showing the junction's input line, output line, ground line, label voltages
 
-Remember that the purpose of a ground is to provide an 'electron sink,' such that the voltage between the input line and the ground is approximately infinite. Then we can simplify this diagram by saying the voltage at the grounding line is infinite, and by comparison, the voltage at the output line is approxmiately equal to zero:
+Remember that the purpose of a ground is to provide 'infinite' voltage between the input line and the output line. So we can simplify this diagram by saying the voltage at the grounded line is infinite, and by comparison, the voltage at the output line is approxmiately equal to zero:
 
 > Same diagram, but label the voltages as infinite and zero
 
-Since the amount of current that exits through each line of a junction is proportional to the lines' relativ voltages, we see what happens here: all current passes through the grounding line, and (effectively) no current passes through the output line.
+Since the amount of current that exits through each line of a junction is proportional to the lines' relative voltages, we see what happens here: *all* the current passes through the grounding line, and (effectively) no current passes through the output line.
 
 > The original circuit-with-ground diagram, but bold the lines to show that all the current has passed to the ground
 
