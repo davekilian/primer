@@ -3,21 +3,27 @@ layout: chapter
 title: A Basic Computer
 ---
 
-It is incredible to behold how fast and complex computer hardware has become since we first started building computers in earnest back in the 1940s-1950s.  [The power adapter for a modern MacBook Pro laptop includes its own onboard computer that is more powerful than the earliest Macintosh computers](https://www.ibtimes.com/your-macbook-power-adapter-has-more-powerful-processor-original-mac-2202242). For several decades, computer hardware has been improving at an exponential rate, roughly doubling in complexity every two years &mdash; the industry has managed to hit this number so consistently for such a long time that the phenomenon was even given a name: [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law).
+In this chapter we're going to answer what seems like an easy question:
 
-In this chapter we will build ourselves a "minimum viable" computer. While this computer we will describe meets all reasonable definitions of the term "computer," and even resembles some of the first computers ever built, it will be a vast oversimplification of the computers we use today.
+<center><i>How do computers work?</i></center>
 
-So let's get started!
+This is a question near and dear to me &mdash; I once tried to find a good answer to this question online, and in failing to find a satisfying one, I ended up on the path that led me to become the professional software engineer I am today.
+
+You may find it surprising that, for such a basic question, the field of computing hasn't agreed on a simple, widely taught answer to this question. Many professional software developers and hardware engineers alike would be hard-pressed to give you a clear answer (although each might be able to explain their own little piece of the puzzle in detail). I certainly had a lot of trouble finding a good answer back when I was trying to answer this question myself.
+
+That's why, in this chapter, we're going to nail down the answer by building ourselves a 'minimum viable' computer!
 
 ## Computers and Calculators
 
-At the heart of any computer is a programmable calculator. To understand what this means, let's take a look back at where the term computer came from:
+If we're going to build a computer and see how they work, the very first thing we need is a definition of what a computer is. To avoid philosophical pitfalls, we'll stick to a practical, no-frills working definition: a computer as a "programmable calculator."
 
-"Computer" used to refer to a job description, not unlike "engineer" or "salesperson," rather than as a thing. Academic, scientific and engineering institutions employed (human) computers to crunch numbers for them. Computers would often employ calculators to aid them in their work (and since these were the days before digital calculators, they would often use mechanical calculators, notably a type of mechanical calculator called the  [slide rule](https://en.wikipedia.org/wiki/Slide_rule)). 
+To make a bit more sense of that, let's take a look back at where the term originally came from:
+
+"Computer" used to refer to a job description, not unlike "engineer" or "salesperson," rather than as a device or thing. Academic, scientific and engineering institutions employed (human) computers to crunch numbers for them. Computers would often employ calculators to aid them in their work (and since these were the days before digital calculators, they would often use mechanical calculators, notably a type of mechanical calculator called the  [slide rule](https://en.wikipedia.org/wiki/Slide_rule)). 
 
 A reasonable question to ask is, why did we need computers when we already had perfectly functional calculators? What were the computers doing that calculators weren't?
 
-The answer lies in the complexity of the computations: sometimes, the institution employing computers had a lot of data points, and needed people to crunch through all the data, running the same equations over and over on different input numbers to obtain some useful results. Other times, the institutions had very complex equations that required a lot of arithmetic to solve, requiring them to split the equation into smaller pieces, hand them out to individual computers, and combine their results at the end.
+The answer lies in the complexity of the computations: sometimes, the institution employing computers had a lot of data points, and needed people to crunch through all the data, running the same equations over and over on different input numbers to obtain some useful results. Other times, the institutions had very complex equations and formulas that required a lot of arithmetic, requiring them to split the equation into smaller pieces, hand them out to individual computers, and combine their results at the end.
 
 So, the main things computers were doing that their calculators couldn't was to string multiple calculations together: their slide rules might be able to add, subtract, multipy, divide, square or take the square root of numbers; but we needed computers to run sequences of related calculations.
 
@@ -126,7 +132,9 @@ Done? Then here's our example:
 >
 > And our second solution is $-1.5$. Ba-da-bing, ba-da-boom, we're done!
 
-Now let's say we had 1,000 different quadratic equations we wanted to solve, exactly like this. We don't want to have to think through how to punch the formula into the calculator every time, so instead we might want to distill the above down to just the steps we want to carry out:
+Say we gave 1,000 different sets of quadratic equation coefficients to a (human) computer, and asked for the solutions to all 1,0000 of them. After thinking through the first few sets, our friend the computer will probably start to remember the steps needed by heart, allowing him or her to churn through sets quickly.
+
+If you asked the computer how to compute these formulas, he or she would probably be able to conjure up something like this:
 
 > 1. **take as input** three polynomial coefficients $A$, $B$ and $C$
 > 2. **clear** the calculator
@@ -162,16 +170,20 @@ Now let's say we had 1,000 different quadratic equations we wanted to solve, exa
 > 32. **divide** by the previously computed value for $2A$
 > 33. **output** the result as the second solution
 
-What we just wrote here is a **program**. A program is just a sequence of steps; in a computer program, each of those steps is a calculation.
+If this looks familiar, it's because we got by starting with the example formula we computed earlier, and just pulling out the 'steps' from the tables.
 
-At the heart of every computer (the ones we use today, which replaced the human ones) is a programmable calculator designed to churn through programs much like this one. The job of a computer programmer is, when presented with a problem, to come up with a program which solves that problem, as a sequence of steps the computer's internal calculator supports. The computer then **executes** the program, churning through each step and doing exactly what each step says using the onboard calculator.
+This list, by the way, is called a **program**. The term "program" in general refers to any old sequence (if you go to a piano recital, someone might hand you a 'program' telling you who's going to play what, and in what order). A computer program is a sequence where each step is a calculation.
 
-It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or playing YouTube videos, but we'll get there. Everything you do on a computer is ultimately an extension of this programmable calculator, and over the course of this book, we'll build up to there.
+This is where we get our working model of a computer as a programmable calculator: our (mechanical, no longer human) computer will be a device that, given a program, can **execute** it, churning through each step one by one and doing whatever calculation that step says. To make this work, at the heart of every computer you will find a calculator and some way to feed a program into the calcaultor.
+
+The job of a computer programmer, when presented with a problem, is to come up with a program that solves that problem, as a sequence of steps the computer's internal calculator supports. When we figured out above how to compute the quadratic formula on our pretend calculator, that was programming!
+
+It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or playing YouTube videos, but we'll get there. Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
 
 For now, just think of a computer as a programmable calculator, and you'll be doing pretty well.
 
-## A Basic Computer
+## Building Our Computer
 
 For the rest of this chapter, let's look at how you build a computer that carries out programmed sequences of calculations, like the program we designed above. 
 
-We're going to start by building ourselves a digital calculator that can perform simple operations, and then turn it into a full-fledged computer that can be programmed just like we did above. We'll close out the chapter by adding a few more components that most computers have, like random-access memory, disk storage and user peripherals.
+We're going to start by building ourselves a digital calculator that can perform simple operations. Once we have a working calculator, we'll turn it into a full-fledged computer that can be programmed. We'll close out the chapter by adding a few more components that are critical to modern computers.
