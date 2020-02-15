@@ -3,18 +3,6 @@ layout: chapter
 title: A Basic Computer
 ---
 
-In this chapter we're going to answer what seems like an easy question:
-
-<center><i>How do computers work?</i></center>
-
-This is a question near and dear to me &mdash; I once tried to find a good answer to this question online, and in failing to find a satisfying one, I ended up on the path that led me to become the professional software engineer I am today.
-
-You may find it surprising that, for such a basic question, the field of computing hasn't agreed on a simple, widely taught answer to this question. Many professional software developers and hardware engineers alike would be hard-pressed to give you a clear answer (although each might be able to explain their own little piece of the puzzle in detail). I certainly had a lot of trouble finding a good answer back when I was trying to answer this question myself.
-
-That's why, in this chapter, we're going to nail down the answer by building ourselves a 'minimum viable' computer!
-
-## Computers and Calculators
-
 If we're going to build a computer and see how they work, the very first thing we need is a definition of what a computer is. To avoid philosophical pitfalls, we'll stick to a practical, no-frills working definition: a computer as a "programmable calculator."
 
 To make a bit more sense of that, let's take a look back at where the term originally came from:
