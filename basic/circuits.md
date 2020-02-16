@@ -3,17 +3,33 @@ layout: chapter
 title: A Basic Computer&#58; Circuits
 ---
 
-Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values (in a vast majority of cases, just 0 and 1, i.e. binary). 
+Modern computers are [digital circuits](https://en.wikipedia.org/wiki/Digital_electronics), which are [electric circuits](https://simple.wikipedia.org/wiki/Electrical_circuit) that are designed to operate on discrete values. In a vast majority of cases, these circuits operate on just two discrete values: the binary digits 0 and 1.
 
 Let's start by taking a look at classical analog (non-digital) electrical circuits; this will form the basis by which we build up digital logic, calculation, and eventually, a computer!
 
-## A Metaphor for Electricity
+## A Minimal Circuit
 
-> *In this chapter, we will use a simple metaphor involving air pressure to help explain the physics of electricity works, especially in circuits. Although this metaphor will work for everything we're going to do with circuits, it's not a perfect metaphor, which is why you don't usually see electrical engineers use it.
+The goal of an electrical circuit is to set up a predictable flow of electricity. 
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Analogy for Electricity
+
+> In this chapter, we will use a simple metaphor involving air pressure to help explain the physics of how electricity works, especially in circuits. Although this metaphor will work for everything we're going to do with circuits, it's not a perfect metaphor, which is why you don't usually see electrical engineers use it.
 >
-> If you like discussion and want to learn a more correct (but somewhat more challenging) metaphor for electricity in circuits, check out TODO sometime &mdash; preferably after you finish reading this page.
+> If you like this discussion and want to learn a more correct (but somewhat harder to think about) metaphor for electricity in circuits, check out the [hydraulic analogy for electricity](https://en.wikipedia.org/wiki/Hydraulic_analogy) sometime.
 
-If you've ever popped a balloon or vented a pressure cooker, you've experienced the tendency of air to equalize differences in air pressure: if you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
+If you've ever popped a balloon or vented a pressure cooker, you've experienced air's tendency to equalize in pressure. If you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
 
 > Diagram
 
@@ -21,21 +37,27 @@ High pressure air is just air where the atoms which make up the air are tightly 
 
 > Diagram
 
-Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them roomt to spread out, they will! The goal of an electrical circuit is to use this fact to move electrons in a line, through components that use the electricity to do 'something interesting.' To understand what that means, we have to start with the most basic component of circuitry: the line.
+Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them room to spread out, they will! The goal of an electrical circuit is to take advantage of this by giving a group of tightly packed electrons a single path on which to spread out. Because the electrons tend to spread out, they end up moving down this path:
+
+> Diagram
+
+We can then put something along this pack and make the electrons flow through it to do something interesting:
+
+> Diagram
 
 ## Lines in a Circuit
 
-The most basic element of a circuit is a **line** (sometimes alternately called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the overall structure of an electrical circuit:
+The most basic element of a circuit is a **line** (sometimes instead called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the overall structure of an electrical circuit:
 
 > A horizontal line connecting two terminals as little circles. Label the left terminal $(-)$ and the right terminal $(+)$.
 
 A line is a conduit which allows electrons to pass through it. Each of the two circles at the ends of the line above are called **terminals**. Terminals are connection points between elements of a circuit. 
 
-In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want to expand, and will if given room; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons. The negative terminal has densely packed electrons, and the positive terminal provides room for the to expand; the line itself is a conduit for elecrons, giving them a path to travel from the (dense) negative terminal to the (roomy) positive terminal.
+In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want to expand, and will if given room; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons. The line itself provides a path for electrons at the (dense) negative terminal to move to the (roomy) positive terminal.
 
 > If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it sort of is.
 >
-> The first people to study electricity and construct circuits knew electricity was moving through the circuits, but couldn't be sure which direction it was moving, so they guessed, having a 50/50 chance of being right. It turns out they guessed wrong, but by the time we realized our notation was backwards it was already being used widely to describe existing circuits, and flipping the signs to work more intuitively would have created more confusion for existing circuits than it would have helped explain new circuits.
+> The first people to study electricity and construct circuits knew electricity was moving through the circuits, but couldn't be sure which direction it was moving, so they guessed, having a 50/50 chance of being right. It turns out they guessed wrong, but by the time we realized our notation was backwards it was already being used all over the place, making it too late to switch back to a more intuitive system.
 >
 > And lo, to this day, electrons are thought to be 'negatively' charged and flow from the negative terminal to positive &mdash; oops!
 
@@ -45,17 +67,15 @@ Any time you count electrons, that quantity is called **charge**. Charge is meas
 
 **Current** refers to the movement of electrons. Current is measured as the rate at which electrons are moving through a medium; this rate is called **amperage**. The name derives from the corresponding unit of measurement, **amperes**, which is often shorted to just **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the rate at which electrons pass through a line in a circuit.
 
-Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define crisply without breaking out the math, but it effectively measures the degree to which electrons 'want' to move from one point in the circuit to another, like measuring the differences in air pressure that causes air to want to move (i.e. from higher pressure to lower pressure).
+Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define without breaking out math, but it effectively measures the degree to which electrons 'want' to move from one point in the circuit to another. Using our analogy with air pressure, voltage measures something like a difference in air pressure, but for electrons.
 
-Since a voltage desribes a difference between two points, you always need two different points on a circuit to begin talking about voltages (and you say that you're measing the voltage *between* those points). We often talk about voltages between two terminals of a line in a circuit, so for brevity we often refer to a line's "voltage," even though what we really mean is the voltage between the two terminals the line connects.
-
-Voltage and current are innately realted: increasing a line's voltage (i.e. the voltage between that line's terminals) causes amperage to rise proportionally, because the additional voltage 'pressure' pushes more electrons through the wire faster. However, amperage also depends on aspects of the line itself: basically, 'thinner' lines accommodate less current for a given voltage than do 'thicker' lines:
+Since a voltage desribes a difference between two points, you always need two different points on a circuit to begin talking about voltages (and you say that you're measing the voltage *between* those points). It's common to describe a line as having a "voltage," but this is a shortcut for talking about the voltage between the two terminals the line connects:
 
 > Diagram
 
-As an analogy, imagine water being pushed through a straw or a sewer main. For either, the amount of water pouring at the end depends on the pressure of water being pushed in; but, for any given water pressure, much less water pours out the straw than the sewer main, because the straw gives the water much less room to flow. The water pressure is analogous to voltage, and the amount of water pouring out is analogous to amperage.
+If you want to go on to design circuits, you'll eventually need to learn about some important relationships between voltage and current. However, since we're interested in digital circuits in this book, we can confine ourselves to worrying about voltages across a line of the circuit: as circuit designers, we pick a voltage threshold such that lines with a voltage above this threshold are considered to hold a binary $1$, and lines below this threshold are considered to hold a binary $0$:
 
-Make sense, at least sort of? Let's keep going, and maybe things will get clearer:
+> Diagram
 
 ## Circuits and Power Sources
 
@@ -63,7 +83,7 @@ Now that we understand the basic principles by which electriicty moves through c
 
 > Diagram showing a power source by itself, with its terminals labeled $(+)$ and $(-)$
 
-The basic job of a power source is to provide two terminals with a non-zero voltage between them. The negative terminal consists of densely packed electrons, and the positive terminal consists of relatively less densely packed electrons. By connecting these two terminals together with a line, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
+The basic job of a power source is to provide two terminals with a non-zero voltage between them. Like before, the negative terminal consists of densely packed electrons, and the positive terminal consists of more loosely packed electrons. By connecting these two terminals together with a line, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
 
 > Diagram
 
