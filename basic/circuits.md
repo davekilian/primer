@@ -9,154 +9,100 @@ Let's start by taking a look at classical analog (non-digital) electrical circui
 
 ## A Minimal Circuit
 
-The goal of an electrical circuit is to set up a predictable flow of electricity. 
+The goal of an electrical circuit is to set up a predictable flow of electricity, so that we can pass electricity through something that does something interesting (maybe an LED that emits light, a speaker that makes sound, and so on).
 
+When discussing circuits, we often use a type of diagram called a **schematic**, which gives us a high level idea of how the circuit might look without getting into any of the nitty-gritty details. The following schematic describes the most basic circuit:
 
+> Diagram with a DC source with both its terminals connected by a loop
 
+Let's break it down:
 
+This thing has a few names; to keep it simple, we'll call it a **power source**.
 
+> Diagram showing just a voltage source
 
+In real circuits, power sources like these might be provided by a battery, or an A/C adapter plugged into one of your home's power outlets. In the diagram, we see that a power source has two **terminals**: a positive terminal labeled $(+)$ and a negative terminal labeled $(-)$. 
 
+In our example circuit above, we connected the terminals with a single **line**:
 
+> Diagram showing just a line connecting two terminals
 
+Lines in a circuit provide a conduit along which electricity can flow. In a real circuit, a line might be a wire made of some kind of conductive material that allows electricity to flow freely, surrounded by an insulator which prevents electricity from flowing out of the wire. In this way, a line sort of acts like a pipe, but for electricity instead of water.
 
+Now that we understand what our power source and our line both do, let's take another look at our circuit:
 
----
+> The same full diagram with a DC source connected by a loop
 
-## Analogy for Electricity
+What does this circuit do?
 
-> In this chapter, we will use a simple metaphor involving air pressure to help explain the physics of how electricity works, especially in circuits. Although this metaphor will work for everything we're going to do with circuits, it's not a perfect metaphor, which is why you don't usually see electrical engineers use it.
->
-> If you like this discussion and want to learn a more correct (but somewhat harder to think about) metaphor for electricity in circuits, check out the [hydraulic analogy for electricity](https://en.wikipedia.org/wiki/Hydraulic_analogy) sometime.
+To answer that, we need a basic model of how electricity works. Electricity is made up of subatomic particles called electrons, which have a tendency to repel each other. The negative terminal of our power source consists of densely packed electrons that want to repel each other, whereas the positive terminal of our power source consists of loosely packed electrons. 
 
-If you've ever popped a balloon or vented a pressure cooker, you've experienced air's tendency to equalize in pressure. If you provide a way for high-pressure air to move to lower pressure, it will &mdash; sometimes explosively!
+> Diagram which zooms into a DC source and shows electrons as dots
 
-> Diagram
+As soon as we connect these two terminals with a line of our circuit, we give electrons room to move freely between the positive and negative terminals of the power source. What happens next is a sort of tug of war: all the electrons in both circuits repel each other, but the negative terminal's electrons have more oomph because of how densely packed they are. So the negative terminal 'wins' the tug of war, sending electrons over to the positive terminal through the line we connected them using:
 
-High pressure air is just air where the atoms which make up the air are tightly packed, so it'd be equally valid to describe this phenomenon by saying tightly-packed air will spread it out if you give it room to:
+> Diagram of the original terminal, but with arrows showing the direction electricity flows
 
-> Diagram
+This process will continue until the negative and positive terminals end up with the same electron densities. At this point, both terminals have the same repulsive force, and nobody wins the tug of war (it's a stalemate):
 
-Electrons, the particles that make up electricity, do something similar: if you have a bunch of tightly-packed electrons and give them room to spread out, they will! The goal of an electrical circuit is to take advantage of this by giving a group of tightly packed electrons a single path on which to spread out. Because the electrons tend to spread out, they end up moving down this path:
+> Diagram showing the equilibrium state of the battery
 
-> Diagram
+This is why your phone or laptop's battery eventually runs out of charge: once both terminals of the battery have equalized, there's nothing to push electrons through the circuit anymore. You need to recharge your battery (doing work to push electrons from the positive terminal back into the negative terminal) to restart the process.
 
-We can then put something along this pack and make the electrons flow through it to do something interesting:
-
-> Diagram
-
-## Lines in a Circuit
-
-The most basic element of a circuit is a **line** (sometimes instead called a **wire**). This is how we normally represent lines in a **schematic diagram**, which are diagrams we use to visualize the overall structure of an electrical circuit:
-
-> A horizontal line connecting two terminals as little circles. Label the left terminal $(-)$ and the right terminal $(+)$.
-
-A line is a conduit which allows electrons to pass through it. Each of the two circles at the ends of the line above are called **terminals**. Terminals are connection points between elements of a circuit. 
-
-In the diagram, we labeled one terminal $(-)$ to indicate that it is **negatively charged**, meaning it consists of densely-packed electrons that want to expand, and will if given room; the other terminal is labeled $(+)$ to indicate that it is **positively charged**, meaning it consists of loosely-packed electrons. The line itself provides a path for electrons at the (dense) negative terminal to move to the (roomy) positive terminal.
-
-> If it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it sort of is.
+> By the way, if it seems backwards for electrons to flow from $(-)$ to $(+)$, well, it sort of is.
 >
 > The first people to study electricity and construct circuits knew electricity was moving through the circuits, but couldn't be sure which direction it was moving, so they guessed, having a 50/50 chance of being right. It turns out they guessed wrong, but by the time we realized our notation was backwards it was already being used all over the place, making it too late to switch back to a more intuitive system.
 >
 > And lo, to this day, electrons are thought to be 'negatively' charged and flow from the negative terminal to positive &mdash; oops!
 
-There are a few key terms that circuit designers use to describe the flow of electrons through lines like these:
+## Grounding
 
-Any time you count electrons, that quantity is called **charge**. Charge is measured in **Coulombs**, which are abbreviated $C$.
+Let's add another element to our circuits: the **ground**:
 
-**Current** refers to the movement of electrons. Current is measured as the rate at which electrons are moving through a medium; this rate is called **amperage**. The name derives from the corresponding unit of measurement, **amperes**, which is often shorted to just **amp** or abbreviated $A$. In the context of electrical circuits, amperage is typically used to describe the rate at which electrons pass through a line in a circuit.
+> Schematic icon for a ground
 
-Any time you talk about the differences in charges between two points in a circuit, you inevitably end up talking about **voltage**, which like amperage is named after its unit of measurement: **volts** ($V$). Voltage is a bit tricky to define without breaking out math, but it effectively measures the degree to which electrons 'want' to move from one point in the circuit to another. Using our analogy with air pressure, voltage measures something like a difference in air pressure, but for electrons.
+A ground is a circuit element that soaks up electrons. If you connect a circuit to a ground, all the electricity goes to the ground forever, instead of continuing along the circuit. This allows you to effectively 'turn off' part of the circuit:
 
-Since a voltage desribes a difference between two points, you always need two different points on a circuit to begin talking about voltages (and you say that you're measing the voltage *between* those points). It's common to describe a line as having a "voltage," but this is a shortcut for talking about the voltage between the two terminals the line connects:
+> Schematic diagram showing the same basic loop circuit as before, but now with a ground connected via a junction. Arrows showing charge flowing from the negative terminal to the ground, with no charge moving through the side of the circuit connected to the positive circuit
 
-> Diagram
+At the atomic level, a ground works much in the same way as the posiive terminal of a power source: its electrons are less tightly packed than those in a power source's negative terminal, so when you connect them together, the ground 'loses' the subatomic tug-of-war, and electrons flow from the negative terminal to the ground:
 
-If you want to go on to design circuits, you'll eventually need to learn about some important relationships between voltage and current. However, since we're interested in digital circuits in this book, we can confine ourselves to worrying about voltages across a line of the circuit: as circuit designers, we pick a voltage threshold such that lines with a voltage above this threshold are considered to hold a binary $1$, and lines below this threshold are considered to hold a binary $0$:
+> Same tug-of-war diagram as before
 
-> Diagram
+What makes grounding special is that the ground is typically much, much larger than the power source, so dumping electrons into the ground doesn't measurably affect how densely packed the electrons are. So the electron densities between a negative terminal and a ground never equalize the way they do between a negative terminal and a positive terminal:
 
-## Circuits and Power Sources
+> Diagram contrasting the two
 
-Now that we understand the basic principles by which electriicty moves through circuitry, it's time to start working with full circuits. To do this, we need to add another element: a **power source**. Here's how we show power sources in a schematic diagram:
-
-> Diagram showing a power source by itself, with its terminals labeled $(+)$ and $(-)$
-
-The basic job of a power source is to provide two terminals with a non-zero voltage between them. Like before, the negative terminal consists of densely packed electrons, and the positive terminal consists of more loosely packed electrons. By connecting these two terminals together with a line, we allow electrons to flow from the negative terminal to the positive terminal, creating our very first circuit:
+This way, a ground works sort of like a universal positive terminal: it soaks up all the electrons that are connected to it. If you put a ground in between you and the negative terminal of a circuit, no electrons reach you, because they all get pushed into the (large, roomy, not densely packed) ground instead:
 
 > Diagram
 
-As we can see in the diagram above, the name 'circuit' comes from the fact that the lines in a circuit form a loop. All we need to do now is to invent some other interesting components that do something when current passes through them, and add them to our circuit, so that the use the power source's voltage to 'push' electrons through these new components.
+## Switching
 
-## Junctions and Grounding
+In digital circuits like the one we're going to build into a computer, grounds are most useful when combined with another element called a **switch**.
 
-The first component we're going to add to our circuit is called a **ground**, which is denoted using the following symbol in circuit schematics:
-
-> Diagram showing a ground by itself
-
-In essence, a ground is a soak for electrons, providing them with nearly infinite room to expand. As such, the voltage between any point in the circuit and the ground is nearly infinite. To make the math easier, we often even approximate this voltage as being literally infinite.
-
-Grounds are named that way because you often make one by literally connecting a wire to the ground (the thing you walk on). The Earth has a lot of atoms and is not electrically charged, which means it has the ability to soak up very large number of electrons at a very high rate, effectively acting as a sink to soak up electrons provided by a circuit line. This is why the element is called a ground, as well as why the act of sending current to a ground called "grounding."
-
-There's just one problem with the grounding element: it only has a single terminal. How do we make a circuit that forms a full loop while still including a connection to a ground? To do that, we'll need to invent the **junction**:
-
-> Diagram showing a line which splits in two at a junction
-
-A junction is just a point at which lines are connected together at the same terminal. Depending on the direction current is flowing, the result is usually to either split an "input" current across multiple "output" lines, or join multiple inputs to a single output:
-
-> Diagrams showing both conditions
-
-The amount of current that flows out of a junction always has to be equal to the amount of current that flows into a junction, becuase there's nowhere else for the current to go. So, if an example junction were to split a current among multiple lines, summing the output lines' amperages should always equal the input line's amperage.
-
-For us, the key rule for designing junctions will involve voltages: when you split a line into multiple lines at a junction, the amount of current that goes into each output is proportional to each line's output voltage:
-
-> Diagram showing a junction that splits an input into two outputs. The input terminal is labeled $A$ and the output terminals are labeled $B$ and $C$. Label the line that terminates in $B$ "line 1," and name the other one "line 2."
->
-> Redo the paragraph below to define the different voltages as $V_{AB}$ and $V_{AC}$ to make it clear what we're measuring when we say it's proportional.
-
----
-
-In the diagram above, we see a junction which splits an input line into two output lines, with respective voltages $V_1$ and $V_2$. Say, for example, that $V_2 = 3 * V_1$; then, at this junction, $25\%$ of the current passes through line 1, and $75\%$ of the current passes through line 2. 
-
-With junctions, we can now attach a grounding element to our circuit:
-
-> Diagram showing the same basic circuit, but drain out to a ground using a junction
-
-What happens in this circuit? Let's zoom into just the junction that we connected to the ground:
-
-> Diagram showing the junction's input line, output line, ground line, label voltages
-
-Remember that the purpose of a ground is to provide 'infinite' voltage between the input line and the output line. So we can simplify this diagram by saying the voltage at the grounded line is infinite, and by comparison, the voltage at the output line is approxmiately equal to zero:
-
-> Same diagram, but label the voltages as infinite and zero
-
-Since the amount of current that exits through each line of a junction is proportional to the lines' relative voltages, we see what happens here: *all* the current passes through the grounding line, and (effectively) no current passes through the output line.
-
-> The original circuit-with-ground diagram, but bold the lines to show that all the current has passed to the ground
-
-We essentially drained the current out of the circuit. It may not be obvious right now why this is useful, but keep this in your back pocket - we'll use it again later.
-
-## Switches and Transistors 
-
-The final circuit element we'll need in building our computer is the switch, as well as its more modern cousin the transistor.
-
-A **switch** is an element that can be used to disconnect and reconnect a line in a circuit. Switches are denoted using the following symbol:
+A switch is just a way of connecting and disconnecting a line in a circuit. We use the following symbol in schematic diagrams to denote a switch:
 
 > Diagram
 
-Switches have two states. A **closed** switch is one which 'completes' the line of the circuit, connecting the two terminals of the switch and allowing electrons to flow through. A closed switch functions exactly the same as a wire. An **open** switch, on the other hand, disconnects the two terminals, thereby preventing electrons from passing through.
+A switch is said to be **closed** when it completes the line of a circuit, connecting the two terminals of the switch and allowing electrons to flow through. A closed switch functions the same way as a regular circuit line:
 
-Switches are traditionally mechanical, meaning that someone or something has to physically toggle a switch in order to open or close it. The **transistor**, a more modern cousin of the switch, does the same thing, but can be opened or closed electronically:
+> Diagram showing a closed switch, with arrows showing electrons flowing through
 
-> Diagram showing a transistor element
+A switch is said to be **open** when you disconnect its two terminals, stopping the flow of electrons:
 
-As we see in the diagram above, each transistor consists of three terminals. The input and output terminals of a transistor work the same way as the two terminals of a switch: when the transistor is 'closed,' current is able to flow from the input terminal to the output terminal, but when the transistor is 'open,' current cannot flow between the two terminals.
+> Diagram showing an open switch, where electrons have nowhere to go and thus don't move
+
+A traditional switch is mechanical: someone needs to physically move something to close it (completing the circuit) or open it (breaking the circuit). The **transistor**, a more modern cousin of the switch, does the same thing, but can be opened or closed electronically:
+
+> Diagram showing a transistor schematic element
+
+Transistor each have three terminals. The input and output terminals of a transistor work the same way as the two terminals of a switch: when the transistor is 'closed,' current is able to flow from the input terminal to the output terminal, but when the transistor is 'open,' current cannot flow between the two terminals.
 
 The third 'switching' line of the transistor determines which state the transistor is in: sending current through the switching line closes the transistor, allowing current to flow. If no current is sent through the switching line, the transistor is open, and current does not pass through the transistor's input and output lines. 
 
 > Diagram showing the same transistor twice, with current flows bolded. In one case, current is sent through the switch line and the input line, causing current to flow; in the other, current is sent to the input line but not through the switching line, so there is no current at the output line
 
-The transistor is the foundational circuit element in modern computers; the invention of the transistor allowed us to create reasonably small, cost-effective computers and can arguably be said to have driven the computing revolution. In fact, [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law), which we mentioned in a previous chapter, specifically measures the progress of computer hardware manufacturing as the number of transistors we can fit in a given space &mdash; for a long time now, we've managed to roughly double this value every two years.
+## Digital Logic
 
-In the next chapter, we'll explore how to we can use electrical circuits consisting of transistors and grounding elements to build a calculator, which will become the internal calculator that drives our programmable computer.
+In the next chapter, we'll explore how to we can use electrical circuits consisting of transistors and grounding elements to build a calculator, which we will later make into a full-blown programmable computer.
