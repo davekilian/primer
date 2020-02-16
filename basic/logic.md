@@ -3,28 +3,28 @@ layout: chapter
 title: A Basic Computer&#58; Digital Logic
 ---
 
-In the previous chapter, we introduced the basic components that underly digital circuitry: circuits, transistors and grounding. Now we're going to switch to talking about *digital* circuits.
+In the previous chapter, we introduced the basic components that underly digital circuitry: lines, power sources, transistors and grounding. Now we're going to switch to talking about *digital* circuits.
 
-Digital circuits deal with descrete values; typically, we choose exactly two discrete values: the binary digits $0$ and $1$. A digital circuit is ultimately just a circuit; that a circuit is 'digital' has to do with how the designer builds the circuit and intends it to be used.
+A digital circuit is no different from a regular circuit; the only thing that makes a circuit "digital" is our design goal. Analog (non-digital) circuit design usually involves carefully designing the circuit to make sure electricity flows through all parts of the circuit at a predictable rate; digital circuits focus more on switching whole parts of the circuit on and off.
 
-The basic idea behind digital circuits is to represent numbers as binary using voltages and current: we treat any line with current passing through it (that is, any line with a nonzero voltage) as a binary $1$; then, to us, any line with no current passing through it (zero voltage) is a binary $0$. We then use combinations of circuitry, transistors and grounding to perform mathematical operations on these binary numbers, by manipulating voltages and current appropriately.
+In particular, we're going to build digital logic circuits. That basically means that we're going to use switching to represent binary numbers: a switched-on portion of the circuit where electricity can flow corresponds to a binary 1, whereas a switched-off part of the circuit where electrons cannot flow corresponds to a binary 0:
 
-Let's start with the simplest kind of digital operations: Boolean logic.
+> Diagrams showing a switched-on line labeled 1 and a switched-off line labeled 0
+
+In this chapter, we're going to use the transisitor and grounding elements from the previous chapter to build circuits that perform calculations on binary numbers. But before we build up to full arithmetic, we need a more basic kind of digital operation: Boolean logic.
 
 ## Boolean Logic
 
-The name "Boolean" comes from the name `TODO` Boole, who is commonly credited with inventing it.
+The name "Boolean" in Boolean logic comes from George Boole, who is commonly credited with inventing it. Boolean logic is the mathematics of single-digit binary operations.
 
-> I forgot the guy's first name (maybe William??), and there's no wi-fi on the plane so I can't look it up right now ... womp womp
-
-Boolean logic is the mathematics of single-digit binary operations. We commonly use Boolean logic to model logical reasoning, of the kind 'if `this` then `that`.' To make it easier to understand Boolean logic, we often rename our binary digits to the more human-friendly terms `true` and `false`:
+One common use of Boolean logic is to model logical reasoning, of the kind 'if `this` then `that`.' To make it easier to understand Boolean logic, we often rename our binary digits to the more human-friendly terms `true` and `false`:
 
 | Binary Value | Boolean Value |
 | ------------ | ------------- |
 | $0$          | `false`       |
 | $1$          | `true`        |
 
-To model logic using Boolean math, we use terse statements that could either be `true` or `false`, and then operate on them. For example
+To model logic using Boolean math, we use terse statements that could either be `true` or `false`, and then operate on them. For example,
 
 > TODO come up with an example
 
