@@ -3,33 +3,31 @@ layout: chapter
 title: A Basic Computer
 ---
 
-If we're going to build a computer and see how they work, the very first thing we need is a definition of what a computer is. To answer the question of exactly what is and is not a computer would require some unhelpful philosophizing, so we'll stick to a basic but approximate definition: a computer is a *programmable calculator*.
+In this chapter, we're going to design ourselves a simple computer &mdash; the primitive kind that's simple enough for someone (with enough time and determination) to build singlehandedly.
 
-To make a little more sense of that, it's helpful to look back at where the term "computer" came from:
+The first thing we need to is remind ourselves: what is a computer anyways? There are plenty of ways to tackle that question, most of which are too philosophical for this book. Let's stick a simpler approximation: we'll define a computer as a *programmable calculator*. To better understand what that means, it's helpful to look at where the term "computer" originally came from:
 
 Once upon a time, "computer" was a job description. Academic, scientific and engineering institutions employed (human) computers to crunch numbers for them. The 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) gives you an idea of what these computers did and what it was like to be one.
 
-Computers would often employ calculators to aid them in their work (and since these were the days before digital calculators, they would often use mechanical calculators, notably a type of mechanical calculator called the  [slide rule](https://en.wikipedia.org/wiki/Slide_rule)). A reasonable question to ask is, why did we need computers when we already had perfectly functional calculators? What were the computers doing that calculators weren't?
+Many computers were drawn to the work because of they were good at doing precise arithmetic; nonetheless, computers frequently used calculators to aid them in their work (usually a [slide rule](https://en.wikipedia.org/wiki/Slide_rule)). The value in a computer wasn't necessarily to carry out arithmetic so much as as to (correctly) string calculations together; usually many calculations, with no mistakes. Computers were typically brought in for very complex calculations involving many steps, or for large datasets requiring performing the same rudimentary calculations over and over.
 
-The answer lies in the complexity of the computations: sometimes, the institution employing computers had a lot of data to work with, and needed people to crunch through all the data, running the same calculations over and over on different input numbers to obtain some useful results. Other times, the institutions had very complex equations and formulas that required a lot of arithmetic, requiring them to split the equation into smaller pieces, hand them out to individual computers, and combine their results at the end.
+Let's look at a simple example of the kind of work you might ask a computer to do for you. We're going to borrow an example from high school algebra &mdash; but we're just going to churn through arithmetic without needing to understand what the formulas mean, so don't worry if you've never taken algebra or you've forgotten most of it by now.
 
-So, the main things computers were doing that their calculators couldn't was to string multiple calculations together: their slide rules might be able to add, subtract, multipy, and divide, but we needed computers to run sequences of related calculations.
+We're going to compute the solutions to quadratic equation using the quadratic formula. The quadratic equation solves the following equation, where $A$, $B$ and $C$ are coefficients (plain numbers) and $x$ is the variable we want to solve for:
 
-## An Example
+​	$0 = Ax^2 + Bx + C$
 
-We're going to borrow an example from high school algebra &mdash; but we're just going to churn through arithmetic without needing to understand what the formulas mean, so don't worry if you've never taken algebra or you've forgotten most of it by now.
+The solution to this equation is given by the quadratic formula:
 
-We're going to compute the solutions to quadratic equation using the quadratic formula. The solution to a quadratic equation with coefficients $A$, $B$ and $C$ is given by the following formula:
-
-​	$\dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$	
+​	$x = \dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$	
 
 So for example, the solution to $0 = 2x^2 + 5x + 3$ is:
 
-​	$\dfrac{-5 \pm \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
+​	$x = \dfrac{-5 \pm \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
 
-Except there's a $\pm$ sneaking around in there, which is really a shortcut for saying there are two solutions given by two very similar-looking formulas, once which replaces $\pm$ with a $+$ and another which replaces $\pm$ with a $-$:
+Except that's not quite the full story! There's a $\pm$ sneaking around in there, which is a shortcut for saying there are two solutions given by two very similar-looking formulas: once which replaces $\pm$ with a $+$ and another which replaces $\pm$ with a $-$. So the two solutions are:
 
-​	$\dfrac{-5 + \sqrt{5^2 - 4 * 2 * 3}}{2(2)}, \dfrac{-5 - \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
+​	$x = \dfrac{-5 + \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$, or $x = \dfrac{-5 - \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
 
 Say I asked you to compute these, and gave you a calculator that can do the following things:
 
@@ -43,9 +41,11 @@ Say I asked you to compute these, and gave you a calculator that can do the foll
 * take the **square root** of the current number
 * **clear** the current number
 
-How would you break down these formulas and compute their solutions? There are actually lots of perfectly valid ways to do this, some better than others. We're going to list one of them below, but before moving on, take another look at the formulas above and think how you'd do this.
+How would you break down these formulas and compute their solutions? Can you write down the sequence of steps you'd need to perform using your calculator to get a solution?
 
-Done? Then here's our example:
+There are actually lots of perfectly valid ways to do this, some better than others. We're going to list one of them below, but before moving on, take another look at the formulas above and what functions the calculator gives you, and think how you'd do this.
+
+Done? Then here's our solution:
 
 > First we'll compute $-B$:
 >
@@ -120,7 +120,7 @@ Done? Then here's our example:
 >
 > And our second solution is $-1.5$. Ba-da-bing, ba-da-boom, we're done!
 
-Say we gave 1,000 different sets of quadratic equation coefficients to a (human) computer, and asked for the solutions to all 1,0000 of them. By the time our computer friend was about, say, a few dozen equations in, it's likely he or she has nailed down the equation to a precise sequence of steps that can be executed from memory without actively thinking about them. If you asked our computer friend what steps those were, he or she might tell you something like this:
+Using this example, we now have a pretty good idea how to tackle any quadratic equation. All we need to do is extract the set of steps, and use placeholders for $A$, $B$ and $C$:
 
 > 1. **take as input** three polynomial coefficients $A$, $B$ and $C$
 > 2. **clear** the calculator
@@ -156,20 +156,14 @@ Say we gave 1,000 different sets of quadratic equation coefficients to a (human)
 > 32. **divide** by the previously computed value for $2A$
 > 33. **output** the result as the second solution
 
-If this sequence looks familiar, it's because we got it by starting with the example we computed earlier, and just pulling out the 'steps' column from the tables.
+In computation, we would call this list a **program**. If you look up the term "program" in a dictionary, it'll tell you a program is a sequence; for example, if you go to a piano recital, someone might hand you a program telling you who's going to play what, and in what order. A computer program is also a sequence: a sequence of steps, where each step is a calculation.
 
-In the field of computation, we would call this list a **program**. The term "program" in general refers to any old sequence: if you go to a piano recital, someone might hand you a 'program' telling you who's going to play what, and in what order. A computer program is a sequence where each step is a calculation.
-
-That's why we're defining computers (the non-human kind) as programmable calculators: given a program, a computer can **execute** it, by churning through each step in order and doing whatever calculation that step says. To make this work, at the heart of every computer you will find a calculator and some way to feed a program into the calcaultor.
+This is why we're calling computers (the devices, not the people) *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program, which specifies a sequence of calculations the computer should perform. The computer then **executes** the program, by churning through each step one by one, doing whatever calculation each step calls for. Inside every calculator you'll find a calculator and some way to execute a program that uses that calculator.
 
 The job of a computer programmer, when presented with a problem, is to come up with a program that solves that problem, as a sequence of steps the computer's internal calculator supports. When we figured out above how to compute the quadratic formula on our pretend calculator, that was programming!
 
-It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or watching Netflix, but we'll get there in due time. Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
+It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or watching Netflix, but we'll get there in time. Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
 
 For now, just think of a computer as a programmable calculator, and you'll be doing pretty well.
 
-## Building Our Computer
-
-For the rest of this chapter, let's look at how you build a computer that carries out programmed sequences of calculations, like the program we designed above. 
-
-We're going to start by building ourselves a digital calculator that can perform simple operations. Once we have a working calculator, we'll turn it into a full-fledged computer that can be programmed. We'll close out the chapter by adding a few more components that are critical to modern computers.
+Now that we have an idea of what a computer is and what it does, let's spend the remainder of this chapter looking at how you build a computer that carries out programmed sequences of calculations, like the program we designed above. We'll start by building ourselves a digital calculator, then turn it into a full-fledged computer processor which can execute a program made of calculator operations. We'll close out the chapter by adding a few more components that are critical to writing practical programs.
