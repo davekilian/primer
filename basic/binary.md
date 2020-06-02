@@ -3,6 +3,12 @@ layout: chapter
 title: A Basic Computer&#58; Binary
 ---
 
+---
+
+oops we never defined bit, byte, etc
+
+---
+
 A computer is a programmable calculator, so if we're going to build one, we're going to need to deal with numbers. Just about every modern computer uses binary to represent numbers, so understanding how computers work means learning a thing or two about binary. If that sounds intimidating don't worry! Binary looks weird, but it's easier to understand once you get the basic idea &mdash; like everything else in computing, binary was invented for humans, by humans, to be convenient. Once you get the basic idea it won't seem so magic anymore.
 
 Binary is an example of a number system: it's just a way of writing numbers down. There are many number-writing systems, each providing its own way of writing down each number. Different systems have different ways of representing the same number: for example, if I asked you to write down the number of days in a week, you'd probably write $7$, but if I asked an ancient Roman to do the same thing, the Roman (using Roman numerals) would probably write that as $VII$. Two writing systems, but it's the same number either way!

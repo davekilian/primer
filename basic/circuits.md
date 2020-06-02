@@ -21,7 +21,11 @@ Since lines allow electricity to flow, but don't cause electricity to flow, we n
 
 > TODO schematic of a DC power source
 
-A power source is anything that induces the flow of electricity. In the real world, a power source might be a battery, or a generator. In schematic diagrams, each power source is shown with two terminals, labelled $-$ ("negative") and $+$ ("positive"). When you connect these two terminals together, electricity flows from the negative terminal to the positive terminal:
+A power source is anything that induces the flow of electricity. In the real world, a power source might be a battery, or a generator; there are separate schematic symbols for each:
+
+> TODO schematic of a battery, or a generator
+
+Each power source is shown with two terminals, labelled $-$ ("negative") and $+$ ("positive"). When you connect these two terminals together, electricity flows from the negative terminal to the positive terminal:
 
 > TODO schematic showing the most basic circuit: a power source connected to itself by a single line
 
@@ -84,77 +88,33 @@ That's the physics of circuitry in a nutshell. In practice, a lot of the work of
 
 We won't cover these quantities in this book because we don't need to, but you're encouraged to learn on your own if you're interested. If you plan to build your own circuits, you'll certainly need to understand what these quantities mean and how they're related in circuitry.
 
-## Junctions
-
-Now we understand the basic elements of a circuit and how electricity moves through a circuit. To build a calculator, we still need a few more circuit components. The next component we'll examine isn't technically a component by common definition, but we still need to understand nonetheless.
-
-A junction is point in a circuit where two or more terminals are connected together. We've already seen junctions in our minimumal circuit earlier: there were junctions at each terminal of the battery, connecting each battery terminal to one of the wire's terminals:
-
-> Diagram of the min viable circuit again, but circle the junctions
-
-Two-way junctions are so simple they aren't worth discussing; things get more interesting once a junction connects three or more terminals at once. For example, here's our minimal circuit again, but with an extra line split out and later merged back in at junctions $1$ and $2$ respectively:
-
-> Diagram of our minimal circuit from before with two junctions labeled 1 and 2 where the line splits into two output lines (junction 1) and then those line merge into the final output line (junction 2). Label the two lines that get split and re-merged A and B
-
-Junctions $1$ and $2$ in this diagram are both three-way junctions: they each connect three different lines together. Junction $1$ splits a single input line (providing electricity) into two output lines $A$ and $B$ (receiving electricity from the junction). The total amount of electricity is preserved, and since there are two output lines, each carries half the electricity received from the input line. Meanwhile, junction $2$ merges input lines $A$ and $B$ back together, sending all the resulting electricity along the output line back to the battery terminal. No electricity was added or removed along the way; we just divided up the electricity at junction $1$ and merged it back together at junction $2$.
-
-To understand why junctions work this way, we need only go back to our discussion of a tug-of-war from the previous heading. A three-way junction is like a three-way game of tug-of-war between electrons. At junction $1$, the input line has electrons coming from the negative battery terminal, whereas the output lines have in total as much electricity as is being pushed out of the battery's positive terminal. We've seen the rest of this story already: the negative terminal's electrons are pushing much harder and win the tug of war, advancing down the junction's output lines. Since each line is as good as the other 
-
-> Diagram of the tug-of-war in junction 1
-
-The story is similar at junction 2. Here we have two input lines with electrons that ultimately came from the negative terminal; and one output line with electrons that ultimately came from the positive terminal. The negative terminal electrons push harder, all merging together to travel down the output line:
-
-> Diagram of the tug-of-war in junction 2
-
-An interesting question is, what would happen if we added a three-way junction that splits an input line into multiple output lines, but one of those output lines were a dead end that didn't go anywhere? Like this:
-
-> Diagram where we've removed junction 2, such that line $A$ connects to the battery but $B$ doesn't go anywhere. To avoid confusion, we'll change the name of junction 1 to junction 3
-
-What happens at our new junction, junction $3$?
-
-Initially, when you turn on the circuit, junction $3$ behaves a lot like junction 1: there's a single input line pushing electricity into the junction, and two output lines, $A$ and $B$, where electricity can flow; so electricity flows along each output line:
-
-> Diagram showing the initial state again
-
-However, now that line $B$ isn't connected to the battery's positive terminal, so once electrons go into line $B$ there's no way for them to leave. So line $B$ immediately fills up with electrons, which then start *pushing back* into junction $3$, like this:
-
-> Diagram showing junction 3 with $B$ pushing back at 
-
-Once line $B$ has 'filled up' with electrons (which takes almost no time at all), the electron density inside line $B$ is the same as in the battery's negative cell, so no more electrons win the tug-of-war needed to enter line $B$. With no electricity flowing in or out of $B$, we end up in a steady state where all electricity moves from the input line to output line $A$, as if line $B$ weren't connected to the junction at all.
-
-The takeaway: if you disconnect a junction's output line from the rest of the circuit, the junction behaves as if that output line doesn't exist. This will be a super handy feature once we start building our calculator soon!
-
-Finally, it's worth mentioning that people who design circuits use a fundamental relationship between current, voltage and resistance to describe exactly how much current flows out of a junction; but as before, we don't need to do so in this book to understand how our computers work, so we'll skip over the details.
-
 ## Grounding
 
-Junctions get more interesting when you add another circuit component that we haven't talked about yet: the **ground**.
+Now we understand the basic elements of a circuit and how electricity moves through a circuit. To build a calculator, we still need a few more circuit components. The next component we'll examine is the **ground**:
 
 > Schematic icon for a ground
 
-A ground is called a ground because you usually ground a circuit by literally connecting the circuit to the ground; the Earth is the largest and best grounding component around! Some electronics (like your phone) can't be grounded using the Earth and thus require [more complex workarounds](https://en.wikipedia.org/wiki/Floating_ground).
+A ground is called a ground because you usually ground a circuit by literally connecting the circuit to the ground; the Earth is the largest and best grounding component around!
 
-As a circuit component, grounds exist to soak up electricity. You can almost think of a ground as a way of pulling electrons out of a circuit: if a ground is connected to one end of a 3-way junction, all input electricity flows to the ground, leaving none to flow down the rest of the circuit
+As a circuit component, grounds exist to soak up electricity. You can almost think of a ground as a way of pulling electrons out of a circuit: if a ground is connected to a circuit, all incoming electricity from the negative terminal of the battery is 'drained' into the ground, leaving none to flow on into the rest of the circuit:
 
 > Diagram showing electricity flowing to a ground instead of to the positive terminal of a battery
 
-The important takeway for our discussion is that grounding can effectively 'shut off' the part of the circuit which is downstream of the junction with the ground. For example, say we added some electrical component (denoted by $?$) to our circuit like this:
+What makes grounding useful in designing our computer is that we can use grounding to effectively 'shut off' part of the circuit (the part of the circuit that's 'downstream' of the ground). For example, say we added some electrical component (denoted by $?$) to our circuit like this:
 
 > The same circuit schematic showing a new $?$ component downstream of the ground junction
 
 In this circuit, the $?$ element doesn't receive any electricity, even though it's connected to the junction, because all electricity leaving the negative terminal of the battery travels through the junction to the ground.
 
-From a physics perspective, grounding works kind of like adding third battery cell to your circuit. This cell has even less-densely packed electrons than either cell of the battery, so at a three-way junction that connects the battery's positve terminal, negative terminal and ground together, you get a three-way tug of war that the ground loses; so all electricity flows to the ground (from *both* battery terminals).
+From a physics perspective, grounding works kind of like adding a third battery cell to your circuit. This cell has even less-densely packed electrons than either cell of the actual battery, so inside a junction that connects the battery's positve terminal, negative terminal and ground together, you get a three-way tug of war that the ground loses; so all electricity flows to the ground (from *both* battery terminals):
 
 > Diagram showing the tug-of-war and electrons flowing from both battery terminals into the ground
 
-At the circuit schematic level, we usually ignore the flow of electricity from the positive terminal to the ground because it's so small compared to the flow from the negative terminal.
-
-The ground also has enormous capacity, such that no matter how long you send power to the ground, the ground's electron density doesn't change measurably. This means that a ground, unlike a battery, cannot get depleted or need to be recharged.
+The ground also has enormous capacity, such that no matter how long you send power to the ground, the ground's electron density doesn't change to any degree we can measure. This means that a ground cannot be depleted and never needs to be 'recharged' like a battery.
 
 ## Switching
 
-In digital circuits like the one we're going to build into a computer, grounds are most useful when combined with another element called a **switch**.
+In the kinds of circuits we're going to be looking at, grounding is most useful when combined with another element called a **switch**.
 
 A switch is just a way of connecting and disconnecting a line in a circuit. We use the following symbol in schematic diagrams to denote a switch:
 
@@ -168,30 +128,35 @@ A switch is said to be **open** when you disconnect its two terminals, stopping 
 
 > Diagram showing an open switch, where electrons have nowhere to go and thus don't move
 
-An open switch behaves the same way as that orphaned line (line $B$ coming out of junction $3$) we used as an example back in the heading on junctions above.
-
 A traditional switch is mechanical: someone needs to physically move something to close it (completing the circuit) or open it (breaking the circuit). The **transistor**, a more modern cousin of the switch, does the same thing, but can be opened or closed electronically:
 
 > Diagram showing a transistor schematic element
 
-Transistors have three terminals: the input and output terminals of a transistor work the same way as the two terminals of a switch: when the transistor is 'closed,' current is able to flow from the input terminal to the output terminal, but when the transistor is 'open,' current cannot flow between the two terminals. A third 'switching' line determines which state the transistor is currently in: sending electricity through the switches line 'closes' the transistor, allowing electricity to pass from the input line to the output line. If no electricity is sent to the switching line, then the transistor is 'open,' and no electricity passes from the input line to the output line.
+Transistors have three terminals: an input line, an output line and a switching line. The input and output lines work like those of a regular mechanical switch. The third switching line is used to open and close the transistor: when electricity passes through the switching line, the transistor 'closes' and allows electricity to flow from the input line to the output line. When there's no electricity passing through the switching line, the transistor prevents electricity from passing through the input line to the output line:
 
 > Diagrams showing an open and a closed transistor
 
-Throughout this book, we will continue to think of transistors as switches. For a circuit designer, a transistor is even more than a just switch: what a transistor *really* does is scale how much electricity passes from the input line to the output line based on how much electricity is passing through the switching line. It's sort of like having a material that works as a conductor or an insulator: 
+Note that electricity passing into the switching line doesn't pass to the output line. In a real transistor, there's usually a fourth line which directs the output from the switching line to a ground. We don't usually show this in schematic diagrams because it adds clutter and doesn't tell us anything useful.
 
-## Digital Circuits
+Although in this book we'll treat transistors like switches as just described, note that a transistor is more than just a switch to circuit designers: what a transistor *really* does is scale how much electricity passes from the input line to the output line based on how much electricity is passing through the switching line. This allows fluctuations along the switching line to cause the same fluctuations along the input/output lines. One of the most common applications of transistors outside of computing is to [build electronic amplifiers](https://learn.sparkfun.com/tutorials/transistors/applications-ii-amplifiers).
 
+## Digital Logic Circuits
 
+We finally understand circuitry well enough to start building the kinds of circuits that go inside computers!
 
+The basic idea of a digital logic circuit is to use a combination of grounding and transistors to switch transistors on and off, which in turn switches other transistors on and off, and so on, in a pattern that does something meaningful, such as adding two numbers.
 
+Digital logic circuits are composed of digital logic **gates**, each of which is a component that does something interesting. Each gate has
 
-TODO now we introduce the idea of digital circuitry and digital logic gates.
+* Lines that connect to a power source, providing the gate with electricity
+* Lines that connect to a ground, providing the gate with a way to shed electricity
+* One or more input lines, which have a meaning specific to the kind of gate
+* One or more output lines, the value of which are derived from the input lines
 
-The idea: we want to have one or more 'input' lines and one or more 'output' lines. The input lines each are connected to the switching lines of one or more transistors, which then switches the transistors on or off; those transistors are connected to the switching lines of more transistors, and so on. To make this work, we'll need a power source and a ground, but those aren't the stars of the show; they're just basic tools we need to move electrons through the system.
+Digital logic circuits are usually implemented by chaining logic gates together, such that the output of a gate (or a set of gates) is connected to the input of another gate (or set of gates). The result doesn't look very much like a classic electronic circuit at all, because each gate is independently connected to power and ground; instead of being interested in what happens between the terminals of our power source like in regular circuits, digital logic circuit designers are more interested in what happens along the gates' input and output lines.
 
-We then set up this circuit so that which lines are on and off are meaningful. For example, we might build a binary adder where the input lines can be interpreted as two binary numbers (lack of electricity is $0$ and flowing electricity is $1$), and the output is always a sequence of (electricy / no electricity) lines that correspond to the binary number that is the sum of both. An example diagram will help a LOT here.
+For a more concrete example of a digital logic gate and what it does, consider a **binary adder** gate that takes two 8-digit binary numbers as input and outputs the sum of those two numbers as an 8-digit binary number. This gate would need lines to power and ground, plus 16 input lines (one for each digit of each 8-bit input number), and 8 output lines (one for each digit of the 8-bit output number). The input and output lines use switching to represent binary digits: a closed line (one which sends electricity) is considered to be a $1$ and an open line (where electricty doesn't flow) is considered to be a $0$.
 
-In a real circuit, there's no such thing as 'fully off' or 'no electricity;' even with transistors, what you have isn't a switch so much as a scaler. So with real digital circuits, you come up with a threshold; when the amount of electricity is (significantly) above the threshold the value is a $1$ and when the amount is significantly below the threshold you get a $0$. You avoid ever having values near the threshold because that increases the circuit's tendency to malfunction.
+Inside the gate, we feed the input digits into the switching lines of several transistors, which in turn switch other transistors on and off, and so on. such that each line of output corresponds to a digit of the binary sum of the two input numbers.
 
-So we understand circuitry: lines, power sources, junctions, grounds, transistors and switching &mdash; so let's go build our calculator!
+If this sounds really complex or even magical, turn the page to learn how simple it is to design a circuit like this!

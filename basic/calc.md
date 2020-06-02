@@ -1,29 +1,15 @@
 ---
 layout: chapter
-title: A Basic Computer&#58; Digital Logic
+title: A Basic Computer&#58; Calculation
 ---
 
----
-
-TODO: rename this page, it should be obvious in the TOC that we're going to build our calculator now
-
----
-
-Now that we understand how to build classical analog (non-digital circuits), and we understand binary, it's time to get cracking on our computer! We're going to start by designing a digital circuit that can perform calculations.
-
-A digital circuit is no different from a regular circuit; the only thing that makes a circuit "digital" is our design goal. Analog (non-digital) circuit design usually involves carefully designing the circuit to make sure electricity flows through all parts of the circuit at a predictable rate; digital circuits focus more on switching whole parts of the circuit on and off.
-
-In particular, we're going to build digital logic circuits. That basically means that we're going to use switching to represent binary numbers: a switched-on portion of the circuit where electricity can flow corresponds to a binary 1, whereas a switched-off part of the circuit where electrons cannot flow corresponds to a binary 0:
-
-> Diagrams showing a switched-on line labeled 1 and a switched-off line labeled 0
-
-In this chapter, we're going to use the transisitor and grounding elements from the previous chapter to build circuits that perform calculations on binary numbers. But before we build up to full arithmetic, we need a more basic kind of digital operation: Boolean logic.
+Now that we understand the basic concepts of building digital logic circuits, it's time to build ourselves a calculator: the kind that lives deep inside the heart of every computer. Once we have our calculator, we can move on to programmability, upgrading our dumb calculator into a rudimentary computer!
 
 ## Boolean Logic
 
-The name "Boolean" in Boolean logic comes from George Boole, who is commonly credited with inventing it. Boolean logic is the mathematics of single-digit binary operations.
+The first kinds of calculations we're going to implement using our newfound digital logic circuit skills will be Boolean operations, which are operations on single-bit binary numbers ($0$ and $1$). We'll end up using these to build multi-bit binary operations like addition and subtraction.
 
-One common use of Boolean logic is to model logical reasoning, of the kind 'if `this` then `that`.' To make it easier to understand Boolean logic, we often rename our binary digits to the more human-friendly terms `true` and `false`:
+The name "Boolean" in Boolean logic comes from George Boole, who is commonly credited with inventing it. The name "logic" comes from a common use of Boolean logic: to model logical reasoning, of the kind 'if `this` then `that`.' To make it easier to understand Boolean logic, we often rename our binary digits to the more human-friendly terms `true` and `false`:
 
 | Binary Value | Boolean Value |
 | ------------ | ------------- |
@@ -62,14 +48,6 @@ We're going to start by implementing `not`.
 > Finally we connect the output of an and gate to the input of a not gate, obtaining a newer gate called a nand gate. 
 >
 > Once you have a NAND gate, you can implement all other boolean logic gates out of one or more NAND gates wired together. Link to Wikipedia, which I remember having an article about this
-
-## Logic Gates
-
-> We're now done working with analog circuits - from this point forward, all circuits will be designed in terms of *logic gates*
->
-> Explain at a high level what a logic gate is - a subcircuit that we can insert into a larger circuit to perform some kind of digital operation. A logic gate works a lot like a circuit component, but instead of being a fundamental component, it's built out of one or more fundamental components. Maybe mention that this is our very first abstraction, and define abstraction as well.
->
-> Each logic gate receives one or more lines of input and produces one or more lines of output. When the logic gate is added to the circuit, we only have to worry about the input and output lines, and as long as everything is hooked up correctly, we can ignore the circuitry inside the logic gate and what happens internally.
 
 ## Integer Math
 
