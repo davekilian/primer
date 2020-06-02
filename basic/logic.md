@@ -3,7 +3,13 @@ layout: chapter
 title: A Basic Computer&#58; Digital Logic
 ---
 
-In the previous chapter, we introduced the basic components that underly digital circuitry: lines, power sources, transistors and grounding. Now we're going to switch to talking about *digital* circuits.
+---
+
+TODO: rename this page, it should be obvious in the TOC that we're going to build our calculator now
+
+---
+
+Now that we understand how to build classical analog (non-digital circuits), and we understand binary, it's time to get cracking on our computer! We're going to start by designing a digital circuit that can perform calculations.
 
 A digital circuit is no different from a regular circuit; the only thing that makes a circuit "digital" is our design goal. Analog (non-digital) circuit design usually involves carefully designing the circuit to make sure electricity flows through all parts of the circuit at a predictable rate; digital circuits focus more on switching whole parts of the circuit on and off.
 
