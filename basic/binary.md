@@ -3,12 +3,6 @@ layout: chapter
 title: A Basic Computer&#58; Binary
 ---
 
----
-
-oops we never defined bit, byte, etc
-
----
-
 A computer is a programmable calculator, so if we're going to build one, we're going to need to deal with numbers. Just about every modern computer uses binary to represent numbers, so understanding how computers work means learning a thing or two about binary. If that sounds intimidating don't worry! Binary looks weird, but it's easier to understand once you get the basic idea &mdash; like everything else in computing, binary was invented for humans, by humans, to be convenient. Once you get the basic idea it won't seem so magic anymore.
 
 Binary is an example of a number system: it's just a way of writing numbers down. There are many number-writing systems, each providing its own way of writing down each number. Different systems have different ways of representing the same number: for example, if I asked you to write down the number of days in a week, you'd probably write $7$, but if I asked an ancient Roman to do the same thing, the Roman (using Roman numerals) would probably write that as $VII$. Two writing systems, but it's the same number either way!
@@ -108,6 +102,22 @@ For completeness, here's a table of all the different numbering systems we talke
 |        ...         |         ...         |         ...          |           ...            |
 
 That's binary! There really isn't any more to it.
+
+There's some additional terminology around binary which is worth noting if you study computing. The term **bit** refers to a single digit of a binary number (in fact, the term "bit" is short for "binary digit.") The term **byte** refers to an 8-digit binary number (i.e. a byte is 8 bits). Bytes exist because a single bit has only two possible values, $0$ and $1$, which means you can't do a whole lot with a single bit. Some very old computers had a different number of bits per byte (4 and 6 were common examples), but those computers are long since extinct; nowadays, when someone says "byte" you're very safe in assuming that means exactly 8 bits.
+
+When storing large amounts of data, it's often useful to store lots of bytes together. When talking about huge collections of binary numbers, we use the [standard SI prefixes](https://www.nist.gov/pml/weights-and-measures/metric-si-prefixes) (kilo, mega, giga, tera, and so on). However, instead of using increments of 1,000 like SI calls for, we use increments of 1,024 (1,024 is close to 1,000 and is also a power of 2, which is useful in several cases). The following table descries this in a bit more detail:
+
+| Unit          | Meaning         | Number of Bytes       | Number of Bits        |
+| ------------- | --------------- | --------------------- | --------------------- |
+| Kilobyte (KB) | 1,024 bytes     | 1,024                 | 8,192                 |
+| Megabyte (MB) | 1,024 kilobytes | 1,048,576             | 8,388,608             |
+| Gigabyte (GB) | 1,024 megabytes | 1,073,741,824         | 8,589,934,592         |
+| Terabyte (TB) | 1,024 gigabytes | 1,099,511,627,776     | 8,796,093,022,208     |
+| Petabyte (PB) | 1,024 terabytes | 1,125,899,906,842,624 | 9,007,199,254,740,992 |
+
+> The choice of 1,000 vs 1,024 bytes for scaling is a source of confusion in computing. For example, hard drive manufacturers typically use increments of 1,000 since it makes their drives sound bigger; but most software uses 1,024 bytes, meaning that when you plug in a hard drive that was advertised as 100 GB (100,000,000,000 bytes), software reports it as being significantly smaller (about 97 GB, because $100*(1000/1024) \approx 97$).
+>
+> There have been attempts to get people to use different units to describe 1,000-byte vs 1,024-byte increments, but so far none has taken off very widely.
 
 Okay, you might say, now we know binary, but why did we bother with all this? I did say that computers are designed by humans, for humans, to be convenient to other humans ... how could binary numbering be convenient for humans who are only familiar with base 10?
 
