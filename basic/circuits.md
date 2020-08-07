@@ -29,7 +29,7 @@ Each power source is shown with two terminals, labelled $-$ ("negative") and $+$
 
 > TODO schematic showing the most basic circuit: a power source connected to itself by a single line
 
-Congratulations us: we just built the minimum viable circuit! This circuit allows electricity to flow from the power source's negative terminal to its positive terminal, but otherwise doesn't do anything with that flow of electricity; all that's left to do now is add some components that actually do stuff in between the power source's terminals. 
+And voilà, we just built the minimum viable circuit! This circuit allows electricity to flow from the power source's negative terminal to its positive terminal, but otherwise doesn't do anything with that flow of electricity; all that's left to do now is add some components that actually do stuff in between the power source's terminals. 
 
 The diagram above also gives us a hint why circuits are called "circuits:" they always end up forming a loop, where electricity starts at one point in the loop and flows all the way around until it ends up back at the beginning.
 
@@ -43,7 +43,7 @@ Let's say our power source is a conventional battery, and let's zoom into the ba
 
 > Diagram showing the inside of a battery: two cells, one tightly packed with electrons and one loosely packed, with insulators providing a barrier providing nowhere to go
 
-As we see in this diagram, the battery internally consists of two globs of material, called **cells**. The negative cell (the one connected to the negative terminal of the battery) consists of densely packed electrons; the positive cell (connected to the positive terminal) has electrons too, but they're less densely packed. The electrons in each cell continually try to repel each other, but the cells are surounded by insulation, so the electrons have nowhere to go. Everything is stable at this point.
+As we see in this diagram, the battery internally consists of two globs of material, called **cells**. The negative cell (the one connected to the negative terminal of the battery) consists of densely packed electrons; the positive cell (connected to the positive terminal) has electrons too, but they're less densely packed. The electrons in each cell continually try to repel each other, but the cells are surounded by insulation, so the electrons have nowhere to go. For now, everything is stable.
 
 Now say we connect the two terminals using a **conductor** (which is just a name for any material that *does* allow electrons to pass through easily):
 
@@ -73,7 +73,7 @@ This is a new steady state for the system: as long as the electron density in th
 >
 > And lo, to this day, electrons are thought to be 'negatively' charged and flow from the negative terminal to positive &mdash; oops!
 
-Something interesting happens if you wait a long time for this to continue: eventually, you'll find that enough electrons have been pushed from the negative cell to the positive cell that the density of electrons in each cell has more or less equalized. At this point, both cells repel electrons down the line equally forcefully, and so neither wins the tug-of-war and the electrons stop moving:
+Something interesting happens if you wait a long time for this to continue: eventually, you'll find that enough electrons have been pushed from the negative cell to the positive cell that the density of electrons in each cell has more or less equalized. At this point, both cells repel electrons down the line equally forcefully, and so neither wins the tug-of-war. Now everything has equalized and the electrons are no longer moving:
 
 > Diagram showing both cells with equal electron densities and arrows in the circuit line pointing at each other to denote equal pressure
 
@@ -83,8 +83,8 @@ That's the physics of circuitry in a nutshell. In practice, a lot of the work of
 
 * **Charge** (measured in *Coulombs*, $C$): a total number of electrons, e.g. in a cell of the battery
 * **Current** (measured in *Amperes*, $A$): a rate at which electrons flow, e.g. through a circuit line
-* **Voltage** (measured in *Voltage*, $V$): the degree to which one side of an electronic tug-of-war wins over the other (e.g. between the two cells of a battery)
-* **Resistance** (measured in *Ohms*, $\Omega$): how easily electrons can flow through a material, or more precisely how much voltage is needed to produce a given amount of current
+* **Potential** (measured in *Voltage*, $V$): the degree to which one side of an electronic tug-of-war wins over the other (e.g. between the two cells of a battery)
+* **Resistance** (measured in *Ohms*, $\Omega$): how easily electrons can flow through a material (how much voltage is needed to induce a given amount of current through the material)
 
 We won't cover these quantities in this book because we don't need to, but you're encouraged to learn on your own if you're interested. If you plan to build your own circuits, you'll certainly need to understand what these quantities mean and how they're related in circuitry.
 
@@ -94,23 +94,23 @@ Now we understand the basic elements of a circuit and how electricity moves thro
 
 > Schematic icon for a ground
 
-A ground is called a ground because you usually ground a circuit by literally connecting the circuit to the ground; the Earth is the largest and best grounding component around!
+A ground is called a ground because the original (and still the best) grounding component around is literally the Earth; except for portable devices like laptops and phones, you generally ground components by literally connecting a line of the circuit into the ground.
 
 As a circuit component, grounds exist to soak up electricity. You can almost think of a ground as a way of pulling electrons out of a circuit: if a ground is connected to a circuit, all incoming electricity from the negative terminal of the battery is 'drained' into the ground, leaving none to flow on into the rest of the circuit:
 
 > Diagram showing electricity flowing to a ground instead of to the positive terminal of a battery
 
-What makes grounding useful in designing our computer is that we can use grounding to effectively 'shut off' part of the circuit (the part of the circuit that's 'downstream' of the ground). For example, say we added some electrical component (denoted by $?$) to our circuit like this:
+What makes grounding useful in designing our computer is that we can use grounding to 'switch off' part of the circuit (the part 'downstream' of the ground). For example, say we added some electrical component (denoted by $?$) to our circuit like this:
 
 > The same circuit schematic showing a new $?$ component downstream of the ground junction
 
-In this circuit, the $?$ element doesn't receive any electricity, even though it's connected to the junction, because all electricity leaving the negative terminal of the battery travels through the junction to the ground.
+In this circuit, no electrical current passes through the $?$ element because all electricity being pushed out of the battery's negative terminal ends up being 'soaked up' by the ground instead. So even though this is a complete circuit, the $?$ effectively switched off.
 
-From a physics perspective, grounding works kind of like adding a third battery cell to your circuit. This cell has even less-densely packed electrons than either cell of the actual battery, so inside a junction that connects the battery's positve terminal, negative terminal and ground together, you get a three-way tug of war that the ground loses; so all electricity flows to the ground (from *both* battery terminals):
+From a physics perspective, grounding works kind of like adding a third battery cell to your circuit. This cell has even less-densely packed electrons than either cell of the actual battery, so in the ensuring three-way tug-of-war the ground always loses, and all electricity flows to the ground, not the positive terminal of the power source. In fact, in this setup, all electricity flows to the ground from *both* battery terminals:
 
 > Diagram showing the tug-of-war and electrons flowing from both battery terminals into the ground
 
-The ground also has enormous capacity, such that no matter how long you send power to the ground, the ground's electron density doesn't change to any degree we can measure. This means that a ground cannot be depleted and never needs to be 'recharged' like a battery.
+The ground also has enormous capacity to hold electrical charge, such that no matter how long you send power to the ground, the ground's electron density doesn't change to any degree we can measure. This means that a ground cannot be depleted and never needs to be 'recharged' like a battery.
 
 ## Switching
 
@@ -138,13 +138,13 @@ Transistors have three terminals: an input line, an output line and a switching 
 
 Note that electricity passing into the switching line doesn't pass to the output line. In a real transistor, there's usually a fourth line which directs the output from the switching line to a ground. We don't usually show this in schematic diagrams because it adds clutter and doesn't tell us anything useful.
 
-Although in this book we'll treat transistors like switches as just described, note that a transistor is more than just a switch to circuit designers: what a transistor *really* does is scale how much electricity passes from the input line to the output line based on how much electricity is passing through the switching line. This allows fluctuations along the switching line to cause the same fluctuations along the input/output lines. One of the most common applications of transistors outside of computing is to [build electronic amplifiers](https://learn.sparkfun.com/tutorials/transistors/applications-ii-amplifiers).
+Although in this book we'll treat transistors like switches, it's worth mentioning transistors can act as more than just a switch: what a transistor *really* does is scale how much electricity passes from the input line to the output line based on how much electricity is passing through the switching line. This allows fluctuations along the (low current) switching line to cause the same fluctuations along the (potentially high-current) input/output lines. One of the most common applications of transistors outside of computing is to [build electronic amplifiers](https://learn.sparkfun.com/tutorials/transistors/applications-ii-amplifiers).
 
 ## Digital Logic Circuits
 
-We finally understand circuitry well enough to start building the kinds of circuits that go inside computers!
+With this, we finally understand circuitry well enough to start building the kinds of circuits that go inside computers!
 
-The basic idea of a digital logic circuit is to use a combination of grounding and transistors to switch transistors on and off, which in turn switches other transistors on and off, and so on, in a pattern that does something meaningful, such as adding two numbers.
+The basic idea of a digital logic circuit is to use transistors to switch parts of a circuit on or off, in turn switching other downstream transistors on or off, and so on, in a pattern that does something meaningful (e.g. maybe adding two numbers).
 
 Digital logic circuits are composed of digital logic **gates**, each of which is a component that does something interesting. Each gate has
 
