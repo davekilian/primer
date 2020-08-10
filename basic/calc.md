@@ -10,7 +10,7 @@ We're going to draw on the two big ideas we just learned: binary numbering and c
 * If a line is switched off (not delivering electricity), we call that $0$
 * If a line is switched on (delivering electricity), we call that $1$
 
-Of course, there's already a catch &mdash; this time, the catch is that the circuits we're going to build will get complicated, fast. To deal with this, we're going to use a handful of tried and true techniques that you'll see over and over in hardware and software design: *modular design*, *interfaces* and *abstraction*. These are some pretty big words (hopefully they make us sound super smart!) but all they mean is organizing our design around small, easier-to-understand pieces that can maybe be swapped in and out at will.
+Of course, there's always a catch &mdash; this time, the catch is that the circuits we're going to build will get complicated, fast. To deal with this, we're going to use a handful of tried and true techniques that you'll see over and over in hardware and software design: *modular design*, *interfaces* and *abstraction*. These are some pretty big words (hopefully they make us sound super smart!) but all they mean is organizing our design around small, easier-to-understand pieces that can maybe be swapped in and out at will.
 
 More concretely, this means we're going to build a calculator by starting with the basic circuit components we already know about (power, lines, grounding and transistors) and using them to create higher-level building blocks that each do something useful. Then we can build our final calculator circuitry by pasting in copies of our building blocks and hooking them together into a full circuit &mdash; simple!
 
@@ -24,30 +24,96 @@ Our test harness will be the following circuit:
 
 Let's take a closer look at what this circuit does:
 
-1. First we have a power source; every circuit needs power!
-2. The negative terminal feeds electricity into a set of switches. These switches will work as inputs to the building block we want to test; a human can toggle these switches to change what binary number(s) are fed into the block we're testing
-3. Each switch feeds into an LED, which simply shows the user what input value is currently set; if the switch is closed (the input is a $1$), electricity will pass through the LED lighting it up; if the switch is open (the input is $0$) there will be no electricty and the light will stay off
-4. Each line then feeds into a box labeled $?$ &mdash; this is the sub-circuit we want to test, and is not part of our harness itself
+1. First, we have a power source. Every circuit needs power!
+
+2. The negative terminal feeds electricity into a set of switches. These switches will work as inputs to the building block we want to test; a human can toggle these switches to change what binary number(s) are fed into the block we're testing.
+
+3. Each switch feeds into an LED, which simply shows the user what input value is currently set; if the switch is closed (the input is a $1$), electricity will pass through the LED lighting it up; if the switch is open (the input is $0$) there will be no electricty and the light will stay off.
+
+4. Each line then feeds into a box labeled $?$ &mdash; this is the sub-circuit we want to test, and is not part of our harness itself.
+
 5. The subcircuit under test ($?$) produces output in the form of one or more lines going 'out' of the subcircuit; each passes through an LED so we can see if the output was $0$ (LED off) or $1$ (LED on).
-6. Finally we draw the output lines back to the power source, completing the circuit
+
+6. Finally, we draw the output lines back to the power source, completing the circuit
 
 This circuit gives us an easy way to test whether any of our subcircuits works &mdash; all we have to do is paste in a copy of our latest design to replace the $?$, using as many input / output lines as we actually need, and provide power to the circuit. Using the switches, we can vary the binary numbers passing into our subcircuit, and use the output LEDs to make sure the right binary numbers came out.
 
-> A one-liner about designing with testing in mind
+When designing hardware or software, designing a test setup like this is often a good idea for how to start your project.
 
 ## 1-Bit Calculation
 
-> Reuse the content we had to introduce boolean logic, as single-bit mathematics.
->
-> Introduce the idea of a digital logic gate: a small component of a circuit that implements a boolean operation
->
-> Build NOT
->
-> Build AND
->
-> Build NAND
->
-> Invoke NAND logic for the rest
+With a working test harness, it's time to start building the basic elements of our calculator. We're going to start with **Boolean** math: the math of single-bit calculations.
+
+Boolean math is named after George Boole, who published the basis of Boolean math back in the 1800s. Boolean math is also known as Boolean logic, as it was originally designed to model logical reasoning (of the form, "if `this` then `that`"). Boolean logic assigns a human-friendly name to the binary digit values $0$ and $1$:
+
+| Binary Value | Boolean Value |
+| ------------ | ------------- |
+| $0$          | `false`       |
+| $1$          | `true`        |
+
+To model logic using the Boolean values "true" and "false," you use terse "if-then" statements based on conditions that may or may not be true, and draw a conclusion based on them. For example, take this (rather benign) statement:
+
+<center>If (Primer is a book) and (Jill is reading Primer) then (Jill is reading a book)</center>
+
+Each group of words in parenthesis is a statement that can either be true or false. Both (Primer is a book) and (Jill is reading Primer) are conditions that can be thought of as "inputs" to this statement; (Jill is reading a book) is an "output," in that whether it is true or false depends purely on whether the conditions are true and false. So if Primer is a book and Jill is reading Primer, then Jill is reading a book; but if JIll is not reading Primer then doesn't follow that Jill is reading a book.
+
+> Oops we'd do better with an if-and-only-if example
+
+The "and" in the example above is our first example of a **Boolean operator**, which computes a Boolean value based on one more input Boolean values. The common Boolean operators include ...
+
+* AND: produces `true` if both inputs are `true`; else `false`
+* OR: produces `true` if either input is `true`; else `false`
+* Exclusive-OR, or XOR: produces `true` if the two inputs differ, `false` otherwise
+* NOT: produces `true` if the input is `false` and vice versa
+
+Most of these functions are fairly intuitive; try placing them inside if-then statements like the example above and see how they work out. The following table also spells out the result of each operator for every possible combination of input values:
+
+| a       | b       | not a   | not b   | a and b | a or b  | a xor b |
+| ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| `true`  | `true`  | `false` | `false` | `true`  | `true`  | `false` |
+| `true`  | `false` | `false` | `true`  | `false` | `true`  | `true`  |
+| `false` | `true`  | `true`  | `false` | `false` | `true`  | `true`  |
+| `false` | `false` | `true`  | `true`  | `false` | `false` | `false` |
+
+So, how would one build a circuit to implement each of the Boolean operators?
+
+Let's start with NOT, because it has only one input and one output, making it easier to work with. Here's a schematic for a small subcircuit that implements NOT:
+
+> Power leads to a junction. One end of the junction goes straight to output; the other goes through a transistor to ground. The transistor is controlled by the input line
+
+The basic idea is to use the input line to gate a transistor that leds from the power line to ground. When the input line is $1$, the transistor completes the path between power and ground, causing all power to be drained out of the circuit, leading none to travel to the output line:
+
+> Same diagram, but bold the input line and the lines along which power flows to ground
+
+When the input line is $0$, the transistor doesn't complete the path between power and ground, so power flows straight to the output line:
+
+> Same diagram, but the input line is not bolded; bold the lines along which power flows out
+
+And there's our NOT subcircuit! Just for completeness, let's show what our test harness looks like with our NOT circuit swapped in for $?$:
+
+> Show two copies of the full test harness schematic, one where we close the input switch and send all power to ground, another where we leave the input switch open and send power out
+
+Feeling comfortable with NOT? Let's ramp up the difficulty a little bit; how about an AND subcircuit?
+
+Now we need to accept two input lines and produce a single output line. Here's a simple subcircuit which does what we want:
+
+> Input A feeds through a transistor (controlled by B) to an output line
+
+The basic idea for this subcircuit is simple: transistors already implement AND for us!
+
+Think about what happens when there's no power being delivered to the input line: then it doesn't matter whether or not the control line has opened or closed the transistor, because there's nothing to 'pass through' the 'gate' whether or not it's 'open.'
+
+> Diagram showing the case where input is 0, control is 1
+
+Similarly, if there's no electricity along the transistor's input line, then the transistor acts like an open switch: no electricity can pass from the input line to the output line:
+
+> Diagram showing the case where input is 1, control is 0
+
+Only if both are delivering electricity will the transistor deliver electricity along the output line: just as required by the AND operator!
+
+> Diagram showing input 1, control 1
+
+In this book, we're only going to cover NOT and AND; if you'd like to figure out how to build the other operators out of transistors, feel free to try it as an exercise. One interesting factoid: you actually don't have to puzzle out how to design circuitry to implement the other Boolean operators if you don't want to; it's actually possible to use copies of NOT and AND to implement any Boolean operator. This famous proof is sometimes referred to as [NAND logic](https://en.wikipedia.org/wiki/NAND_logic); feel free to click the link to learn more.
 
 ## Digital Logic Schematcs
 
@@ -73,162 +139,3 @@ This circuit gives us an easy way to test whether any of our subcircuits works &
 >
 > Note once again that this pattern appears all over the place in hardware and software. It's one way (really the only way) we reduce these hyper-complex designs to something a human can fit into their head.
 
-
-
-
-
-
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-
-
-
-
-We'll design our calculators as a set of 'digital logic gates,' which are just subcomponents of a circuit which receive one or more input lines (representing a binary number), one or more output lines (also representing a binary number), plus a power source and a grounding element:
-
-> Schematic
-
-We're also going to pull on a new concept, one that we're going to see over and over throughout this book: *modular design*. Even if the name sounds fancy (or like biz-speak), all it means is we're going to build a piece of the system that accomplishes some basic task, so we can copy/paste that design into a larger project any time we need.
-
-Each digital logic gate is a "module" that can be incorporated into a larger circuit. 
-
-For example, take a logic gate that adds two 4-bit binary numbers: 
-
-> Schematic
-
-
-
-## A Test Harness
-
-
-
-
-
-
-
-
-
-This is also the first time in this book we're going to use an idea that appears over and over throughout computers: *modular design*. If that name sounds overly fancy, or like biz-speak, don't worry: all it means is we can swap out the things we build.
-
-Consider this circuit:
-
-> A power source which feeds into a set of classic manual switches, feeding into a [ ? ] component, feeding into a set of LED lights, feeding back to the power source at its positive terminal. Label components using the numbers defined below
-
-We're going to use this circuit as the basis of our calculator. 
-
-
-
-
-
-
-
-
-
-## 1-Bit Math
-
-
-
-
-
-
-
-
-
-The first kinds of calculations we're going to implement using our newfound digital logic circuit skills will be Boolean operations, which are operations on single-bit binary numbers ($0$ and $1$). We'll end up using these to build multi-bit binary operations like addition and subtraction.
-
-The name "Boolean" in Boolean logic comes from George Boole, who is commonly credited with inventing it. The name "logic" comes from a common use of Boolean logic: to model logical reasoning, of the kind 'if `this` then `that`.' To make it easier to understand Boolean logic, we often rename our binary digits to the more human-friendly terms `true` and `false`:
-
-| Binary Value | Boolean Value |
-| ------------ | ------------- |
-| $0$          | `false`       |
-| $1$          | `true`        |
-
-To model logic using Boolean math, we use terse statements that could either be `true` or `false`, and then operate on them. For example,
-
-> TODO come up with an example
-
-Now we can define **Boolean operations**, which take one or more Boolean values as input and produce a Boolean value as output. That might sound like a mouthful, but Boolean operations are pretty straightforward in practice.
-
-The most basic Boolean operation is `not`, which simply inverts its input value. So `not true` is `false` and `not false` is `true` &mdash; simple!
-
-There are also Boolean operations that take two inputs and produce an output. For example, the `and` operation, which takes two Boolean values and outputs `true` if both inputs were `true`, or `false` otherwise. There's also an analogous `or` operation which is `true` if either input is `true`, as well as an `xor` (short for "exclusive-or") which returns `true` if the inputs don't match. The following table summarizes these operations:
-
-| a             | b             | a and b       | a or b        | a xor b       |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| `true` $(1)$  | `true` $(1)$  | `true` $(1)$  | `true` $(1)$  | `false` $(0)$ |
-| `true` $(1)$  | `false` $(0)$ | `false` $(0)$ | `true` $(1)$  | `true` $(1)$  |
-| `false` $(0)$ | `true` $(1)$  | `false` $(0)$ | `true` $(1)$  | `true` $(1)$  |
-| `false` $(0)$ | `false` $(0)$ | `false` $(0)$ | `false` $(0)$ | `false` $(0)$ |
-
-Make sense? Then let's try building a couple of these operations using the circuit elements we covered in the previous chapter.
-
-We're going to start by implementing `not`. 
-
-> Build a not gate using a power line, an input line, an output line and a grounded line. The power line feeds into a junction which splits into the output line and a grounded line. A transistor on the output line acts as a gate between the junction and the ground. The input line is connected to the transistor's switching line.
->
-> The result of this is as follows: when the input is 0, the transistor is open, so no current can flow from the power line to the ground. Instead, all current passes to the output line. Thus when the input is 0 (no current), the output is 1 (current).
->
-> When the input is 1 (current), the transistor is closed, so the junction is exposed to ground. The ground has roughly infinite voltage compared to the output line, so approximately all power drains to ground, and approximately no power is left for the otput line. Thus when the input is 1 (current), the output is 0 (no current).
->
-> Now we build an and gate. 
->
-> Finally we connect the output of an and gate to the input of a not gate, obtaining a newer gate called a nand gate. 
->
-> Once you have a NAND gate, you can implement all other boolean logic gates out of one or more NAND gates wired together. Link to Wikipedia, which I remember having an article about this
-
-## Integer Math
-
-> Build an adder out of boolean logic gates
->
-> Then describe a few other arithemtic circuits you might want to build, and find a nice resource to link to for information about how to do that, if the reader is interested.
-
-## Multi-Function Math
-
-> Introduce the idea that's often useful in logic circuits to be able to 'pick' a line from a list of input lines. Show how you build a multiplexer that picks a circuit given a binary number. Show how you can use a multiplexer to make a multi-function calculator that picks a single function.
->
-> Also mention demultiplexing in passing, but feel free not to go into it
-
-## A Calculator
-
-> Build a basic calculator using a bunch of input lines that are manually switched, feeding into each of our subcircuits, and multiplexed to decide which subcircuit is connected to our output line.
->
-> Now that we have a calculator, let's make it programmable (next page)
