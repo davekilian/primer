@@ -3,7 +3,7 @@ layout: chapter
 title: A Basic Computer&#58; Processors
 ---
 
-> Picking up from where we left off previously, now we have a calculator, but you can only do one operation. What if I want to program a sequence of operation the calculator should do?
+> Picking up from where we left off previously, now we have a calculator (we can be fancy processor designers now and call it an ALU), but you still can only do one operation. What if I want to program a sequence of operation the calculator should do?
 >
 > This is probably a good time to cover the theoretical meaning of the term 'program' as a sequence of steps, and maybe show a couple of examples
 >

@@ -138,15 +138,130 @@ For a full table of schematic symbols for logic gates, see [this Wikipedia artic
 
 We will adopt logic schematics for the remainder of this page (and, actually, for the rest of the chapter as well). Keep in mind, however, that digital logic schematics are just a different way of writing down the same schematics we've been writing all along &mdash; they're just a way to reduce visual complexity, so we can focus on what really matters.
 
-Make sense? Then let's move on, and see how to build circuits that implement grade-school math on binary numbers ...
+Make sense? Then let's move on, and see how to build circuits that implement grade school math on binary numbers ...
 
 ## Addition
 
-> Build a one-bit adder with carry out of logic gates
->
-> Show how you can string these together to make, as an example, a four-bit adder
->
-> Mention other calculations which we'll leave as an exercise to the reader, but recommend they come back to this after reading the chapter where we introduce integers for real
+Let's build a subcircuit that adds two binary numbers. A subcircuit that adds two binary numbers is typically called an **adder**. (Not that complicated, eh?)
+
+To start off, remember that to represent a binary number in a circuit, we need one circuit line for each bit (digit) of that number; so to even represent an $N$-bit binary number we need $N$ lines in our circuit. Thus the first step of building an adder is to pick $N$ &mdash; how many bits wide will the input and output values be?
+
+We'll start with the simplest case: a 1-bit adder, which adds together two 1-bit binary numbers. Because we only support 1 bit, there are only four possible input/output sets for our adder:
+
+| a    | b    | a + b |
+| ---- | ---- | ----- |
+| $0$  | $0$  | $00$  |
+| $0$  | $1$  | $01$  |
+| $1$  | $0$  | $01$  |
+| $1$  | $1$  | $10$  |
+
+Simple enough. But how are we going to implement this?
+
+One very common trick when building adders is to split the two output bits into a "result" bit (the least significant / rightmost bit) and a "carry" bit (the most significant / leftmost bit). In other words, like this:
+
+| a    | b    | a + b (result) | a + b (carry) |
+| ---- | ---- | -------------- | ------------- |
+| $0$  | $0$  | $0$            | $0$           |
+| $0$  | $1$  | $1$            | $0$           |
+| $1$  | $0$  | $1$            | $0$           |
+| $1$  | $1$  | $0$            | $1$           |
+
+This table hopefully makes it a little clearer why we like splitting the output into a result bit and a carry bit: we've decomposed the adder into two Boolean operations, one for the result bit and one for the carry bit. And furthermore, they're really basic operators:
+
+* The result bit is **a xor b**
+* The carry bit is **a and b**
+
+If that's not immediately clear, try comparing the adder table above with the Boolean logic table earlier on this page.
+
+With this observation, it's actually pretty easy to build a 1-bit adder out of the digital logic gates we just designed!
+
+> Schematic showing a xor b for the result bit and a and b for the carry bit
+
+So there's a 1-bit adder. Of course, 1 bit isn't very interesting; how about a two-bit adder? Well, you already learned in grade school how to do addition on two-digit numbers using single-digit arithmetic: just do single-digit arithmetic as many times as needed, and "carry the 1" as needed.
+
+For example, say you wanted to add $11$ and $01$:
+
+```
+  11
++ 01
+----
+```
+
+You would start with the low-order (rightmost bits), which in this case are both $1$. The sum of $1$ and $1$ is $10$, so we write $0$ as the result and carry the 1:
+
+```
+  1
+  11
++ 01
+----
+   0
+```
+
+Now you need to add the remaining digit; since you carried the 1, you actually have to add three digits together: $1$, $1$ and $0$. The result, once again, is $10$, so we output $0$ and carry the $1$
+
+```
+ 1
+  11
++ 01
+----
+  00
+```
+
+Now the carry bit is the only number remaining, so we output it
+
+```
+  11
++ 01
+----
+ 100
+```
+
+And lo, we find our answer: $11 + 01 = 100$
+
+We can certainly implement something like this in circuitry; the 1-bit adder we already designed is almost workable, except that it doesn't handle that pesky carry bit. Looking at the example above, we see the problem: in the case where we carried a 1, we actually need to be able to add three 1-bit numbers. So we need a *three-way* 1-bit adder: an adder that adds three 1-bit input numbers.
+
+> This problem is so well known, there are special names for its solutions: the two-way 1-bit adder that we built already is called a **half adder** because it doesn't handle the carry bit; the three-way 1-bit adder we're about to build is called a **full adder**.
+
+Let's start over by looking at the complete set of possible inputs:
+
+| a    | b    | c    | a + b (result) | a + b (carry) |
+| ---- | ---- | ---- | -------------- | ------------- |
+| $0$  | $0$  | $0$  | $0$            | $0$           |
+| $0$  | $0$  | $1$  | $1$            | $0$           |
+| $0$  | $1$  | $0$  | $1$            | $0$           |
+| $0$  | $1$  | $1$  | $0$            | $1$           |
+| $1$  | $0$  | $0$  | $1$            | $0$           |
+| $1$  | $0$  | $1$  | $0$            | $1$           |
+| $1$  | $1$  | $0$  | $0$            | $1$           |
+| $1$  | $1$  | $1$  | $1$            | $1$           |
+
+The new result bit is still pretty simple: just XOR together all the input bits, so we only output a $1$ if there was an odd number of input $1$ bits:
+
+```
+RESULT(a,b,c) = a XOR (b XOR c)
+```
+
+The carry bit is more complicated. In short, the carry bit should be $1$ is there are two or more inputs set to $1$. One expression that captures this is as follows:
+
+```
+CARRY(a,b,c) = (a AND b) OR ((a OR b) AND c)
+```
+
+Take a minute to check each expression against the table and make sure it looks right. The following schematic shows the same formulas visually:
+
+> Full adder based on the expressions above
+
+Now that we have this adder, we can chain it together as many times as needed to get an $N$-bit adder. For example, here's the adder chained twice to get a 2-bit adder:
+
+> Schematic
+
+And here's the adder chained four times to get a 4-bit adder:
+
+> Schematic
+
+And, finally, we have a subcircuit that adds binary numbers!
+
+That's the only function we'll show for now; hopefully you get the general idea. In chapter 4 of this book, we'll tackle numbers and numeric operations in greater depth, and for that we'll end up filling out our calculation repertoire.
 
 ## A Multi-Function Calculator
 
