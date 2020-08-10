@@ -21,7 +21,7 @@ title: A Basic Computer&#58; Processors
 >
 > A processor is a hardware interpreter for a programming language. Typically, the hardware and the programming language are co-designed, such that the language is simple to implement in hardware. Like we did above, the typical pattern is to
 >
-> * Build a set of logic circuits that accomplish basic tasks: adding two numbers, multiplying two numbers, etc
+> * Build a set of logic circuits that accomplish basic tasks: adding two numbers, multiplying two numbers, etc. 
 > * Wire up all these circuits to a multiplexer
 > * Represent a program as a sequence of **opcodes** or **instructions** which each correspond to one of these subcircuits
 > * Feed the current instruction into that multiplexer to select which subcircuit to read
