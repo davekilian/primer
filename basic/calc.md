@@ -265,13 +265,27 @@ That's the only function we'll show for now; hopefully you get the general idea.
 
 ## A Multi-Function Calculator
 
-> We want to revise the harness to add a separate numeric input which chooses the funtion the calculator will carry out. Introduce a harness with multiple calculation modules and introduce the concept of a multiplexer. Maybe sketch how you build a multiplexer, or link out.
+There's one more digital logic gate that we should mention, but won't go into in depth to save on time: the **multiplexer**. Multiplexers provide a way of selecting one output line from many input lines. Each consists of
 
-## Modularity, Interfaces, Abstraction
+* A single output line, which contains the value that was selected
+* Any number of input lines, any one of which we might select
+* Selection lines, which denote which input to select
 
-(Three ten-dollar words ... I suppose that makes this a thirty-dollar title?)
+Each input line is assigned an 'index,' starting from zero; the selection lines together form a binary number which identifies the index of the input line that the multiplexer should output. Since the selection line chooses one of the input to output, multiplexers are sometimes alternately called **data selectors**.
 
-> Present the ideas of modules, interfaces and abstraction in terms of what we just did
->
-> Note once again that this pattern appears all over the place in hardware and software. It's one way (really the only way) we reduce these hyper-complex designs to something a human can fit into their head.
+There are also more complicated kinds of multiplexers which can multiplex $N$ $M$-bit inputs to a single $M$-bit output; these internally are implemented as $M$ 1-bit multiplexers (i.e. one for each bit of the $N$ possible inputs).
+
+We won't go into detail how to build a multiplexer, in order to save time and space. If you're interested in learning how to build a multiplexer out of digital logic gates, [Wikipedia](https://en.wikipedia.org/wiki/Multiplexer#Digital_multiplexers) has a good treatment of the subject.
+
+What we *will* dwell on is why multiplexers come in handy. For our calculator, multiplexers allow us to easily combine all the subcircuits we discussed today to build a multi-function calculator. The basic strategy is to incude a subcircuit for each of the $N$ operations we support (e.g. addition, subtraction, Boolean-AND, Boolean-OR, etc) and feed the $M$-bit user inputs into *each* of our $N$-bit subcircuits. Then, hook up the outputs of all $N$ subcircuits into a single $N$-way $M$-bit multiplexer, which chooses which a single subcircuit's input as its output. Finally, let the user manually set the multiplexer's selection lines, so that the user picks which operation they want to see.
+
+The resulting multi-function subcircuit might look something like this:
+
+> Schematic
+
+## Backwards and Forwards
+
+Pat yourself on the back &mdash; you started from first principles and have a working (albeit, theoretical) digital calculator. We're now so very close to having the basic design for a computer ... all that's left is to make this calculator programmable, so the user can enter a sequence of calculations to execute.
+
+We'll tackle that on the next page.
 
