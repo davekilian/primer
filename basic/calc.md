@@ -51,22 +51,20 @@ Boolean math is named after George Boole, who published the basis of Boolean mat
 | $0$          | `false`       |
 | $1$          | `true`        |
 
-To model logic using the Boolean values "true" and "false," you use terse "if-then" statements based on conditions that may or may not be true, and draw a conclusion based on them. For example, take this (rather benign) statement:
+To model logic using the Boolean values "true" and "false," you use terse "if-then" statements based on conditions that may or may not be true, and draw a conclusion based on them. Try this example:
 
-<center>If (Primer is a book) and (Jill is reading Primer) then (Jill is reading a book)</center>
+<center>If (Jill is outside) and (it's raining outside) then (Jill wears a raincoat)</center>
 
-Each group of words in parenthesis is a statement that can either be true or false. Both (Primer is a book) and (Jill is reading Primer) are conditions that can be thought of as "inputs" to this statement; (Jill is reading a book) is an "output," in that whether it is true or false depends purely on whether the conditions are true and false. So if Primer is a book and Jill is reading Primer, then Jill is reading a book; but if JIll is not reading Primer then doesn't follow that Jill is reading a book.
+Each group of words in parentheses is a statement that can either be true or false. Both (Jill is outside) and (it's raining outside) are examples of Boolean conditions, which can be thought of as 'input.' (Jill wears a raincoat) is an "output," in that it is true or false purely depending on whether the conditions are true or false. So if Jill goes outside and it's raining outside, then Jill will wear a raincoat; but if it's not raining or Jill isn't outside then Jill does not wear a raincoat (there's no need to, after all).
 
-> Oops we'd do better with an if-and-only-if example
-
-The "and" in the example above is our first example of a **Boolean operator**, which computes a Boolean value based on one more input Boolean values. The common Boolean operators include ...
+The "and" in the example is our first **Boolean operator**, a mathematical function that computes a Boolean value based on one more input Boolean values. The common Boolean operators include ...
 
 * AND: produces `true` if both inputs are `true`; else `false`
 * OR: produces `true` if either input is `true`; else `false`
 * Exclusive-OR, or XOR: produces `true` if the two inputs differ, `false` otherwise
 * NOT: produces `true` if the input is `false` and vice versa
 
-Most of these functions are fairly intuitive; try placing them inside if-then statements like the example above and see how they work out. The following table also spells out the result of each operator for every possible combination of input values:
+Most of these operators have a meaning in terms of logic; try placing them in the example above to try them out. The following table spells out the result of every operator for every possible set of input values:
 
 | a       | b       | not a   | not b   | a and b | a or b  | a xor b |
 | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
@@ -75,7 +73,16 @@ Most of these functions are fairly intuitive; try placing them inside if-then st
 | `false` | `true`  | `true`  | `false` | `false` | `true`  | `true`  |
 | `false` | `false` | `true`  | `true`  | `false` | `false` | `false` |
 
-So, how would one build a circuit to implement each of the Boolean operators?
+This table starts to look a lot more like math (and thus a lot more like something we could compute) if you replace `true` with $1$ and `false` with $0$:
+
+| a    | b    | not a | not b | a and b | a or b | a xor b |
+| ---- | ---- | ----- | ----- | ------- | ------ | ------- |
+| $1$  | $1$  | $0$   | $0$   | $1$     | $1$    | $0$     |
+| $1$  | $0$  | $0$   | $1$   | $0$     | $1$    | $1$     |
+| $0$  | $1$  | $1$   | $0$   | $0$     | $1$    | $1$     |
+| $0$  | $0$  | $1$   | $1$   | $0$     | $0$    | $0$     |
+
+Hopefully this makes it clear how Boolean operators mathematical operators over single-digit binary numbers. The question that remains, then, is how to build a circuit that calculates each?
 
 Let's start with NOT, because it has only one input and one output, making it easier to work with. Here's a schematic for a small subcircuit that implements NOT:
 
@@ -113,17 +120,31 @@ Only if both are delivering electricity will the transistor deliver electricity 
 
 > Diagram showing input 1, control 1
 
-In this book, we're only going to cover NOT and AND; if you'd like to figure out how to build the other operators out of transistors, feel free to try it as an exercise. One interesting factoid: you actually don't have to puzzle out how to design circuitry to implement the other Boolean operators if you don't want to; it's actually possible to use copies of NOT and AND to implement any Boolean operator. This famous proof is sometimes referred to as [NAND logic](https://en.wikipedia.org/wiki/NAND_logic); feel free to click the link to learn more.
+In this book, we're only going to cover NOT and AND; if you'd like to figure out how to build the other operators out of transistors, feel free to try it as an exercise.
 
-## Digital Logic Schematcs
+> One interesting factoid: you don't actually have to puzzle out how to design circuitry for each of the remaining Boolean operators: you can implement any Boolean operator by copying and pasting the circuits we just designed!
+>
+> The basic idea is to first hook up a NOT subcircuit to the end of an AND subcircuit, such that the output of the AND becomes the input of the NOT; the result is a new type of subcircuit often called "NAND" (because `NAND(a, b) = NOT(AND(a, b))`). There's a well-known proof that you can use NAND gates to implement any Boolean operator, even NOT or AND; for details, see Wikipedia's article on [NAND logic](https://en.wikipedia.org/wiki/NAND_logic).
+>
+> That said, using NAND logic produces big circuits; if you puzzle out how to directly build each Boolean operator directly out of transistors, you can easily end up with smaller, more space-efficient circuitry.
 
-> Introduce the idea of bulding a circuit purely out of the logic gates we just invented. We know internally that each of these gates is actually a subcircuit built out of power lines, grounding lines and transistors, but we're designing at a "higher level" &mdash; we don't have to think about transistors, we can think in terms of the building blocks we built ourselves. Abstraction!
+## Digital Logic Schematics
+
+If you think a little about NAND logic, it may become clear how quickly the complexity of such a circuit can get out of hand: even a single NAND subcircuit is already large enough to start getting confusing, so imagine a subcircuit that combines a handful of them!
+
+To help deal with this complexity without going insane, people have invented an alternate kind of circuit schematic diagram specifically for circuits built out of the 1-bit Boolean operations we oulined above: the **digital logic schematic**. The basic idea behind these is to define a schematic symbol for each kind of Boolean operator; each of these symbols is called a **logic gate**. The main way digital logic schematics reduce complexity is removing the power and grounding lines. Of course, you can't literally remove these and still have a funcitoning circuit; but in digital logic schematics, power and grounding are both taken as implied, and we focus only on showing the relationship between inputs and outputs.
+
+For a full table of schematic symbols for logic gates, see [this Wikipedia article](https://en.wikipedia.org/wiki/Logic_gate#Symbols).
+
+We will adopt logic schematics for the remainder of this page (and, actually, for the rest of the chapter as well). Keep in mind, however, that digital logic schematics are just a different way of writing down the same schematics we've been writing all along &mdash; they're just a way to reduce visual complexity, so we can focus on what really matters.
+
+Make sense? Then let's move on, and see how to build circuits that implement grade-school math on binary numbers ...
 
 ## Addition
 
 > Build a one-bit adder with carry out of logic gates
 >
-> Show how you can string these together to make a four-bit adder
+> Show how you can string these together to make, as an example, a four-bit adder
 >
 > Mention other calculations which we'll leave as an exercise to the reader, but recommend they come back to this after reading the chapter where we introduce integers for real
 
