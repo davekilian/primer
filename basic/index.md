@@ -3,37 +3,73 @@ layout: chapter
 title: A Basic Computer
 ---
 
-In this chapter, we're going to design ourselves a simple computer &mdash; the primitive kind that were once designed and built single-handedly.
+How do computers work? This might seem like an innocent question, but search online and you might be surprised by how many different ways people try to answer it!
 
-The best way to start is to remind ourselves: what is a computer, anyways?
+In this chapter we're going to show you how computers work by sketching out the design of a rudimentary computer. What we'll end up with will look more like the computers they were building in the early- to mid-1900s than what we build today, but that's okay: that kind of computer serves as the core of our modern computers, and we'll have the rest of this book to cover what modern computers add to the mix. Our design won't be all too historically accurate &mdash; we're going to build toward the computers that exist today, rather than looking at old designs that didn't pan out.
 
-There are plenty of ways to tackle that question; many are too philosophical or math-y for this book. As a practical approximatation, let's say computers are *programmable calculators*.
+Ready? Then let's get started!
 
-To better understand what that means, it's helpful to look at where the term "computer" comes from. Once upon a time, "computer" was a job description. Academic, scientific and engineering institutions employed (human) computers to crunch numbers for them. The 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) gives you an idea of who these computers were and what it was like to be one.
+## What is a Computer?
 
-Many computers were drawn to the work because of they were good at arithmetic; nonetheless, computers frequently used calculators to aid them in their work (usually a [slide rule](https://en.wikipedia.org/wiki/Slide_rule)). The value in a computer wasn't necessarily to carry out arithmetic themselves so much as as to (correctly) string calculations together (usually lots of them) without making mistakes. Computers were typically brought in for very complex calculations involving many steps, or for large datasets requiring performing the same rudimentary calculations over and over.
+If we want to design our own computer, knowing what a computer even is seems like a good place to start!
 
-Let's look at a simple example of the kind of work you might ask a computer to do for you. We're going to borrow an example from high school algebra &mdash; but we're just going to churn through arithmetic without needing to understand what the formulas mean, so don't worry if you've never taken algebra or you've forgotten most of it by now.
+Much ink has been put to paper trying to define what a computer is, and what computing is. Depending on how much of an affinity (or maybe patience) you have for philosophical pontification and papers with names like "A Fundamental Theory of ...," you may find these to either be fascinating or kind of useless; but either way, we don't have room in this book to define computation that way &mdash; yet we still need a basic working definition to start our design.
 
-So, let's compute solutions to quadratic equation using the quadratic formula. The quadratic formula algebraically solves for $x$ in the following equation, where $A$, $B$ and $C$ are coefficients (any number, but a fixed one we already know ahead of time):
+Here's a reasonable, mostly-correct definition that we can use for now:
 
-​	$0 = Ax^2 + Bx + C$
+<center><i>A computer is a programmable calculator.</i></center>
 
-The solution to this equation is given by the quadratic formula:
+Doesn't mean all too much yet, eh? One thing that might help is to examine where we got the word "computer" in the first place:
 
-​	$x = \dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$	
+## Computing in the Old Days
 
-So for example, the solution to $0 = 2x^2 + 5x + 3$ is:
+The word "computer" predates the electronic devices that we think of one someone says the word. Before there were electronic computers, the computers were people &mdash; "computer" was a job title!
 
-​	$x = \dfrac{-5 \pm \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
+Computers were most often employed by academic, scientific and engineering institutions; that is, the people who tend to have big numerical problems and need to crunch through a lot of calculations. If you're getting bored with this book and you'd rather watch a movie for a while (you'll come back though, right?), the 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) portrays computers working for NASA in the early 1960s.
 
-Except that's not quite the full story &mdash; there's a $\pm$ sneaking around in there, which is a shortcut for saying there are two solutions given by two very similar-looking formulas: once which replaces $\pm$ with a $+$ and another which replaces $\pm$ with a $-$. So the two solutions are:
+You might think being good at doing arithmetic in your head would be a necessity for working as a computer, back in the day before we had computing devices. Although many computers were indeed good at doing arithmetic in their heads, the main goal of the job was *accuracy*: if you're potentially stringing dozens or even hundreds of calculations together, it's important not to make a mistake part of the way through and throw everything off! Even the computers who were great at arithmetic kept calculators on their desks for harder calculations and checking their work. (This was before cheap consumer electronics, so they were probably using mechanical calculators like [slide rules](https://en.wikipedia.org/wiki/Slide_rule).)
 
-​	$x = \dfrac{-5 + \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$, or $x = \dfrac{-5 - \sqrt{5^2 - 4 * 2 * 3}}{2(2)}$
+So if a computer's job wasn't to be good at arithmetic, what exactly were they doing? It's easiest to see using an example:
 
-Say I asked you to compute these, and gave you a plain old calculator that can only do the following things:
+## You are the Computer
 
-* **punch in** a number
+For a few minutes, you're going to play the role of a computer, as we walk through an example of a (very small) chunk of work someone might hire you to do as a computer.
+
+Our example will come from high school algebra, but it's okay if you haven't seen it before or forgot how it works &mdash; like with real computers (both human and electronic), your job is to carry out the steps of the calculation accurately, regardless of what they do or why they were set up that way. Ignorance is bliss, as they say.
+
+In [algebra](https://en.wikipedia.org/wiki/Algebra) (the "fill-in-the-blanks" branch of mathematics), one of the first big things students learn to do is learn to solve [quadratic equations](https://en.wikipedia.org/wiki/Quadratic_equation) by employing the [quadratic formula](https://en.wikipedia.org/wiki/Quadratic_formula). If you have a quadratic equation of the form:
+
+​	$0 = Ax^2+Bx+C$
+
+... where $A$, $B$ and $C$ are all numbers you know, but $x$ is unknown (i.e. a blank you need to fill in), you can solve for $x$ (compute its value) by employing the quadratic formula:
+
+​	$x = \dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$
+
+For example, if you were presented with the following equation:
+
+​	$0 = 2x^2 + 5x + 3$
+
+... and were asked to solve for $x$ algebraically &mdash; that is, figure out what value of $x$ causes everything to the right side of the equals side to reduce to zero &mdash; you'd start by realizing this is a quadratic equation where the value of $A$ is $2$, $B$ is $5$ and $C$ is $3$. We can solve for $x$ using the quadratic formula, with the correct numbers substituted in for $A$, $B$ and $C$:
+
+​	$x = \dfrac{-5 \pm \sqrt{5^2 - 4(2)(3)}}{2(2)}$
+
+If you've taken higher-level math classes, this might look easy enough to calculate; if not, it might look a little strange, because we're using a lot of shorthand notation from higher-level math. Let's rewrite the exact same thing the way you might have learned in school:
+
+​	$x = (-5 \pm \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
+
+Oh wait, there's still a '$\pm$' sneaking around in there. What does that mean? It's a short way of telling us there are actually *two* quadratic formulas: one with $\pm$ replaced with $+$, and another with $\pm$ replaced with $-$. So, according to the quadratic formula, there are two values of $x$:
+
+​	$(-5 + \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
+
+​	$(-5 - \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
+
+Notice the top line has a $+$ after the $-5$, and the other has $-$ instead.
+
+Okay, my computer friend, time to get to work! Compute the value of $x$ for me please!
+
+You can have a calculator to help you with your work. Actually, for the sake of accuracy, I ask you to please use the calculator instead of doing arithmetic in your head. Your calculator can do the following things:
+
+* allow you to **punch in** digits of the 'current number'
 * **add** another number to the current number
 * **subtract** another number from the current number
 * **multiply** another number with the current number
@@ -43,12 +79,14 @@ Say I asked you to compute these, and gave you a plain old calculator that can o
 * take the **square root** of the current number
 * **clear** the current number
 
-How would you break down these formulas and compute their solutions? Can you write down the sequence of steps you'd need to perform using your calculator to get a solution?
+I'll also give you some paper, so you can write down any partial calculations you're going to need later.
 
-There are actually lots of perfectly valid ways to do this, some better than others. We're going to list one of them below, but before moving on, take another look at the formulas above and what functions the calculator gives you, and think how you'd do this.
+Alright, so, how are you going to compute the quadric formula using the tools I gave you?
 
-Done? Then here's our solution:
+There are plenty of good ways to break down the formulas into sequences of calculations. Try to come up with your own! Once you have your own complete sequence of steps, you can move on below where we've written ours:
 
+> ### Computing the Quadratic Formula
+>
 > First we'll compute $-B$:
 >
 > | **Step**                               | **Calculator Value** |
@@ -82,7 +120,7 @@ Done? Then here's our solution:
 > | **subtract** the value of $4AC$ which was 24 | `1`                  |
 > | take the **square root**                     | `1`                  |
 >
-> It turns out $\sqrt{^2-4AC} = 1$; let's write that down too. All that's left to take care of now is $2A$:
+> It turns out $\sqrt{^2-4AC} = 1$; let's write that down too. Now we'll take care of $2A$:
 >
 > | Step                          | **Calculator Value** |
 > | ----------------------------- | -------------------- |
@@ -122,6 +160,8 @@ Done? Then here's our solution:
 >
 > And our second solution is $-1.5$. Ba-da-bing, ba-da-boom, we're done!
 
+## From Computer to Programmer
+
 Using this example, we now have a pretty good idea how to tackle any quadratic equation. All we need to do is extract the set of steps, and use placeholders $A$, $B$ and $C$ for the coefficients:
 
 > 1. **take as input** three polynomial coefficients $A$, $B$ and $C$
@@ -158,16 +198,16 @@ Using this example, we now have a pretty good idea how to tackle any quadratic e
 > 32. **divide** by the previously computed value for $2A$
 > 33. **output** the result as the second solution
 
-In computation, we would call this list of steps a **program**. If you look up the term "program" in a dictionary, it'll tell you a program is a sequence; for example, if you go to a piano recital, someone might hand you a piece of paper called a "program," telling you who's going to play what, in what order. A computer program is also a sequence: a sequence of steps, where each step is a calculation.
+This thing is called a *program*.
 
-This is why we're calling computers (the devices, not the people) *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program, which specifies a sequence of calculations the computer should perform. The computer then **executes** the program, by churning through each step one by one, doing whatever calculation each step says. 
+If you look up the term "program" in a dictionary, it'll tell you a program is just a sequence; for example, if you go to a piano recital, someone might hand you a piece of paper entitled "program" giving you the scheduled sequence of performances for the recital. A computer program is also a sequence: a sequence of steps to carry out, where each step is a calculation.
 
-So to build a computer, you're fundamentally going to end up building a calculator and something that uses the calculator to execute a program (which is simply a sequence of calculations).
+This is why we're calling computers (the devices, not the people) *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program, which specifies a sequence of calculations the computer should perform. The computer then "executes" the program, by churning through each step one by one and doing whatever calculation the step says to do.
 
-The job of a computer programmer is, when presented with a problem, to come up with a program that solves that problem, as a sequence of steps the computer's internal calculator can do. When we figured out above how to compute the quadratic formula on our pretend calculator, that was programming!
+So, if you want to build a computer, you're going to need to build a calculator, as well as something that can feed in a sequence of calculations.
 
 It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or watching Netflix, but we'll get there in time. Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
 
 For now, just think of a computer as a programmable calculator, and you'll be doing pretty well.
 
-Let's start going about seeing how one builds a programmable calculator &mdash; in this chapter, we'll start by building ourselves a digital calculator, and then we'll turn it into a full-fledged computer processor (CPU) which can execute programs. We'll close out the chapter by introducing a few more components that are critical for writing practical programs.
+Let's start going about seeing how one builds a programmable calculator &mdash; we'll start by building ourselves a digital calculator, and then we'll turn it into a full-fledged computer which can execute programs using the calculator. We'll close out the chapter by introducing a few more components that are critical for writing programs in practice.

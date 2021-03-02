@@ -7,6 +7,8 @@ Modern computers are built out of electronic circuits, so to understand what goe
 
 ## Circuit Basics
 
+What's a circuit, anyways?
+
 The goal of an electronic circuit is to set up a flow of electricity, usually through something (or a lot of somethings) that use the electricity to do something interesting: you might hook up an LED to the circuit to make a light turn on or off, or to get a speaker to make sound, and so on. These "somethings" that you're trying to deliver electricity to are often called **components** of the circuit.
 
 To understand circuits, we use a kind of diagram called a **schematic**. Schematic diagrams give us a broad outline of how the circuit is constructued without needing to delve into nitty-gritty details. Let's take a look at the basic building blocks of circuits and how to visualize them using schematic diagrams.
