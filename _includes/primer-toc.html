@@ -2,29 +2,43 @@
     <li><a href="{{ 'index.html' | relative_url }}">About This Book</a></li>
     <li>
         <a href="{{ 'basic/index.html' | relative_url }}">A Basic Computer</a>
+        <!-- TODO outline this section -->
+    </li>
+    <li>
+        <a href="{{ 'proc/index.html' | relative_url }}">Processors</a>
         <ol>
-            <li><a href="{{ 'basic/binary.html' | relative_url }}">Binary</a></li>
-            <li><a href="{{ 'basic/circuits.html' | relative_url }}">Circuits</a></li>
-            <li><a href="{{ 'basic/calc.html' | relative_url }}">Calculation</a></li>
-            <li><a href="{{ 'basic/proc.html' | relative_url }}">Processors</a></li>
-            <li><a href="{{ 'basic/mem.html' | relative_url }}">Memory</a></li>
-            <li><a href="{{ 'basic/perip.html' | relative_url }}">Peripherals</a></li>
-            <li><a href="{{ 'basic/stor.html' | relative_url }}">Storage</a></li>
+            <li><a href="{{ 'proc/circuits.html' | relative_url }}">Circuitry</a></li>
+            <li><a href="{{ 'proc/design.html' | relative_url }}">Designing a Processor</a></li>
+            <li><a href="{{ 'proc/registers.html' | relative_url }}">Registers</a></li>
+            <li><a href="{{ 'proc/math.html' | relative_url }}">Math</a></li>
+            <li><a href="{{ 'proc/memory.html' | relative_url }}">Memory</a></li>
+            <li><a href="{{ 'proc/final.html' | relative_url }}">The Final Result</a></li>
         </ol>
     </li>
     <li>
-        <a href="{{ 'asm/index.html' | relative_url }}">Assembly Programming</a>
+        <a href="{{ 'memory/index.html' | relative_url }}">Memory</a>
         <ol>
-            <li><a href="{{ 'asm/basics.html' | relative_url }}">Instructions, Registers</a></li>
-            <li><a href="{{ 'asm/routines.html' | relative_url }}">Routines, Call Stacks</a></li>
-            <li><a href="{{ 'asm/interrupt.html' | relative_url }}">Interrupts</a></li>
-            <li><a href="{{ 'asm/x86.html' | relative_url }}">x86</a></li>
-            <li><a href="{{ 'asm/arm.html' | relative_url }}">ARM</a></li>
+            <li><a href="{{ 'memory/registers.html' | relative_url }}">Registers</a></li>
+            <li><a href="{{ 'memory/dram.html' | relative_url }}">DRAM</a></li>
+            <li><a href="{{ 'memory/addressing.html' | relative_url }}">Addressing</a></li>
+            <li><a href="{{ 'memory/controllers.html' | relative_url }}">Controllers</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'prog/index.html' | relative_url }}">Programming</a>
+        <ol>
+            <li><a href="{{ 'prog/asm.html' | relative_url }}">Assembly</a></li>
+            <li><a href="{{ 'prog/routines.html' | relative_url }}">Routines</a></li>
+            <li><a href="{{ 'prog/x86.html' | relative_url }}">Case Study: x86</a></li>
+            <li><a href="{{ 'prog/arm.html' | relative_url }}">Case Study: ARM</a></li>
+            <li><a href="{{ 'prog/compilers.html' | relative_url }}">Compilers</a></li>
+            <li><a href="{{ 'prog/c.html' | relative_url }}">Case Study: C</a></li>
         </ol>
     </li>
     <li>
         <a href="{{ 'num/index.html' | relative_url }}">Numbers</a>
         <ol>
+            <li><a href="{{ 'num/repr.html' | relative_url }}">Representations</a></li>
             <li><a href="{{ 'num/ints.html' | relative_url }}">Integers</a></li>
             <li><a href="{{ 'num/bits.html' | relative_url }}">Bit Operations</a></li>
             <li><a href="{{ 'num/floats.html' | relative_url }}">Floating Point</a></li>
@@ -39,54 +53,89 @@
         </ol>
     </li>
     <li>
+        <a href="{{ 'io/index.html' | relative_url }}">I/O</a>
+        <ol>
+            <li><a href="{{ 'io/interrupts.html' | relative_url }}">Interrupts</a></li>
+            <li><a href="{{ 'io/pio.html' | relative_url }}">Programmed I/O</a></li>
+            <li><a href="{{ 'io/mmio.html' | relative_url }}">Memory-Mapped I/O</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'perip/index.html' | relative_url }}">Peripherals</a>
+        <ol>
+            <li><a href="{{ 'perip/bus.html' | relative_url }}">Buses</a></li>
+            <li><a href="{{ 'perip/pci.html' | relative_url }}">Case Study: PCI</a></li>
+            <li><a href="{{ 'perip/usb.html' | relative_url }}">Case Study: USB</a></li>
+            <li><a href="{{ 'perip/storage.html' | relative_url }}">Storage</a></li>
+            <li><a href="{{ 'perip/scsi.html' | relative_url }}">Case Study: SCSI</a></li>
+            <li><a href="{{ 'perip/displays.html' | relative_url }}">Displays</a></li>
+            <li><a href="{{ 'perip/input.html' | relative_url }}">Input</a></li>
+        </ol>
+    </li>
+    <li>
         <a href="{{ 'os/index.html' | relative_url }}">Operating Systems</a>
         <ol>
-            <li><a href="{{ 'os/kernels.html' | relative_url }}">Kernels</a></li>
-            <li><a href="{{ 'os/threads.html' | relative_url }}">Threads</a></li>
+            <li><a href="{{ 'os/kernproc.html' | relative_url }}">Kernels and Processes</a></li>
+            <li><a href="{{ 'os/exec.html' | relative_url }}">Limited Execution</a></li>
             <li><a href="{{ 'os/vm.html' | relative_url }}">Virtual Memory</a></li>
             <li><a href="{{ 'os/syscalls.html' | relative_url }}">System Calls</a></li>
             <li><a href="{{ 'os/files.html' | relative_url }}">Files</a></li>
-            <li><a href="{{ 'os/boot.html' | relative_url }}">Bootloaders</a></li>
-            <li><a href="{{ 'os/loaders.html' | relative_url }}">Program Loaders</a></li>
             <li><a href="{{ 'os/shells.html' | relative_url }}">Shells</a></li>
+            <li><a href="{{ 'os/unix.html' | relative_url }}">Case Study: Unix</a></li>
         </ol>
     </li>
     <li>
-        <a href="{{ 'hw/index.html' | relative_url }}">Computer Hardware</a>
+        <a href="{{ 'vm/index.html' | relative_url }}">Virtual Memory</a>
         <ol>
-            <li><a href="{{ 'hw/cpucache.html' | relative_url }}">CPU Caches</a></li>
-            <li><a href="{{ 'hw/pipelines.html' | relative_url }}">CPU Pipelines</a></li>
-            <li><a href="{{ 'hw/io.html' | relative_url }}">I/O and DMA</a></li>
-            <li><a href="{{ 'hw/pci.html' | relative_url }}">PCI</a></li>
-            <li><a href="{{ 'hw/usb.html' | relative_url }}">USB</a></li>
-            <li><a href="{{ 'hw/stor.html' | relative_url }}">SCSI and SATA</a></li>
-            <li><a href="{{ 'hw/uefi.html' | relative_url }}">Firmware</a></li>
+            <li><a href="{{ 'vm/pagetable.html' | relative_url }}">Page Tables</a></li>
+            <li><a href="{{ 'vm/tlb.html' | relative_url }}">TLB</a></li>
         </ol>
     </li>
     <li>
-        <a href="{{ 'vmm/index.html' | relative_url }}">Virtualization</a>
+        <a href="{{ 'boot/index.html' | relative_url }}">Bootstrapping</a>
         <ol>
-            <li><a href="{{ 'vmm/vm.html' | relative_url }}">Virtual Machines</a></li>
-            <li><a href="{{ 'vmm/hyper.html' | relative_url }}">Hypervisors</a></li>
-            <li><a href="{{ 'vmm/containers.html' | relative_url }}">Containers</a></li>
+            <li><a href="{{ 'boot/firmware.html' | relative_url }}">Firmware</a></li>
+            <li><a href="{{ 'boot/bootloaders.html' | relative_url }}">Bootloaders</a></li>
+            <li><a href="{{ 'boot/kinit.html' | relative_url }}">Kernel Initialization</a></li>
         </ol>
     </li>
     <li>
-        <a href="{{ 'lang/index.html' | relative_url }}">Programming Languages</a>
+        <a href="{{ 'advcpu/index.html' | relative_url }}">Processors and Memory</a>
         <ol>
-            <li><a href="{{ 'lang/c.html' | relative_url }}">C</a></li>
-            <li><a href="{{ 'lang/cpp.html' | relative_url }}">C++</a></li>
-            <li><a href="{{ 'lang/compilers.html' | relative_url }}">Compilers</a></li>
-            <li><a href="{{ 'lang/interp.html' | relative_url }}">Interpreters</a></li>
-            <li><a href="{{ 'lang/jit.html' | relative_url }}">Hybrid Models</a></li>
+            <li><a href="{{ 'advcpu/cache.html' | relative_url }}">Caches</a></li>
+            <li><a href="{{ 'advcpu/prefetch.html' | relative_url }}">Prefetching</a></li>
+            <li><a href="{{ 'advcpu/pipelines.html' | relative_url }}">Pipelining</a></li>
+            <li><a href="{{ 'advcpu/branch.html' | relative_url }}">Branch Prediction</a></li>
         </ol>
     </li>
     <li>
-        <a href="{{ 'threading/index.html' | relative_url }}">Multithreading</a>
+        <a href="{{ 'multi/index.html' | relative_url }}">Multi-Core</a>
         <ol>
-            <li><a href="{{ 'threading/locks.html' | relative_url }}">Locks</a></li>
-            <li><a href="{{ 'threading/atomics.html' | relative_url }}">Atomics</a></li>
-            <li><a href="{{ 'threading/caches.html' | relative_url }}">Cache Coherency</a></li>
+            <li><a href="{{ 'multi/threading.html' | relative_url }}">Multithreading</a></li>
+            <li><a href="{{ 'multi/locks.html' | relative_url }}">Locks</a></li>
+            <li><a href="{{ 'multi/memory.html' | relative_url }}">Memory Models</a></li>
+            <li><a href="{{ 'multi/atomics.html' | relative_url }}">Atomics</a></li>
+            <li><a href="{{ 'multi/guarantees.html' | relative_url }}">Lock-Free, Wait-Free</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'loader/index.html' | relative_url }}">Program Loaders</a>
+        <ol>
+            <li><a href="{{ 'loader/images.html' | relative_url }}">Image Formats</a></li>
+            <li><a href="{{ 'loader/elf.html' | relative_url }}">Case Study: ELF</a></li>
+            <li><a href="{{ 'loader/program.html' | relative_url }}">Loading Programs</a></li>
+            <li><a href="{{ 'loader/dynlib.html' | relative_url }}">Dynamic Libraries</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'lang/index.html' | relative_url }}">Languages &amp; Runtimes</a>
+        <ol>
+            <li><a href="{{ 'lang/models.html' | relative_url }}">Compilers vs Interpreters</a></li>
+            <li><a href="{{ 'lang/jit.html' | relative_url }}">Just-in-Time Compilers</a></li>
+            <li><a href="{{ 'lang/oo.html' | relative_url }}">Objects and Models</a></li>
+            <li><a href="{{ 'lang/cpp.html' | relative_url }}">Case Study: C++</a></li>
+            <li><a href="{{ 'lang/java.html' | relative_url }}">Case Study: Java</a></li>
+            <li><a href="{{ 'lang/python.html' | relative_url }}">Case Study: Python</a></li>
         </ol>
     </li>
     <li>
@@ -99,10 +148,37 @@
         </ol>
     </li>
     <li>
-        <a href="{{ 'ui/index.html' | relative_url }}">User Interfaces</a>
+        <a href="{{ 'graphics/index.html' | relative_url }}">Graphics</a>
         <ol>
-            <li><a href="{{ 'ui/cli.html' | relative_url }}">Command Lines</a></li>
-            <li><a href="{{ 'ui/gui.html' | relative_url }}">Graphical UI</a></li>
+            <li><a href="{{ 'graphics/displays.html' | relative_url }}">Displays</a></li>
+            <li><a href="{{ 'graphics/shells.html' | relative_url }}">Graphical Shells</a></li>
+            <li><a href="{{ 'graphics/rendering.html' | relative_url }}">Rendering</a></li>
+            <li><a href="{{ 'graphics/accel.html' | relative_url }}">Hardware Acceleration</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'virt/index.html' | relative_url }}">Advanced Virtualization</a>
+        <ol>
+            <li><a href="{{ 'virt/vmm.html' | relative_url }}">Virtual machines</a></li>
+            <li><a href="{{ 'virt/containers.html' | relative_url }}">Containers</a></li>
+            <li><a href="{{ 'virt/k8s.html' | relative_url }}">Case Study: Kubernetes</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'fs/index.html' | relative_url }}">File Systems</a>
+        <ol>
+            <li><a href="{{ 'fs/index.html' | relative_url }}">Indexing</a></li>
+            <li><a href="{{ 'fs/btree.html' | relative_url }}">B-Trees</a></li>
+            <li><a href="{{ 'fs/s5fs.html' | relative_url }}">Case Study: S5FS</a></li>
+            <li><a href="{{ 'fs/btrfs.html' | relative_url }}">Case Study: btrfs</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'platf/index.html' | relative_url }}">Computing Platforms</a>
+        <ol>
+            <li><a href="{{ 'platf/desk.html' | relative_url }}">Desktops</a></li>
+            <li><a href="{{ 'platf/mobile.html' | relative_url }}">Mobile</a></li>
+            <li><a href="{{ 'platf/embed.html' | relative_url }}">Embedded</a></li>
         </ol>
     </li>
     <li>
@@ -191,5 +267,18 @@
     </li>
     <li>
         <a href="{{ 'projects.html' | relative_url }}">Suggested Projects</a>
+    </li>
+    <li>
+        <a href="{{ 'graveyard/index.html' | relative_url }}">Graveyard</a>
+        <ol>
+            <li><a href="{{ 'graveyard/basic.html' | relative_url }}">A Basic Computer</a></li>
+            <li><a href="{{ 'graveyard/binary.html' | relative_url }}">Binary</a></li>
+            <li><a href="{{ 'graveyard/circuits.html' | relative_url }}">Circuits</a></li>
+            <li><a href="{{ 'graveyard/calc.html' | relative_url }}">Calculation</a></li>
+            <li><a href="{{ 'graveyard/proc.html' | relative_url }}">Processors</a></li>
+            <li><a href="{{ 'graveyard/mem.html' | relative_url }}">Memory</a></li>
+            <li><a href="{{ 'graveyard/perip.html' | relative_url }}">Peripherals</a></li>
+            <li><a href="{{ 'graveyard/stor.html' | relative_url }}">Storage</a></li>
+        </ol>
     </li>
 </ol>
