@@ -11,37 +11,35 @@ To understand what this means, it might help is to see where we got the word "co
 
 ## Computing in the Olden Days
 
-Nowadays everybody knows a computer is an electronic device, usually with some kind of screen. But the word "computer" was already around long before we had these devices &mdash; the original computers were people, and "computer" was a job! Computers were brought in to crunch through big numerical problems, most often by academic, scientific and engineering instutations. The 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) portrays computers working for NASA in the 1960s.
+When you talk about computers today, we think of electronic devices with touchscreens, keyboards and more. But the word "computer" was already around long before we had these devices &mdash; the original computers were people, and "computer" was a job! Human computers were brought in to crunch through big numerical problems, most often by academic, scientific and engineering organizations. For example, the 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) portrays computers working for NASA in the 1960s.
 
-You might think that computers needed to be good at arithmetic &mdash; they often were! &mdash; but calculator use was still pretty common. That's because, ultimately, the job of a computer was to perform sequences of calculations *accurately*: you wouldn't want one little mistake throwing off the whole result!
+You might think that computers needed to be good at arithmetic &mdash; they often were! &mdash; but calculator use was still pretty common. That's because computers were primarily valued for their accuracy, in stringing together many calculations without making any mistakes. It'd be no good to get an answer slightly faster if it's the wrong answer!
 
-To better understand what computers did and why, let's do an example! In algebra, a quadratic equation is defined by three numbers, which we'll name $A$, $B$ and $C$. To solve a quadratic equation, you plug those numbers into the quadratic formula:
+To better understand what computers did and why, let's look at an example. In algebra, a *quadratic equation* is defined by three numbers, which we'll name $A$, $B$ and $C$. To solve one of these, you plug those numbers into the following formula:
 
 ​	$\dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$
 
-So, for example, if I gave you the values $A=2$, $B=5$ and $C=3$ and asked you to solve, you would plug those values into the quadratic formula by substituting the assigned values for $A$, $B$ and $C$, like this:
+So, for example, if I gave you the values $A=2$, $B=5$ and $C=3$ and asked you to solve, you would substitute the numbers $2$, $5$ and $3$ in for $A$, $B$ and $C$ respectively, like this:
 
 ​	$\dfrac{-5 \pm \sqrt{5^2 - 4(2)(3)}}{2(2)}$
 
-If you've taken higher-level math classes, this might look easy enough to calculate; if not, it might look a little strange, because we're using a lot of shorthand notation from higher-level math. Let's rewrite the exact same thing the way you might have learned in school:
+Then you would need to chug through the calculations. We wrote the formula above the way it's usually presented in algebra, but that involves using a lot of shorthand notation you may not be familiar with. You can also write the above as follows; both mean the same thing:
 
 ​	$(-5 \pm \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
-Ah, but there's still a '$\pm$' sneaking around in there. That thing is shorthand telling us there are actually *two* quadratic formulas: one with $\pm$ replaced with $+$, and another with $\pm$ replaced with $-$. So we actually need to do two different, but very similar sets of calculations:
+Of course, there's still one tricky bit left: a '$\pm$' sneaking around in there. $\pm$ is pronounced "plus or minus," and tells us there are actually *two* quadratic formulas: one with $\pm$ replaced with $+$, and another with $\pm$ replaced with $-$. So we actually need to do two different, but very similar sets of calculations:
 
 ​	$(-5 + \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
 ​	$(-5 - \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
-Notice the top line has a $+$ after the $-5$, and the other has $-$ instead.
+We're going to want to calculate this now.
 
-We're going to want to calculate these two formulas.
+It might be obvious how to do this, but let's be disciplined and use a calculator to help us work. Sure, you might be able to do this at least partly in your head, but we'll use a calculator anyway to be extra certain we haven't made any mistakes. Remember, it's more important to be an accurate computer than a clever one!
 
-For starters, let's use a calculator to help us with our work. Even when we could do the arithmetic in our heads, we'll use this calculator anyways so we can be extra certain we haven't made any mistakes. After all, being a computer is about being accurate more than being clever!
+Let's say our imaginary calculator can do the following things:
 
-Say our imaginary calculator can do the following things:
-
-* allow you to **punch in** digits of the 'current number'
+* allow you to **punch in** a number digit by digit
 * **add** another number to the current number
 * **subtract** another number from the current number
 * **multiply** another number with the current number
@@ -51,9 +49,9 @@ Say our imaginary calculator can do the following things:
 * take the **square root** of the current number
 * **clear** the current number
 
-We'll also use some paper, so we can write down any partial calculations for later.
+Oh, you can also have some paper, to write down any partial results you want to use again later.
 
-So, given these tools, how would you compute the quadratic formula for the $A$, $B$ and $C$ values I gave you? There are plenty of good ways to break down the formulas into sequences of calculations. Try to come up with your own! Once you have your own complete sequence of steps, take a look at ours below:
+Given these tools, how would you compute the two formulas above? There are plenty of good ways to break down the formulas into sequences of steps on the calculator. Try to come up with your own! Once you have your own complete sequence of steps, you can take a look at our example solution below:
 
 > ### Computing the Quadratic Formula
 >
@@ -130,7 +128,7 @@ So, given these tools, how would you compute the quadratic formula for the $A$, 
 >
 > And our second solution is $-1.5$. Ba-da-bing, ba-da-boom, we're done!
 
-Using this example, we now have a pretty good idea how to tackle any quadratic equation. All we need to do is extract the set of steps, and put the placeholders $A$, $B$ and $C$ back in to replace $2$, $5$ and $3$:
+Using this example, we now have a pretty good idea how to tackle any quadratic equation. All we need to do is extract the set of steps, and put the placeholders $A$, $B$ and $C$ back in for $2$, $5$ and $3$:
 
 > 1. **take as input** three polynomial coefficients $A$, $B$ and $C$
 > 2. **clear** the calculator
@@ -166,15 +164,15 @@ Using this example, we now have a pretty good idea how to tackle any quadratic e
 > 32. **divide** by the previously computed value for $2A$
 > 33. **output** the result as the second solution
 
-This thing is called a *program*. If you've never written a program before, well, congratulations on writing your first program!
+This thing is called a *program*. If you've never programmed before, well, congratulations on writing your first program!
 
 ## Programs and Computers
 
 In the example above, we acted as both the programmer and the computer: we were programming when we decided what sequence of steps would give us the answer we needed, and we were computing when we carried those steps out by hand.
 
-If you look up the term "program" in a dictionary, it'll tell you a program is a sequence; for example, if you go to a piano recital, someone might hand you a "program" printed on paper telling you the sequence of performances scheduled for the recital. A computer program is also a sequence: a sequence of steps to carry out, where each step is a calculation.
+If you look up the term "program" in a dictionary, it'll tell you a program is a sequence; for example, if you go to a piano recital, someone might hand you a "program" telling you the sequence of performances scheduled for the recital. A computer program is also a sequence: a sequence of steps to carry out, where each step is a calculation.
 
-This is why we're calling computers *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program consisting of a sequence of calculations the computer should carry out. The computer then "executes" the program, going through each step of the program and carrying it out using the internal calculator.
+This is why we're calling computers *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program which consists of a sequence of calculations the computer should carry out. The computer then "executes" the program, going through each step of the program and doing the specified operation on the internal calculator.
 
 It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or watching Netflix, but we'll get there in time! Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
 

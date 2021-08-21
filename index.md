@@ -52,6 +52,6 @@ With this book I also hope to provide a good, free resource for programmers who 
 
 ## About the Book
 
-You can always find the latest version of this book at [https://www.davekilian.com/primer/](https://www.davekilian.com/primer). If you find any typos, mistakes or anything that just could have been written better, please don't hesitate to let me know by filing an issue at [https://github.com/davekilian/primer/issues](https://github.com/davekilian/primer/issues). For minor corrections, feel free to fork the repo ([https://githubcom/davekilian/primer](https://github.com/davekilian/primer)) and submit a pull request with a fix. Note that, because of the way this book is published, all content is on the `gh-pages` branch instead of `main` or `master`.
+You can always find the latest version of this book at [https://www.davekilian.com/primer/](https://www.davekilian.com/primer). If you find any typos, mistakes or anything that just could have been written better, please don't hesitate to let me know by filing an issue at [https://github.com/davekilian/primer/issues](https://github.com/davekilian/primer/issues). For minor corrections, feel free to fork the repo ([https://githubcom/davekilian/primer](https://github.com/davekilian/primer)) and submit a pull request with a fix. Because of the way this book is published, all content is on the `gh-pages` branch instead of `main` or `master`.
 
 Ready? Then let's get started!
