@@ -3,7 +3,7 @@ layout: chapter
 title: What is a Computer?
 ---
 
-If we want to know how computers work, it would sure be handy to know what a computer is! Much ink has been put to paper trying to nail down exactly what a computer is &mdash; and isn't &mdash; but much of that borders too much on math or philosophy to be helpful in this book. For now, let's just say this:
+If we want to know how computers work, it would sure be handy to know what a computer is! Much ink has been put to paper trying to nail down exactly what a computer is &mdash; and isn't &mdash; but a lot of that borders too much on math or philosophy to be helpful in this book. For now, let's just say this:
 
 <center><i>A computer is a programmable calculator.</i></center>
 
@@ -11,11 +11,11 @@ To understand what this means, it might help is to see where we got the word "co
 
 ## Computing in the Olden Days
 
-When you talk about computers today, we think of electronic devices with touchscreens, keyboards and more. But the word "computer" was already around long before we had these devices &mdash; the original computers were people, and "computer" was a job! Human computers were brought in to crunch through big numerical problems, most often by academic, scientific and engineering organizations. For example, the 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) portrays computers working for NASA in the 1960s.
+When you talk about computers today, we think of electronic devices, touchscreens, keyboards and more. But the word "computer" was already around long before these electronics &mdash; the original computers were people, and "computer" was a job! Human computers were brought in to crunch through big numerical problems, most often by academic, scientific and engineering organizations. For example, the 2016 film [Hidden Figures](https://en.wikipedia.org/wiki/Hidden_Figures) portrays computers working for NASA in the 1960s.
 
-You might think that computers needed to be good at arithmetic &mdash; they often were! &mdash; but calculator use was still pretty common. That's because computers were primarily valued for their accuracy, in stringing together many calculations without making any mistakes. It'd be no good to get an answer slightly faster if it's the wrong answer!
+You might think that computers needed to be good at arithmetic &mdash; they often were! &mdash; but calculator use was still pretty common. That's because it was more important for computers to be accurate than fast. It was important to be able to string together many calculations without making any mistakes; after all, it'd be no good to get an answer slightly faster if it's the wrong answer!
 
-To better understand what computers did and why, let's look at an example. In algebra, a *quadratic equation* is defined by three numbers, which we'll name $A$, $B$ and $C$. To solve one of these, you plug those numbers into the following formula:
+To better understand the work of a computer, it might be helpful to do an example. In algebra, a "quadratic equation" is defined by three numbers, which we'll name $A$, $B$ and $C$. To solve a quadratic equation, you plug those numbers into the "quadratic formula," which looks like this:
 
 ​	$\dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A}$
 
@@ -23,21 +23,19 @@ So, for example, if I gave you the values $A=2$, $B=5$ and $C=3$ and asked you t
 
 ​	$\dfrac{-5 \pm \sqrt{5^2 - 4(2)(3)}}{2(2)}$
 
-Then you would need to chug through the calculations. We wrote the formula above the way it's usually presented in algebra, but that involves using a lot of shorthand notation you may not be familiar with. You can also write the above as follows; both mean the same thing:
+The way we wrote the formula above uses shorthand notation that you might not be familiar with &mdash; it normally doesn't get introduced until around the time you take algebra. We can write the same thing without shorthand, like this:
 
 ​	$(-5 \pm \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
-Of course, there's still one tricky bit left: a '$\pm$' sneaking around in there. $\pm$ is pronounced "plus or minus," and tells us there are actually *two* quadratic formulas: one with $\pm$ replaced with $+$, and another with $\pm$ replaced with $-$. So we actually need to do two different, but very similar sets of calculations:
+This might look more doable, but there's still one tricky bit left: a '$\pm$' sneaking around in there. $\pm$ is pronounced "plus or minus," and tells us there are actually *two* quadratic formulas: one with $\pm$ replaced with $+$, and another with $\pm$ replaced with $-$. So we actually need to do two different, but very similar sets of calculations:
 
 ​	$(-5 + \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
 ​	$(-5 - \sqrt{5 \times 5 - 4 \times 2 \times 3}) \div (2 \times 2)$
 
-We're going to want to calculate this now.
+Hopefully that makes sense now. Let's pretend to be computers and try to calculate this!
 
-It might be obvious how to do this, but let's be disciplined and use a calculator to help us work. Sure, you might be able to do this at least partly in your head, but we'll use a calculator anyway to be extra certain we haven't made any mistakes. Remember, it's more important to be an accurate computer than a clever one!
-
-Let's say our imaginary calculator can do the following things:
+You might be able to do this in your head, but let's resist the temptation and instead use a calculator to help us. After all, it's more important for a computer to be accurate than clever! Our imaginary calculator will be able to do the following things:
 
 * allow you to **punch in** a number digit by digit
 * **add** another number to the current number
@@ -170,9 +168,9 @@ This thing is called a *program*. If you've never programmed before, well, congr
 
 In the example above, we acted as both the programmer and the computer: we were programming when we decided what sequence of steps would give us the answer we needed, and we were computing when we carried those steps out by hand.
 
-If you look up the term "program" in a dictionary, it'll tell you a program is a sequence; for example, if you go to a piano recital, someone might hand you a "program" telling you the sequence of performances scheduled for the recital. A computer program is also a sequence: a sequence of steps to carry out, where each step is a calculation.
+If you look up the word "program" in a dictionary, you'll find that it's just another word for "sequence." For example, if you go to a piano recital, someone might hand you a "program" telling you the sequence of performances scheduled for the day. A computer program is also a sequence: a sequence of steps to carry out, where each step is a calculation.
 
-This is why we're calling computers *programmable* calculators. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program which consists of a sequence of calculations the computer should carry out. The computer then "executes" the program, going through each step of the program and doing the specified operation on the internal calculator.
+That's why we're saying a computer is a *programmable* calculator. Every computer has a calculator inside of it somewhere, but you don't use that calculator directly; instead, you provide the computer with a program, where each step in the program is the next calculation to perform. The computer that "executes" the program, going through each step and doing the specified operation on the internal calculator. By stringing many calculations together, you can do some pretty interesting things!
 
 It might be hard right now to see how this programmable calculator relates to everyday computing tasks like loading your Twitter feed or watching Netflix, but we'll get there in time! Everything you do on a computer is ultimately an extension of this programmable calculator, and we'll build our way up to these kinds of things over the course of this book.
 
