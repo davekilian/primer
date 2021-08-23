@@ -15,29 +15,19 @@ Where should we start? If a computer is a programmable calculator, why not start
 
 It turns out the first insight we need is also the trickiest: how are we going to build a calculator out of electronic circuitry?
 
->I started drafting below, but I don't like the exact flow. Here's what I'm thinking instead.
->
->First say it's all about *switching*. Introduce the idea of switching a circuit on / off to allow or halt the flow of electricity.
->
->Then introduce the idea of binary numbers. We like binary because each binary digit (bit) has two possible values: 0 and 1. These can easily correspond to 'switched off' (0) and 'switched on' (1).
->
->Next say you *could* program using switches directly (maybe even mention dip switches), but you'd need a lot of switches to do anything interesting, and you'd be fiddling with switches all the time. Couldn't we have the electricity itself run the switch?
->
->Come up with some kind of concrete example of what you could do with these switches. The NOT gate is something simple enough.
->
->Then finally say we can use transistors as these switches. Explain transistors are really like valves, in that they have a source, drain and gate, such that the amount of electricity that is 'allowed' to flow from source to drain is proportional to the amount of electricity flowing to the gate. If there is no gate current, nothing flows from source to drain, like a circuit that is switched off, i.e. a binary 0. If there is gate current, then current flows from source to drain, like a circuit that is siwtched on / a binary 1.
->
->In the next chapter of the book we'll build a working calculator out of transistors, but for now just keep the basic idea in mind.
+The key idea is *switching*. An electrical switch is a device that can be used to 'turn' a circuit on or off. You use switches every day: for example, to turn the lights on or off in your room. More precisely, an electrical switch controls the flow of electricity: electricity can flow through a switch when the switch is on, but not while the switch is off.
 
----
+How might switching be useful for doing calculations on numbers? It's easier to see if you count using *binary* numbering. In everyday situations, you use a numbering system with 10 digits: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ and $9$; when you need to go higher than 9, you start using multiple digits: $10$, $11$, $12$ and so on. In binary, there are only two digits &mdash; $0$ and $1$. To go higher, you have to go up to multiple digits faster. So, to count in binary, you would write: $1$ ("one"), $10$ (pronounced "two"), $11$ ("three"), $100$ ("four"), and so on. We'll circle back to this later in more detail, so don't worry if this doesn't make sense quite yet.
 
-The cornerstone of the modern computer is arguably a tiny circuit element called a transistor. In circuit design, a transistor is an element that acts like an electronic valve: a transistor has a 'source' where electricity comes in, a 'drain' where electricity goes out, and a 'gate' which controls the valve. Sending electricity along the 'gate' allows electricity to flow from the 'source' to the 'drain;' when there's no electricity flowing into the gate, no electricity can flow from the source to the drain.
+Binary is useful for representing numbers in circuits because each binary digit (or "bit") has only two possible values: $0$ or $1$. This lines up nicely with electric switches, which also have two possible states: on or off. So we represent numbers by letting "switched on" (electricity flowing) mean a binary $1$, and "switched off" (no electricity) mean a binary $0$.
 
-Here's the basic idea for our calculator: we're going to hook up a bunch of transistors to one another, so that each transistor drains into the sources and/or gates of other transistors. We'll put the transistors together in such a way that it does something interesting &mdash; like add two numbers.
+The last key insight we need is that we should drive these switches *electronically*. A conventional switch is mechnical: you flip a lever or push a rocker to physically connect or disconnect a circuit. We need a switch that is driven electronically: the input ('source') and output ('drain') are always connected, but electricity only passes through if a third 'gate' wire is receiving electricity. So if there's power entering this 'gate,' then power can pass from source to drain, like a switch that has been switched on. If there's no power entering the gate, electricity cannot pass from source to drain, like a switch that has been switched off.
 
-Of course, to do that, we need some way to represent numbers using electricity!
+In theory, we should be able to interconnect a bunch of these switches strategically to build subcircuits that do calculations on binary numbers. We'll talk about that in more detail in the next chapter.
 
-> Idea: binary: a switch has two states, on and off. A bit is 1 or 0.
+Every modern computer uses a transistor as this 'electronically-driven switch.' Transistors each have three terminals: source, drain and gate. They work like valves: the more electricity that passes through the gate, the more electricity is allowed to pass from source to drain. Although transistors thus allow you to continually vary the source $\rightarrow$ drain current based on the gate current, we're only interested in using transistors as switches, so we're most interested in cases where the gate current is approximately 0 (switched off / binary $0$) or something clearly non-zero (switched on / binary $1$).
+
+In the next chapter of the book we'll learn more about circuits and transistors, and even see how to build a working calculator out of transistors. But all that's a little too in depth to tackle just yet. For now, just remember that we're going to build circuits of interconnected transistors that implement basic operations on binary numbers.
 
 ## Programmability
 
@@ -45,13 +35,15 @@ Of course, to do that, we need some way to represent numbers using electricity!
 >
 > Idea: a program is a sequence of instructions. An inst is a number - which op
 >
-> Idea: subcircuits for each operation. Multiplex the result
+> Idea: subcircuits for each operation. We know how to do this from the previous section.
 >
-> We need somewhere to store the program. Use a ROM
+> We also need a way to pick which subcircuit to run. Actually, turning circuits on and off is hard. It'd be easier to always run every subcircuit, but only pick the output for the operation we want. Multiplexers. Another thing we can build with transistors.
 >
-> How do we execute a sequence of instructions?
+> We need somewhere to store the program. There's plenty of options: a ROM (yet another thing you can build with transistors), or maybe use real physical switches. Punch cards. What have you.
 >
-> Idea: a clock for timing
+> Our programs are inherently sequential, but so far our circuits have been totally in parallel. How do you execute a sequence of instructions? 
+>
+> Idea: a clock for creating sequences. Rising and falling edges. 
 >
 > Idea: a register to track where in the sequence
 >
@@ -69,7 +61,7 @@ Of course, to do that, we need some way to represent numbers using electricity!
 
 ## Basic Computing
 
-> All up review. This is the von Neumann arch and all hardware uses it today
+> All up review. This is the von Neumann architecture and all conventional hardware uses it today
 
 ## Peripherals
 
@@ -78,3 +70,7 @@ Of course, to do that, we need some way to represent numbers using electricity!
 > Peripherals. Common device classes
 >
 > How do we make this work? Outline some strategies. We’ll come back later.
+
+
+
+> Congratulations on completing your whirlwind tour of how computers work. We're not out of the woods yet though. Over the next couple chapters, we'll take a deeper look at how you construct an electrical circuit to implement a von Neumann computing architecture and design programs for it.
