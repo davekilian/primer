@@ -17,22 +17,28 @@ It turns out the first insight we need is also the trickiest: how are we going t
 
 The key idea is *switching*. An electrical switch is a device that can be used to 'turn' a circuit on or off. You use switches every day: for example, to turn the lights on or off in your room. More precisely, an electrical switch controls the flow of electricity: electricity can flow through a switch when the switch is on, but not while the switch is off.
 
-How might switching be useful for doing calculations on numbers? It's easier to see if you count using *binary* numbering. In everyday situations, you use a numbering system with 10 digits: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ and $9$; when you need to go higher than 9, you start using multiple digits: $10$, $11$, $12$ and so on. In binary, there are only two digits &mdash; $0$ and $1$. To go higher, you have to go up to multiple digits faster. So, to count in binary, you would write: $1$ ("one"), $10$ (pronounced "two"), $11$ ("three"), $100$ ("four"), and so on. We'll circle back to this later in more detail, so don't worry if this doesn't make sense quite yet.
+How might switching be useful for doing calculations on numbers? It's easier to see if you count using *binary* numbering. In everyday situations, you use a numbering system with 10 digits: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ and $9$; when you need to go higher than 9, you start using multiple digits: $10$, $11$, $12$ and so on. In binary, there are only two digits &mdash; $0$ and $1$. To go higher, you have to go up to multiple digits faster. So, to count in binary, you would write: $1$ ("one"), $10$ (pronounced "two"), $11$ ("three"), $100$ ("four"), $101$ ("five") and so on. We'll circle back to this later, so don't worry if this doesn't make sense quite yet.
 
-Binary is useful for representing numbers in circuits because each binary digit (or "bit") has only two possible values: $0$ or $1$. This lines up nicely with electric switches, which also have two possible states: on or off. So we represent numbers by letting "switched on" (electricity flowing) mean a binary $1$, and "switched off" (no electricity) mean a binary $0$.
+Binary is useful for representing numbers in circuits because each binary digit has only two possible values: $0$ or $1$. This lines up nicely with electric switches, which also have two possible states: on or off. So we represent numbers by letting "switched on" (electricity flowing) mean a binary $1$, and "switched off" (no electricity) mean a binary $0$.
 
-The last key insight we need is that we should drive these switches *electronically*. A conventional switch is mechnical: you flip a lever or push a rocker to physically connect or disconnect a circuit. We need a switch that is driven electronically: the input ('source') and output ('drain') are always connected, but electricity only passes through if a third 'gate' wire is receiving electricity. So if there's power entering this 'gate,' then power can pass from source to drain, like a switch that has been switched on. If there's no power entering the gate, electricity cannot pass from source to drain, like a switch that has been switched off.
+Now for the tricky part! Buckle in and get ready:
 
-In theory, we should be able to interconnect a bunch of these switches strategically to build subcircuits that do calculations on binary numbers. We'll talk about that in more detail in the next chapter.
+The last key insight we need is that we should drive these switches *electronically*. A conventional switch is mechnical: you flip a lever or push a rocker to physically connect or disconnect a circuit. We're going to need a switch that is driven *electronically*: the input ('source') and output ('drain') are always connected, but electricity only passes through if there's electricity passing through a third 'gate' wire.
 
-Every modern computer uses a transistor as this 'electronically-driven switch.' Transistors each have three terminals: source, drain and gate. They work like valves: the more electricity that passes through the gate, the more electricity is allowed to pass from source to drain. Although transistors thus allow you to continually vary the source $\rightarrow$ drain current based on the gate current, we're only interested in using transistors as switches, so we're most interested in cases where the gate current is approximately 0 (switched off / binary $0$) or something clearly non-zero (switched on / binary $1$).
+To spell it out a bit better: if there's power going through this 'gate,' then power can pass through from the source to the drain, like a switch that has been turned on. Similarly, when there's no power going through the 'gate,' then electricity entering the source line is blocked from passing through out the drain line; the result is like a switch that has been switched off.
 
-In the next chapter of the book we'll learn more about circuits and transistors, and even see how to build a working calculator out of transistors. But all that's a little too in depth to tackle just yet. For now, just remember that we're going to build circuits of interconnected transistors that implement basic operations on binary numbers.
+As weird as these things might sound, they turn out to be pretty useful! In theory, we can interconnect a bunch of these switches strategically to build sub circuits that calculate things like the sum, difference and product of two binary numbers. In fact, we'll figure out how to do exactly that in the next chapter of this book.
+
+In modern computers, we use something called a 'transistor' as this electronically-driven switch. Like we just described, transistors have three terminals: source, drain and gate. Transistors work like electronic valves: the more electricity that passes through the gate, the more electricity is allowed to pass from source to drain. Although transistors thus allow you to continually vary the source $\rightarrow$ drain current based on the gate current, we're only interested in using transistors as switches, so we're always going to either set the gate current to zero (or as close to zero as we can), or some other non-zero value. The former switches the transistor off (binary $0$) and the latter switches the transistor on (binary $1$).
+
+We'll see later how you build circuits of transistors to implement calculations on binary numbers. For now, just keep in mind that the circuitry inside your computer switches transistors on and off to represent binary numbers, and interconnecting these transistors in a clever way causes the circuit to perform math on binary numbers. Wow!
 
 ## Programmability
 
-> Next we need programmability
->
+Okay, so we have a rough idea how to build an electronic calculator. A computer is a programmable calculator, so next we'll need to take a look at programmability.
+
+Our first question is: what should a program look like?
+
 > Idea: a program is a sequence of instructions. An inst is a number - which op
 >
 > Idea: subcircuits for each operation. We know how to do this from the previous section.
