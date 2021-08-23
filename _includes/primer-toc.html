@@ -3,13 +3,13 @@
     <li><a href="{{ 'whatis.html' | relative_url }}">What is a Computer?</a></li>
     <li><a href="{{ 'basic.html' | relative_url }}">A Basic Computer</a></li>
     <li>
-        <a href="{{ 'proc/index.html' | relative_url }}">Processors</a>
+        <a href="{{ 'cpu/index.html' | relative_url }}">Processors</a>
         <ol>
-            <li><a href="{{ 'proc/circuits.html' | relative_url }}">Circuitry</a></li>
-            <li><a href="{{ 'proc/design.html' | relative_url }}">The Design</a></li>
-            <li><a href="{{ 'proc/registers.html' | relative_url }}">The Registers</a></li>
-            <li><a href="{{ 'proc/math.html' | relative_url }}">The Calculator</a></li>
-            <li><a href="{{ 'proc/final.html' | relative_url }}">The Result</a></li>
+            <li><a href="{{ 'cpu/circuits.html' | relative_url }}">Circuitry</a></li>
+            <li><a href="{{ 'cpu/design.html' | relative_url }}">The Design</a></li>
+            <li><a href="{{ 'cpu/registers.html' | relative_url }}">The Registers</a></li>
+            <li><a href="{{ 'cpu/math.html' | relative_url }}">The Calculator</a></li>
+            <li><a href="{{ 'cpu/final.html' | relative_url }}">The Result</a></li>
         </ol>
     </li>
     <li>
@@ -48,6 +48,15 @@
         </ol>
     </li>
     <li>
+        <a href="{{ 'media/index.html' | relative_url }}">Media</a>
+        <ol>
+            <li><a href="{{ 'media/images.html' | relative_url }}">Images</a></li>
+            <li><a href="{{ 'media/audio.html' | relative_url }}">Audio</a></li>
+            <li><a href="{{ 'media/video.html' | relative_url }}">Video</a></li>
+            <li><a href="{{ 'media/codecs.html' | relative_url }}">Codecs</a></li>
+        </ol>
+    </li>
+    <li>
         <a href="{{ 'io/index.html' | relative_url }}">I/O</a>
         <ol>
             <li><a href="{{ 'io/interrupts.html' | relative_url }}">Interrupts</a></li>
@@ -63,7 +72,8 @@
             <li><a href="{{ 'perip/usb.html' | relative_url }}">Case Study: USB</a></li>
             <li><a href="{{ 'perip/storage.html' | relative_url }}">Storage</a></li>
             <li><a href="{{ 'perip/scsi.html' | relative_url }}">Case Study: SCSI</a></li>
-            <li><a href="{{ 'perip/displays.html' | relative_url }}">Displays</a></li>
+            <li><a href="{{ 'perip/displays.html' | relative_url }}">Displays and Graphics</a></li>
+            <li><a href="{{ 'perip/sound.html' | relative_url }}">Sound</a></li>
             <li><a href="{{ 'perip/input.html' | relative_url }}">Input</a></li>
         </ol>
     </li>
@@ -88,6 +98,15 @@
         </ol>
     </li>
     <li>
+        <a href="{{ 'advcpu/index.html' | relative_url }}">Processors and Memory</a>
+        <ol>
+            <li><a href="{{ 'advcpu/cache.html' | relative_url }}">Caches</a></li>
+            <li><a href="{{ 'advcpu/prefetch.html' | relative_url }}">Prefetching</a></li>
+            <li><a href="{{ 'advcpu/pipelines.html' | relative_url }}">Pipelining</a></li>
+            <li><a href="{{ 'advcpu/branch.html' | relative_url }}">Branch Prediction</a></li>
+        </ol>
+    </li>
+    <li>
         <a href="{{ 'boot/index.html' | relative_url }}">Bootstrapping</a>
         <ol>
             <li><a href="{{ 'boot/firmware.html' | relative_url }}">Firmware</a></li>
@@ -96,12 +115,32 @@
         </ol>
     </li>
     <li>
-        <a href="{{ 'advcpu/index.html' | relative_url }}">Processors and Memory</a>
+        <a href="{{ 'loader/index.html' | relative_url }}">Program Loaders</a>
         <ol>
-            <li><a href="{{ 'advcpu/cache.html' | relative_url }}">Caches</a></li>
-            <li><a href="{{ 'advcpu/prefetch.html' | relative_url }}">Prefetching</a></li>
-            <li><a href="{{ 'advcpu/pipelines.html' | relative_url }}">Pipelining</a></li>
-            <li><a href="{{ 'advcpu/branch.html' | relative_url }}">Branch Prediction</a></li>
+            <li><a href="{{ 'loader/images.html' | relative_url }}">Image Formats</a></li>
+            <li><a href="{{ 'loader/elf.html' | relative_url }}">Case Study: ELF</a></li>
+            <li><a href="{{ 'loader/program.html' | relative_url }}">Loading Programs</a></li>
+            <li><a href="{{ 'loader/dynlib.html' | relative_url }}">Dynamic Libraries</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'ui/index.html' | relative_url }}">User Interfaces</a>
+        <ol>
+            <li><a href="{{ 'ui/shells.html' | relative_url }}">Shells</a></li>
+            <li><a href="{{ 'ui/terminals.html' | relative_url }}">Terminals</a></li>
+            <li><a href="{{ 'ui/windowing.html' | relative_url }}">Windowing</a></li>
+        </ol>
+    </li>
+    <li>
+        <a href="{{ 'lang/index.html' | relative_url }}">Languages &amp; Runtimes</a>
+        <ol>
+            <li><a href="{{ 'lang/models.html' | relative_url }}">Compilers vs Interpreters</a></li>
+            <li><a href="{{ 'lang/jit.html' | relative_url }}">Just-in-Time Compilers</a></li>
+            <li><a href="{{ 'lang/oo.html' | relative_url }}">Objects and Models</a></li>
+            <li><a href="{{ 'lang/port.html' | relative_url }}">Portability</a></li>
+            <li><a href="{{ 'lang/cpp.html' | relative_url }}">Case Study: C++</a></li>
+            <li><a href="{{ 'lang/java.html' | relative_url }}">Case Study: Java</a></li>
+            <li><a href="{{ 'lang/python.html' | relative_url }}">Case Study: Python</a></li>
         </ol>
     </li>
     <li>
@@ -115,58 +154,11 @@
         </ol>
     </li>
     <li>
-        <a href="{{ 'loader/index.html' | relative_url }}">Program Loaders</a>
+        <a href="{{ 'virt/index.html' | relative_url }}">Virtual Machines</a>
         <ol>
-            <li><a href="{{ 'loader/images.html' | relative_url }}">Image Formats</a></li>
-            <li><a href="{{ 'loader/elf.html' | relative_url }}">Case Study: ELF</a></li>
-            <li><a href="{{ 'loader/program.html' | relative_url }}">Loading Programs</a></li>
-            <li><a href="{{ 'loader/dynlib.html' | relative_url }}">Dynamic Libraries</a></li>
-        </ol>
-    </li>
-    <li>
-        <a href="{{ 'lang/index.html' | relative_url }}">Languages &amp; Runtimes</a>
-        <ol>
-            <li><a href="{{ 'lang/models.html' | relative_url }}">Compilers vs Interpreters</a></li>
-            <li><a href="{{ 'lang/jit.html' | relative_url }}">Just-in-Time Compilers</a></li>
-            <li><a href="{{ 'lang/oo.html' | relative_url }}">Objects and Models</a></li>
-            <li><a href="{{ 'lang/cpp.html' | relative_url }}">Case Study: C++</a></li>
-            <li><a href="{{ 'lang/java.html' | relative_url }}">Case Study: Java</a></li>
-            <li><a href="{{ 'lang/python.html' | relative_url }}">Case Study: Python</a></li>
-        </ol>
-    </li>
-    <li>
-        <a href="{{ 'media/index.html' | relative_url }}">Media</a>
-        <ol>
-            <li><a href="{{ 'media/images.html' | relative_url }}">Images</a></li>
-            <li><a href="{{ 'media/audio.html' | relative_url }}">Audio</a></li>
-            <li><a href="{{ 'media/video.html' | relative_url }}">Video</a></li>
-            <li><a href="{{ 'media/codecs.html' | relative_url }}">Codecs</a></li>
-        </ol>
-    </li>
-    <li>
-        <a href="{{ 'graphics/index.html' | relative_url }}">Graphics</a>
-        <ol>
-            <li><a href="{{ 'graphics/displays.html' | relative_url }}">Displays</a></li>
-            <li><a href="{{ 'graphics/shells.html' | relative_url }}">Graphical Shells</a></li>
-            <li><a href="{{ 'graphics/rendering.html' | relative_url }}">Rendering</a></li>
-            <li><a href="{{ 'graphics/accel.html' | relative_url }}">Hardware Acceleration</a></li>
-        </ol>
-    </li>
-    <li>
-        <a href="{{ 'virt/index.html' | relative_url }}">Advanced Virtualization</a>
-        <ol>
-            <li><a href="{{ 'virt/vmm.html' | relative_url }}">Virtual machines</a></li>
+            <li><a href="{{ 'virt/vmm.html' | relative_url }}">Hypervisors</a></li>
             <li><a href="{{ 'virt/containers.html' | relative_url }}">Containers</a></li>
             <li><a href="{{ 'virt/k8s.html' | relative_url }}">Case Study: Kubernetes</a></li>
-        </ol>
-    </li>
-    <li>
-        <a href="{{ 'fs/index.html' | relative_url }}">File Systems</a>
-        <ol>
-            <li><a href="{{ 'fs/index.html' | relative_url }}">Indexing</a></li>
-            <li><a href="{{ 'fs/btree.html' | relative_url }}">B-Trees</a></li>
-            <li><a href="{{ 'fs/s5fs.html' | relative_url }}">Case Study: S5FS</a></li>
-            <li><a href="{{ 'fs/btrfs.html' | relative_url }}">Case Study: btrfs</a></li>
         </ol>
     </li>
     <li>
@@ -175,6 +167,7 @@
             <li><a href="{{ 'platf/desk.html' | relative_url }}">Desktops</a></li>
             <li><a href="{{ 'platf/mobile.html' | relative_url }}">Mobile</a></li>
             <li><a href="{{ 'platf/embed.html' | relative_url }}">Embedded</a></li>
+            <li><a href="{{ 'platf/vm.html' | relative_url }}">Virtual</a></li>
         </ol>
     </li>
     <li>
