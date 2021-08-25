@@ -39,37 +39,25 @@ So, to summarize, how are we going to build our calculator? The basic principles
 
 ## Programmability
 
-Okay, so we have a rough idea how to build an electronic calculator. A computer is a programmable calculator, and we have a high-level sketch for the calculator. How do we make it programmable?
+Okay, we have a rough idea how to build an electronic calculator. We're trying to build a programmable calculator, so next we should take a look at the programming part.
 
-Actually, here's a better place to start: what should a program look like?
+Here's a decent place to start: waht should a program look like?
 
-Designing a program that we can execute on an electronic circuit is a little tricky because we have to serve two masters: on one hand, we want it to be relatively easy for humans to construct and understand programs, but at the same time we also want to make it relatively simple to implement programs using electronic circuitry.
+Answering that question might be a little tricky because we have to serve two masters: on one hand, we want it to be relatively easy for humans to construct and understand programs, but at the same time we also want to make it straightforward to execute these programs using electronic circuitry.
 
-Here's a good idea that has been implemented many times: a program will be a sequence of *instructions*. An instruction has a human meaning: it's a command, like "add these two numbers" or "set this variable to zero." There's an instruction for each thing we want the computer to do on its internal calculator. Each instruction is *also* a binary number; that's the representation we'll use to implement the instruction with circuitry.
+A time-old answer to this dillemma is the *instruction*. An instruction has a human meaning: it's a command, like "set the current value to zero" or "add 4 to the current value." For each function our calculator supports, we'll also have a corresponding instruction, to 'expose' that calculator function to the programmer. Each instruction is *also* a binary number; that's the representation we'll use to implement the instruction with circuitry.
 
-> Example: table with some example instructions and their example numerical values
+Here's a table of imaginary instructions, where each of the instructions corresponds to one of the functions we used on the quadratic formula in the previous chapter:
 
-Our basic strategy will be to have one subcircuit for each instruction (using what we learned about calculations above), and then use the current instruction to pick the appropriate subcircuit for the current instruction.
+> TODO a table of the calculator functions from the previous chapter. Headings: instruction name, definition (copied from the previous chapter) and numerical value
 
-But of course, in order to pick the right subcircuit for the current instruction, we have to know what the current instruction is! Where are we storing that program anyways? For now, let's rely on a circuit called a [read-only memory](https://en.wikipedia.org/wiki/Read-only_memory) or "ROM." The ROM is just a circuit that stores each instruction as its binary numerical value. Our program ROM will be a circuit that accepts a single input number &mdash; the index of the instruction we're executing &mdash; and produces a single output number: the numerical value for that instruction.
+And, for completeness, here's what solving the quadratic equation would look like using our imaginary instruction set:
 
-Okay, so we have an idea of how to read an instruciton and execute it; but a program is a whole sequence of instructions, not just one. How do we execute the instructions one by one? We'll need a couple more tools:
+> TODO another table. On the left is each line from the 'program' listing in the previous chapter. In the right column is the binary representation of that instruction
 
-The first thing we'll use is a circuit element called a *clock*. A clock can't be built 
-
-
-
-
-
-> The first ingredient is a clock. This is just a switch that turns on and off at a predictable frequency. The basic strategy is for each clock cycle to execute one instruction. We want the clock to cycle as fast as possible, while still slow enough that there's enough time for electricity to finish moving throughout the entire circuit. [crystal oscillator](https://en.wikipedia.org/wiki/Crystal_oscillator)
+> Point out we need to store a 'current value.' Introduce the idea of a register. Promise to sketch out how to build one out of transistors later on. We want to have multiple registers so there are multiple places to store work-in-progress stuff. Instructions should specify which registers &mdash; e.g. the add instruction should specify two registers to add together, one of which will be the one that receives the sum.
 >
-> The second thing we need is a register: a transistor circuit that stores a number. TODO explain how we set the current value to the next value in time with the clock going up and down
->
-> Putting these things together, what does our master circuit looks like? TODO we need a register for tracking the index of the current instruction: 0 for the first instruction, 1 for the second, 2 for the third and so on. 
->
-> Registers aren't just useful for 
->
-> I guess we need to say "ISA" somewhere. Can be here as we outro
+> I think that's it? We don't want to mention program storage until we've covered memory. I dunno if a clock is interesting this early.
 
 ## Memory
 
@@ -79,11 +67,13 @@ The first thing we'll use is a circuit element called a *clock*. A clock can't b
 >
 > Idea: hey, what if we moved the program into RAM?
 >
-> Problem: bootstrapping. Firmware puts something in RAM to execute on power on.
+> Problem: bootstrapping. Firmware puts something in RAM to execute on power on. Whatever code it loaded picks it up from there.
 
-## Basic Computing
+## Computing
 
 > All up review. This is the von Neumann architecture and all conventional hardware uses it today
+>
+> Also introduce the term ISA
 
 ## Peripherals
 
