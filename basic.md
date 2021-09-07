@@ -1,23 +1,21 @@
 ---
 layout: chapter
-title: A Basic Computer
+title: A Basic Sketch
 ---
 
-In the previous chapter, we learned a little about computers and programs. We decided that a computer is a *programmble calculator*, which means that you give a computer a program (which is just a sequence of calculations), and the computer *executes* the program by carrying out each step on its internal calculator.
+In the previous chapter, we learned a little about computers and programs. We decided that a computer is a *programmble calculator*, which means that you give a computer a *program* (which is just a sequence of calculations), and the computer *executes* the program by carrying out each step on its internal calculator.
 
-Now, how would we build one of these things?
+Now, how does one go about building one of these things? In this chapter we will lay out a basic sketch of the path ahead of us. We'll figure out we need to do, and what problems we'll need to work out along the way. This will give us something of a map to follow over the next few chapters, over which we'll fill in the details.
 
-Answering that question turns out to be a little tricky, but not all that difficult. Although people sometimes point to computers as a pinnacle of humanity's technological achievement, the real achievement is in the nuts-and-bolts of designing and building computers. The high-level ideas are actually pretty simple, even if sometimes they're not obvious!
-
-Since a computer is a programmable calculator, let's start with the calculator part:
+If a computer is a programmable calculator, then we're going to need a calculator, right? Let's start there!
 
 ## Calculation
 
-How are we going to build a calculator out of electronic circuitry? This is probably the trickiest part of the whole design.
+How are we going to build a calculator out of electronic circuitry?
 
-The key idea we'll use is *switching*. A switch is something you use to turn an electric circuit on or off &mdash; for example, you use switches every day when you turn the lights on and off in your room. More precisely, a switch controls the flow of electricity: when on, the switch completes a circuit and allows electricity to flow. When off, a switch interrupts the circuit, preventing electricity from continuing to flow.
+The key idea we'll use is *switching*. A switch is something you use to turn an electric circuit on or off &mdash; for example, you use switches every day when you turn the lights on and off in your room. More precisely, a switch controls the flow of electricity: when on, the switch completes a circuit and allows electricity to flow. When off, a switch interrupts the circuit, preventing electricity from flowing through.
 
-How is switching useful for doing calculations on numbers? It's easier to see if you count using *binary* numbering. In binary, there are only two digits: $0$ and $1$. Just like with regular numbers, you use move to the next place when you run out of digits. The first few numbers look like this in binary:
+How is switching useful for doing calculations on numbers? It's easier to see if you count using *binary numbering*. In binary, there are only two digits, $0$ and $1$, and just like with regular numbers, you use move to the next number place when you run out of digits. The first few binary numbers look like this:
 
 ​	$1$ ("one")<br>
 ​	$10$ ("two")<br>
@@ -25,27 +23,69 @@ How is switching useful for doing calculations on numbers? It's easier to see if
 ​	$100$ ("four")<br>
 ​	$101$ ("five")
 
-Binary is useful when paired with switching because there are only two digits &mdash; $0$ and $1$ &mdash; and a switch also only has two possible states &mdash; on and off. We can use "switched off" to represent $0$ and "switched on" to represent $1$ in a circuit.
+Binary is useful when you're working with switches, because there are only two digits &mdash; $0$ and $1$ &mdash; and a switch also only has two possible states &mdash; on and off. That lets us use a switch to represent a binary digit: we can use "switched off" to represent $0$ and "switched on" to represent $1$ in circuitry. To represent a number with multiple digits, we use multiple switches.
 
-That gets us closer: we know how to represent numbers in a circuit. But how would we do math on them? How would we add two numbers, for example?
+For example, let's say we wanted to represent the number 6 in binary. We'd start by counting to six in binary:
 
-One thing that might help here is to invent a new kind of switch. A conventional switch is mechnical. In between the *source* terminal (where electricity comes in) and the *drain* terminal (where electricity goes out), there will be a lever you can flip, a rocker you can push, or something else that physically connects or disconnects the terminals. Instead of mechanical control, we want electronic control. Say we add a third *gate* terminal: when this terminal is powered, the switch is 'on' and electricity flows from source to drain. But when the terminal is not powered on, the switch is 'off,' so electricity cannot flow from source to drain.
+​	$1$ ("one"), $10$ ("two"), $11$ ("three"), $100$ ("four"),  $101$ ("five"), $110$ ("six")
 
-It turns out, if you have this kind of switch, you can build subcircuits that do some pretty interesting things. The basic idea is to have your input numbers go into a network of switches, which in turn switch other switches, and so on, until the output is something meaningful. For example, you might send the digits of two numbers into a network of switches, such that the 'output' of the switch network is each digit of the sum of those two input numbers. We don't have room to do it here, but in the next chapter we'll work out a few examples to give you an idea of how this works.
+It looks like we need three digits, so we'll use three switches:
 
-In modern computers, we use a device called a *transistor* as this switch. Technically, a transistor is more powerful than a simple switch: a transistor works like a valve, continually varying the amount of power that passes from source to drain proportionally to the amount of power that's passing into the gate. However, in computers we're only interesting in switching things on and off, so we don't use this capability.
+* The 1s place switch, which would be switched off (because the 1s place of $110$ is $0$)
+* The 10s place switch, switched on (the 10s place of $110$ is $1$)
+* The 100s place switch, swithced on (the 100s place of $110$ is $1$)
 
-So, to summarize, how are we going to build our calculator? The basic principles are to represent numbers using binary, so that a switched-on connection is a binary $1$ and a switched-off connection is a binary $0$. Then we use networks of transistors to do math on these binary numbers. We'll see some examples of how this works in the next chapter!
+In practice, you might want to be able to store much larger numbers; for example, with eight switches, you could store any number from 0 to 255. If we wanted to use those eight switches to store the number six ($110$), all we need to do is set the switches as described above, and then set all the remaining switches off. That is, the 1000s place switch should be off (set to $0$), as should the 10,000s place, the 100,000s place, and so on. We might write the resulting configuration as $00000110$ to remind us of all those extra switches that we turned off.
+
+Hopefully that gives you a feel for how to represent numbers in binary using circuitry. If things still feel a little fuzzy, that's ok &mdash; we'll go in greater depth over the next chapter.
+
+For our calculator, we need to go a step further: representing numbers is a start, but how do we use circuitry to run calculations on binary numbers represented this way? For example, how would we add two binary numbers using switches?
+
+To make this work, we need to build ourselves a new kind of switch.
+
+A conventional switch is mechanical: in between the *source* terminal (where electricity is coming in) and the *drain* terminal (where electricity goes out), a switch will have some way to *mechanically* connect and disconnect the two terminals: it might be a lever you can flip, a rocker you can push, or something else. To implement our calculator, we're going to want something slightly different: a switch that can be controlled *electronically*.
+
+An electronic switch should have three terminals: the source and drain terminals like a conventional switch, plus a new terminal called the *gate.* The gate terminal is how we will operate the switch electronically: when we power the gate terminal, that completes the circuit, allowing electricity coming into the source terminal to flow out the drain terminal. When we power off the gate terminal, that interrupts the circuit, meaning electricity can no longer flow from source to drain:
+
+> Add a basic schematic diagram
+
+In a computer, this switch is implemented using a circuit element called a *transistor*. Specifically, we use a kind of transistor with a fancy name: a "*metal-oxide-semiconductor field-effect transistor*," or "*MOSFET*." In this kind of transistor, the source and drain are separated by layers of a silicon-based semiconductor. This silicon layer normally acts as an electrical insulator, stopping electricity from flowing from the source terminal to drain; however, when we apply an electrical current to the silicon layer (via the gate terminal), that allows a current to pass through the silicon layer, completing the circuit between the source and drain terminals. We'll take a closer look at the underlying physics of MOSFETs in a future chapter.
+
+So why were we bothering with all this transistor stuff, again? It turns out transistors are useful for doing math in circuitry: the main idea is to represent a mathematical operation on binary numbers using a network of interconnected transistors.
+
+For example, say you want to build a subcircuit that adds two binary numbers. This subcircuit will have a set of "input" terminals for the digits of the binary numbers we want to add, as well as a set of "output" terminals with the digits of the resulting binary sum. In between those terminals is a network of transistors, which mix the input signals as needed in order to obtain the correct output signals:
+
+> Another diagram 
+
+You might wonder what that network of transistors might look like: it's not very complicated, but it takes a lot of space to spell it out, so we'll wait on covering this in detail until the next chapter. 
+
+> ### An Optional Assignment
+>
+> We're not ready to talk about these transistor networks, but you aree welcome to start puzzling them out for yourself! How would *you* build a transistor network that adds two 4-digit binary numbers, and outputs a 5-digit binary sum?
+>
+> In the end, all you really need to figure this out is a pen, paper and a good chunk of time. If you've never done anything like this before, it'll be a hard problem, but it's doable! After all, the real transistor networks that add binary numbers inside your computer are human inventions, so at some point, *somebody* had to figure this out ... 
+>
+> If you want to try this, there are two additional circuit elements that you will probably need: a **power source**, which provides electricity when you need some, and a **ground**, which provides somewhere to dump electricity you don't need. Both of these will be introduced in the next chapter.
+>
+> Good luck, and have fun!
+
+So, in summary, how are we going to build our calculator? Here are the basic principles:
+
+* Represent all numbers and calculations using **binary numbers**
+* Represent binary digits using electricity: **switched-on for $1$ or -off for $0$**
+* Implement numeric operations using **networks of transistors**
+
+Now that we have a sketch of how you'd build a calculator, let's turn our focus to programmability. 
 
 ## Programmability
 
-Okay, we have a rough idea how to build an electronic calculator. We're trying to build a programmable calculator, so next we should take a look at the programming part.
+How do we set up a way to program our new calculator? How do we execute these programs in circuitry? Actually, what should a program even look like anyways?
 
-Here's a decent place to start: waht should a program look like?
+In answering that last question, we need to make a tradeoff: on one hand, we want it to be relatively easy for humans to construct and understand programs, but at the same time, we also want to make it straightforward to execute these programs using electronic circuitry.
 
-Answering that question might be a little tricky because we have to serve two masters: on one hand, we want it to be relatively easy for humans to construct and understand programs, but at the same time we also want to make it straightforward to execute these programs using electronic circuitry.
+A time-old answer to this dillemma is a programming primitive called an *instruction*. An instruction has a human meaning: it's a command, like "set the current value to 6" or "add 4 to the current value." We will have one instruction for each function we built into our calculator; the instruction is how we make it possible to access that calculator function via a program. Each instruction is *also* a binary number; that's how we represent an instruction in circuitry.
 
-A time-old answer to this dillemma is the *instruction*. An instruction has a human meaning: it's a command, like "set the current value to zero" or "add 4 to the current value." For each function our calculator supports, we'll also have a corresponding instruction, to 'expose' that calculator function to the programmer. Each instruction is *also* a binary number; that's the representation we'll use to implement the instruction with circuitry.
+Putting it together, a program will just be an ordered list of instructions. To execute a program, we will need to build a circuit that walks through the program one instruction at a time, each time determining which calculator function the instruction calls for and running the corresponding calculator subcircuit, before continuing on to the next instruction. We, the programmers will to construct programs by lining up instructions so they do something interesting.
 
 Here's a table of imaginary instructions, where each of the instructions corresponds to one of the functions we used on the quadratic formula in the previous chapter:
 
@@ -55,9 +95,23 @@ And, for completeness, here's what solving the quadratic equation would look lik
 
 > TODO another table. On the left is each line from the 'program' listing in the previous chapter. In the right column is the binary representation of that instruction
 
-> Point out we need to store a 'current value.' Introduce the idea of a register. Promise to sketch out how to build one out of transistors later on. We want to have multiple registers so there are multiple places to store work-in-progress stuff. Instructions should specify which registers &mdash; e.g. the add instruction should specify two registers to add together, one of which will be the one that receives the sum.
->
-> I think that's it? We don't want to mention program storage until we've covered memory. I dunno if a clock is interesting this early.
+So far, all of our instructions have been referring to a 'current value.' What does this mean?
+
+In a computer, intermediate values that we are working on are stored in a subcircuit called a *register*. A register is just another subcircuit made out of a network of interconnected transistors; however, instead of performing arithemetic, the purpose of a register is to remember a binary number so it can be retrieved later. The act of changing the number a register holds is called a *store* or a *write*; the act of retrieving the number from the register is called a *load* or a *write*.
+
+Typically, a computer will have a few dozen registers, allowing a computer to track many intermediate values that the program is currently working on. On such a computer, instructions are typically expressed in terms of the registers they operate on; for example, `load A 6` might be human-readable shorthand for an instruction saying "store the binary value of 6 ($110$) in register $A$," and `add A B` might be shorthand for "load the values of registers $A$ and $B$, sum them, and store the result in register $A$."
+
+I'm sure you're getting tired of me saying it, but, for completeness: we will see how to implement a register as a transistor network in the next chapter. Along with everything else :-)
+
+So what did we decide about programs and programmability?
+
+* A **program** is an ordered list of **instructions**
+* An instruction has a human meaning, as a **command**
+* An instruction has a **binary representation** for circuitry
+* Computers execute programs **one instruction at a time**
+* Instructions store and use intermediate values in **registers**
+
+And boom, we have a very basic sketch of a very basic computer. However, there are still a few more details we need to fill in. The biggest one we've left out so far in random access memory.
 
 ## Memory
 
