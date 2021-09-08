@@ -65,7 +65,7 @@ You might wonder what that network of transistors might look like: it's not very
 >
 > In the end, all you really need to figure this out is a pen, paper and a good chunk of time. If you've never done anything like this before, it'll be a hard problem, but it's doable! After all, the real transistor networks that add binary numbers inside your computer are human inventions, so at some point, *somebody* had to figure this out ... 
 >
-> If you want to try this, there are two additional circuit elements that you will probably need: a **power source**, which provides electricity when you need some, and a **ground**, which provides somewhere to dump electricity you don't need. Both of these will be introduced in the next chapter.
+> If you want to try this, there are two additional circuit elements that you will probably need: a **power source**, which provides electricity when you need some, and a **ground**, which provides somewhere to dump electricity you don't need. Both of these will be introduced in the next chapter. I'll also suggest you start by trying to add two 1-digit binary numbers, and then figure out how to extend your design to 4 digits.
 >
 > Good luck, and have fun!
 
@@ -115,13 +115,29 @@ And boom, we have a very basic sketch of a very basic computer. However, there a
 
 ## Memory
 
-> What if we need even more space than we can put in a register?
+So far, we've sketched out a computer that executes programs made of instructions, executing each instruction one by one by running the corresponding calculation subcircuit. All intermediate values used by these instructions are stored in registers, and each instruction stores its result in a register. With care, we can construct a sequence of instruction that calculates something interesting, and stores it in a register. What we have is already a recognizable computer!
+
+But the computer, as we've designed it, is not very useful yet. What if we need more intermediate state than we can store in our registers? Say, for example, we wanted to calculate the average temperature over the past year by summing the high and low temperature of each day; where would we store those ($365 \times 2 =$) $730$ temperatures, if for cost reasons a computer only has a few dozen registers?
+
+Also, we've made a glaring omission: a program is a list of instructions that the computer executes; but where is that program stored? How does the computer know what instructions were given to it by the programmer?
+
+We usually solve both these problems with another component we haven't talked about yet: random-access memory, or "RAM." As is the norm, this book will usually call RAM "memory" for the sake of brevity.
+
+The basic idea 
+
+> Idea: an array of 8-bit integers. Warning: we haven't defined "bit" yet. An 8-bit integer is called a byte. Usually, memory is pretty big: if your computer has 4 GB of RAM, that means your computer's memory has 4 billion slots, each of which can store an 8-bit integer.
 >
-> Idea: an array of 8-bit integers. Like ROM but you can modify it.
+> An address identifies each byte in memory. The first 8-bit integer is at address 0, the second is at address 1, and so on. 
 >
-> Idea: hey, what if we moved the program into RAM?
+> To make memory accessible to programs, we provide instructions that store into and load from memory. A store instruction copies the number of a designated register into a given memory address, and a load instruction copies the value stored at a given memory address into the designated register. Work examples.
 >
-> Problem: bootstrapping. Firmware puts something in RAM to execute on power on. Whatever code it loaded picks it up from there.
+> This provides a simple way to 'spill over' when you have more data than you can hold in registers.
+>
+> If you need a number with more than 8 bits, you can just commandeer multiple neighboring 8-bit integers. For example, to store a 16-bit integer at address 0, you might store the first eight digits in address 0 and the last eight digits in address 1.
+>
+> What about the program itself? With memory, we now have a simple place to store the program: as a sequence of instruction stored in memory
+>
+> Problem: bootstrapping. Firmware puts something in RAM to execute on power on. Whatever code it loaded picks it up from there. Usually that code loads more code, or provides a programmer some way to enter code.
 
 ## Computing
 
