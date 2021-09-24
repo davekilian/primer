@@ -13,9 +13,9 @@ If a computer is a programmable calculator, then we're going to need a calculato
 
 How are we going to build a calculator out of electronic circuitry?
 
-The key idea we'll use is *switching*. A switch is something you use to turn an electric circuit on or off &mdash; for example, you use switches every day when you turn the lights on and off in your room. More precisely, a switch controls the flow of electricity: when on, the switch completes a circuit and allows electricity to flow. When off, a switch interrupts the circuit, preventing electricity from flowing through.
+The key idea we'll use is *switching*. A switch is something you use to turn an electric circuit on or off &mdash; for example, you use switches every day when you turn the lights on and off at your place. More precisely, a switch controls the flow of electricity: when it's on, the switch *completes* a circuit so that electricity can flow through it. When it's off, a switch *interrupts* the circuit, preventing electricity from flowing on through the switch.
 
-How is switching useful for doing calculations on numbers? It's easier to see if you count using *binary numbering*. In binary, there are only two digits, $0$ and $1$, and just like with regular numbers, you use move to the next number place when you run out of digits. The first few binary numbers look like this:
+How is switching useful for doing calculations on numbers? It's easier to see if you count using *binary* numbering. In binary, there are only two digits, $0$ and $1$, and just like with regular numbers, you use move to the next number place when you run out of digits. The first few binary numbers look like this:
 
 ​	$1$ ("one")<br>
 ​	$10$ ("two")<br>
@@ -23,7 +23,9 @@ How is switching useful for doing calculations on numbers? It's easier to see if
 ​	$100$ ("four")<br>
 ​	$101$ ("five")
 
-Binary is useful when you're working with switches, because there are only two digits &mdash; $0$ and $1$ &mdash; and a switch also only has two possible states &mdash; on and off. That lets us use a switch to represent a binary digit: we can use "switched off" to represent $0$ and "switched on" to represent $1$ in circuitry. To represent a number with multiple digits, we use multiple switches.
+If it's not immediately clear how binary works, don't worry: we'll take a closer look at binary soon, in the next chapter. For now, the important thing to know is that binary lets us represent numbers &mdash; *any* number, in fact! &mdash; using just the digits $0$ and $1$.
+
+Binary is useful when you're working with switches because there are only two digits &mdash; $0$ and $1$ &mdash; and a switch also only has two possible states &mdash; on and off. That lets us use a switch to represent a binary digit: we can use "switched off" to represent $0$ and "switched on" to represent $1$ in circuitry. To represent a binary number with multiple digits, we use multiple switches; for example, if we wanted to represent a 4-digit binary number, we'd need to use 4 switches &mdash; one for each digit.
 
 For example, let's say we wanted to represent the number 6 in binary. We'd start by counting to six in binary:
 
@@ -35,9 +37,9 @@ It looks like we need three digits, so we'll use three switches:
 * The 10s place switch, switched on (the 10s place of $110$ is $1$)
 * The 100s place switch, swithced on (the 100s place of $110$ is $1$)
 
-In practice, you might want to be able to store much larger numbers; for example, with eight switches, you could store any number from 0 to 255. If we wanted to use those eight switches to store the number six ($110$), all we need to do is set the switches as described above, and then set all the remaining switches off. That is, the 1000s place switch should be off (set to $0$), as should the 10,000s place, the 100,000s place, and so on. We might write the resulting configuration as $00000110$ to remind us of all those extra switches that we turned off.
+In practice, you might want to be able to store much larger numbers; for example, with eight switches, you could store any number from 0 to 255. If we wanted to use those eight switches to store the number six ($110$), all we need to do is set the switches as described above, and then set all the remaining switches off. That is, the 1,000s place switch should be off (set to $0$), as should the 10,000s place, the 100,000s place, and so on. We might write the resulting configuration as $00000110$ to remind us of all those extra switches that we turned off.
 
-Hopefully that gives you a feel for how to represent numbers in binary using circuitry. If things still feel a little fuzzy, that's ok &mdash; we'll go in greater depth over the next chapter.
+Hopefully that gives you a feel for how to represent numbers in binary using circuitry. If things still feel a little fuzzy, that's ok &mdash; we'll go in greater depth over the next chapter of this book.
 
 For our calculator, we need to go a step further: representing numbers is a start, but how do we use circuitry to run calculations on binary numbers represented this way? For example, how would we add two binary numbers using switches?
 
@@ -45,19 +47,23 @@ To make this work, we need to build ourselves a new kind of switch.
 
 A conventional switch is mechanical: in between the *source* terminal (where electricity is coming in) and the *drain* terminal (where electricity goes out), a switch will have some way to *mechanically* connect and disconnect the two terminals: it might be a lever you can flip, a rocker you can push, or something else. To implement our calculator, we're going to want something slightly different: a switch that can be controlled *electronically*.
 
-An electronic switch should have three terminals: the source and drain terminals like a conventional switch, plus a new terminal called the *gate.* The gate terminal is how we will operate the switch electronically: when we power the gate terminal, that completes the circuit, allowing electricity coming into the source terminal to flow out the drain terminal. When we power off the gate terminal, that interrupts the circuit, meaning electricity can no longer flow from source to drain:
+This ' electronic switch' will instead have three terminals: the source and drain terminals like a conventional switch, plus a new terminal called the *gate.* The gate terminal is how we will operate the switch electronically: when we power the gate terminal, that completes the circuit, allowing electricity coming into the source terminal to flow out the drain terminal. When we power off the gate terminal, that interrupts the circuit, meaning electricity can no longer flow from source to drain:
 
 > Add a basic schematic diagram
 
-In a computer, this switch is implemented using a circuit element called a *transistor*. Specifically, we use a kind of transistor with a fancy name: a "*metal-oxide-semiconductor field-effect transistor*," or "*MOSFET*." In this kind of transistor, the source and drain are separated by layers of a silicon-based semiconductor. This silicon layer normally acts as an electrical insulator, stopping electricity from flowing from the source terminal to drain; however, when we apply an electrical current to the silicon layer (via the gate terminal), that allows a current to pass through the silicon layer, completing the circuit between the source and drain terminals. We'll take a closer look at the underlying physics of MOSFETs in a future chapter.
+Note that the source and drain terminals are always physically connected in this switch! We'll need to rely on some kind of electrochemical effect to control the flow of electricity from source to drain.
 
-So why were we bothering with all this transistor stuff, again? It turns out transistors are useful for doing math in circuitry: the main idea is to represent a mathematical operation on binary numbers using a network of interconnected transistors.
+What we just described is a circuit element called a *transistor*. In a modern computer, we achieve this using a specific kind of transistor called a "*metal-oxide-semiconductor field-effect transistor*" or "*MOSFET*." In this kind of transistor, the source and drain terminals are physically connected through layers of a silicon-based semiconductor (which is the metal-oxide-semiconductor of our MOSFET). The semiconductor layers are constructed to have a special property: normally, they create an electric field that prevents electricity from passing through, but we can change that by applying a charge to the semiconductor layer itself &mdash; via the transistor's "gate" terminal. That's the "field effect" of our MOFSET.
+
+The net result is the electronically-controlled switch we were looking for: when we apply a charge to the gate terminal, that completes the circuit, so that electricity can pass from source to drain. Without a charge, the transistor naturally interrupts the flow from source to drain instead.
+
+Transistors turn out to be quite useful for doing math in circuitry! The basic idea is to represent a mathematical operation on binary numbers using a network of interconnected transistors. The binary digits of the input numbers switch individual transistors on or off, which in turn switch more transistors on or off, and so on. With some care, we can configure this network to perform a mathematical operation, and output the result as a set of switching states (on and off) which correspond to digits of a binary number ($0$s and $1$s).
 
 For example, say you want to build a subcircuit that adds two binary numbers. This subcircuit will have a set of "input" terminals for the digits of the binary numbers we want to add, as well as a set of "output" terminals with the digits of the resulting binary sum. In between those terminals is a network of transistors, which mix the input signals as needed in order to obtain the correct output signals:
 
 > Another diagram 
 
-You might wonder what that network of transistors might look like: it's not very complicated, but it takes a lot of space to spell it out, so we'll wait on covering this in detail until the next chapter. 
+You might wonder what that network of transistors might look like: it's not very complicated, but it takes a lot of space to spell it out, so we'll wait on covering this in detail until the next chapter.
 
 > ### An Optional Assignment
 >
