@@ -53,27 +53,13 @@ This ' electronic switch' will instead have three terminals: the source and drai
 
 Note that the source and drain terminals are always physically connected in this switch! We'll need to rely on some kind of electrochemical effect to control the flow of electricity from source to drain.
 
-What we just described is a circuit element called a *transistor*. In a modern computer, we achieve this using a specific kind of transistor called a "*metal-oxide-semiconductor field-effect transistor*" or "*MOSFET*." In this kind of transistor, the source and drain terminals are physically connected through layers of a silicon-based semiconductor (which is the metal-oxide-semiconductor of our MOSFET). The semiconductor layers are constructed to have a special property: normally, they create an electric field that prevents electricity from passing through, but we can change that by applying a charge to the semiconductor layer itself &mdash; via the transistor's "gate" terminal. That's the "field effect" of our MOFSET.
+What we just described is a circuit element called a *transistor*. In a modern computer, we achieve this using a specific kind of transistor called a "*metal-oxide-semiconductor field-effect transistor*" or "*MOSFET*." In this kind of transistor, the source and drain terminals are physically connected through layers of a silicon-based semiconductor &mdash; our "metal oxide semiconductor." The semiconductor layers are constructed to have a special property: normally, they create an electric field that prevents electricity from passing through, but we can break down that field by applying a charge to the semiconductor layer itself &mdash; via the transistor's "gate" terminal. That's the "field effect" of our MOFSET. The net result? A switch that is 'completes' the circuit when we charge the gate terminal, and 'interrupts' the circuit when the gate is uncharged. An electrically-operated switch!
 
-The net result is the electronically-controlled switch we were looking for: when we apply a charge to the gate terminal, that completes the circuit, so that electricity can pass from source to drain. Without a charge, the transistor naturally interrupts the flow from source to drain instead.
-
-Transistors turn out to be quite useful for doing math in circuitry! The basic idea is to represent a mathematical operation on binary numbers using a network of interconnected transistors. The binary digits of the input numbers switch individual transistors on or off, which in turn switch more transistors on or off, and so on. With some care, we can configure this network to perform a mathematical operation, and output the result as a set of switching states (on and off) which correspond to digits of a binary number ($0$s and $1$s).
-
-For example, say you want to build a subcircuit that adds two binary numbers. This subcircuit will have a set of "input" terminals for the digits of the binary numbers we want to add, as well as a set of "output" terminals with the digits of the resulting binary sum. In between those terminals is a network of transistors, which mix the input signals as needed in order to obtain the correct output signals:
+Transisors turn out to be quite useful for doing math in circuitry. The basic idea is to represent a mathematical operation on binary numbers using a network of interconnected transistors. For example, say you want to build a subcircuit that adds two binary numbers: this subcircuit will have a set of "input" terminals for the digits of the binary numbers we want to add, as well as a set of "output" terminals with the digits of the resulting binary sum. In between those terminals will be a network of transistors, which mix the input signals as needed in order to obtain the correct output signals:
 
 > Another diagram 
 
-You might wonder what that network of transistors might look like: it's not very complicated, but it takes a lot of space to spell it out, so we'll wait on covering this in detail until the next chapter.
-
-> ### An Optional Assignment
->
-> We're not ready to talk about these transistor networks, but you aree welcome to start puzzling them out for yourself! How would *you* build a transistor network that adds two 4-digit binary numbers, and outputs a 5-digit binary sum?
->
-> In the end, all you really need to figure this out is a pen, paper and a good chunk of time. If you've never done anything like this before, it'll be a hard problem, but it's doable! After all, the real transistor networks that add binary numbers inside your computer are human inventions, so at some point, *somebody* had to figure this out ... 
->
-> If you want to try this, there are two additional circuit elements that you will probably need: a **power source**, which provides electricity when you need some, and a **ground**, which provides somewhere to dump electricity you don't need. Both of these will be introduced in the next chapter. I'll also suggest you start by trying to add two 1-digit binary numbers, and then figure out how to extend your design to 4 digits.
->
-> Good luck, and have fun!
+We could talk about how this network of transistor might look right now if we wanted: it's not very complicated, although it does take a lot of space to spell it out. For that reason, we'll wait to cover that until the next chapter.
 
 So, in summary, how are we going to build our calculator? Here are the basic principles:
 
@@ -89,9 +75,9 @@ How do we set up a way to program our new calculator? How do we execute these pr
 
 In answering that last question, we need to make a tradeoff: on one hand, we want it to be relatively easy for humans to construct and understand programs, but at the same time, we also want to make it straightforward to execute these programs using electronic circuitry.
 
-A time-old answer to this dillemma is a programming primitive called an *instruction*. An instruction has a human meaning: it's a command, like "set the current value to 6" or "add 4 to the current value." We will have one instruction for each function we built into our calculator; the instruction is how we make it possible to access that calculator function via a program. Each instruction is *also* a binary number; that's how we represent an instruction in circuitry.
+A time-old answer to this dillemma is a programming primitive: the *instruction*. An instruction has a human meaning: it's a command, like "set the current value to 6" or "add 4 to the current value." We will have one instruction for each function we built into our calculator; the instruction is how we make it possible to access that calculator function via a program. Each instruction is *also* a binary number; that's how we represent an instruction in circuitry.
 
-Putting it together, a program will just be an ordered list of instructions. To execute a program, we will need to build a circuit that walks through the program one instruction at a time, each time determining which calculator function the instruction calls for and running the corresponding calculator subcircuit, before continuing on to the next instruction. We, the programmers will to construct programs by lining up instructions so they do something interesting.
+Putting it together, a program will just be an ordered list of instructions. To execute a program, we will need to build a circuit that walks through the program one instruction at a time, each time determining which calculator function the instruction calls for and running the corresponding calculator subcircuit, before continuing on to the next instruction. We, the programmers will to construct programs by lining up instructions so they do something interesting. The computer will execute programs using transistors.
 
 Here's a table of imaginary instructions, where each of the instructions corresponds to one of the functions we used on the quadratic formula in the previous chapter:
 
@@ -103,11 +89,11 @@ And, for completeness, here's what solving the quadratic equation would look lik
 
 So far, all of our instructions have been referring to a 'current value.' What does this mean?
 
-In a computer, intermediate values that we are working on are stored in a subcircuit called a *register*. A register is just another subcircuit made out of a network of interconnected transistors; however, instead of performing arithemetic, the purpose of a register is to remember a binary number so it can be retrieved later. The act of changing the number a register holds is called a *store* or a *write*; the act of retrieving the number from the register is called a *load* or a *write*.
+In a computer, intermediate values that we are working on are stored in a subcircuit called a *register*. A register is just another network of interconnected transistors, except this network is designed to store a binary number instead of operate on one. We use registers in our computer whenever we want to remember a binary number so it can be retrieved later. The act of changing the number a register holds is called a *store* or a *write*; the act of retrieving the number from the register is called a *load* or a *write*.
 
-Typically, a computer will have a few dozen registers, allowing a computer to track many intermediate values that the program is currently working on. On such a computer, instructions are typically expressed in terms of the registers they operate on; for example, `load A 6` might be human-readable shorthand for an instruction saying "store the binary value of 6 ($110$) in register $A$," and `add A B` might be shorthand for "load the values of registers $A$ and $B$, sum them, and store the result in register $A$."
+Typically, a computer will have a few dozen registers, allowing the computer to track many intermediate values that the program is currently working on. On such a computer, instructions are typically expressed in terms of the registers they operate on; for example, `load A 6` might be human-readable shorthand for an instruction saying "store the binary value of 6 ($110$) in register $A$," and `add A B` might be shorthand for "load the values of registers $A$ and $B$, sum them, and store the result in register $A$."
 
-I'm sure you're getting tired of me saying it, but, for completeness: we will see how to implement a register as a transistor network in the next chapter. Along with everything else :-)
+I'm sure you're getting tired of me saying it, but: we will see how to implement a register as a transistor network in the next chapter. Along with everything else :-)
 
 So what did we decide about programs and programmability?
 
@@ -117,7 +103,7 @@ So what did we decide about programs and programmability?
 * Computers execute programs **one instruction at a time**
 * Instructions store and use intermediate values in **registers**
 
-And boom, we have a very basic sketch of a very basic computer. However, there are still a few more details we need to fill in. The biggest one we've left out so far in random access memory.
+Our basic sketch of a simplistic computer is starting to take form. Let's turn our focus to a different but equally important problem a computer must solve: mass data storage.
 
 ## Memory
 
