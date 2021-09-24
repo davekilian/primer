@@ -3,9 +3,11 @@ layout: chapter
 title: A Basic Sketch&#58; Peripherals
 ---
 
-Despite all of the amazing work we have done together throughout this chapter, we still managed to build a largely useless computer. Womp womp. What went wrong?
+We have covered a lot of ground in this chapter. We have designed what, even today, still seems like a technical marvel, and filling in the details might already sound a little daunting. Despite all of the amazing work we have done together throughout this chapter, I am sad to report we, so far, have managed to design a largely useless computer. A technical marvel with about zero practical real-world applications.
 
-Well, there's no way to get data into the computer. Or out of the computer. Or program it. How is a human, in the real world, supposed to use this thing?
+Womp, womp. What went wrong?
+
+Well, there's no way for a person to *use* this computer! There's no way to input data. There's no way to program the computer. There's no way to get the results of any computation we do. How is a human, in the real world, supposed to use this thing?
 
 > Peripherals. Common device classes
 >
