@@ -1,7 +1,17 @@
 <ol class="toc">
     <li><a href="{{ 'index.html' | relative_url }}">About This Book</a></li>
     <li><a href="{{ 'whatis.html' | relative_url }}">What is a Computer?</a></li>
-    <li><a href="{{ 'basic.html' | relative_url }}">A Basic Sketch</a></li>
+    <li>
+        <a href="{{ 'basic/index.html' | relative_url }}">A Basic Sketch</a>
+        <ol>
+            <li><a href="{{ 'basic/num.html' | relative_url }}">Numbers</a></li>
+            <li><a href="{{ 'basic/calc.html' | relative_url }}">Calculation</a></li>
+            <li><a href="{{ 'basic/prog.html' | relative_url }}">Programmability</a></li>
+            <li><a href="{{ 'basic/mem.html' | relative_url }}">Memory</a></li>
+            <li><a href="{{ 'basic/comp.html' | relative_url }}">Computing</a></li>
+            <li><a href="{{ 'basic/perip.html' | relative_url }}">Peripherals</a></li>
+        </ol>
+    </li>
     <li>
         <a href="{{ 'cpu/index.html' | relative_url }}">Processors</a>
         <ol>
