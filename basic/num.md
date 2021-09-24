@@ -5,7 +5,7 @@ title: A Basic Sketch&#58; Numbers
 
 So, how are we going to work with numbers in electronic circuitry?
 
-The key idea we'll use is *switching*. A switch turns an electric circuit on or off &mdash; for example, you probably use a light switch to turn the lights on or off at your place every day. More precisely, a switch controls the flow of electricity: when it's on, the switch *completes* a circuit so that electricity can flow through it. When it's off, a switch *interrupts* the circuit, preventing electricity from flowing on through the switch.
+The key idea we'll use is *switching*. A switch is an electronic device that turns a circuit on or off. You probably use switches every day to turn overhead lights on and off! More precisely, a switch controls the flow of electricity through the switch: when it's on, the switch *completes* a circuit so that electricity can flow through it. When it's off, a switch *interrupts* the circuit, preventing electricity from flowing on through the switch.
 
 > Diagram
 
@@ -33,4 +33,4 @@ It looks like we need three digits, so we'll use three switches:
 
 In practice, you might want to be able to store much larger numbers; for example, with eight switches, you could store any number from 0 to 255. If we wanted to use those eight switches to store the number six ($110$), all we need to do is set the switches as described above, and then set all the remaining switches off. That is, the 1,000s place switch should be off (set to $0$), as should the 10,000s place, the 100,000s place, and so on. We might write the resulting configuration as $00000110$ to remind us of all those extra switches that are all turned off.
 
-Hopefully that gives you a feel for how to represent numbers in binary using circuitry. If things still feel a little fuzzy, that's ok &mdash; remember we'll go in greater depth over the next chapter of this book.
+Hopefully that gives you a feel for how to represent numbers in binary using circuitry. If things still feel a little fuzzy, that's ok &mdash; remember we'll go into greater detail later in this book.

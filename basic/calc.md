@@ -15,13 +15,13 @@ To implement our calculator, we're going to want something slightly different: a
 
 > Add a basic schematic diagram
 
-In modern digital circuits, always implement electronic switching using a circuit element called a *transistor*. We'll talk about transistors later on in the book.
+In modern computers, this kind of switching is achieved using a circuit element called a *transistor*. We'll talk about transistors later on in this book.
 
 Transistors are quite useful for implementing math on binary numbers! The basic idea is to represent each mathematical operation using a network of interconnected transistors. For example, say you want to build a subcircuit that adds two binary numbers: this subcircuit will have a set of "input" terminals for the digits of the binary numbers we want to add, as well as a set of "output" terminals with the digits of the resulting binary sum. In between those terminals will be a network of transistors, which mix the input signals as needed in order to obtain the correct output signals:
 
 > Another diagram
 
-We already have most of the tools needed to figure out how this network of transistors might look for a simple operation like binary addition, but it would take a lot of space to fully spell it out. For that reason, we'll wait to cover that until the next chapter.
+We already have most of the tools needed to figure out how this network of transistors might look for a simple operation like binary addition, but it would take a lot of space to fully spell it out. For that reason, we'll wait to cover that until a later chapter.
 
 With that, we now have a pretty good idea of how to build our calculator! Here are the basic principles we have discussed so far:
 
@@ -29,4 +29,4 @@ With that, we now have a pretty good idea of how to build our calculator! Here a
 * Represent binary digits using electricity: **switched-on for $1$ or -off for $0$**
 * Implement math using **networks of transistors**
 
-Now that we have a sketch of how you'd build a calculator, let's turn our focus to programming it.
+Now that we have a sketch of a calculator, let's figure out how to program it.
