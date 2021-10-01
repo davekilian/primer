@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch&#58; Programmability
+title: A First Sketch&#58; Programmability
 ---
 
 To make our calculator programmable, we first have to answer a more basic question: what does a program even look like, anyways?

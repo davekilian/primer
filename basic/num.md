@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch&#58; Numbers
+title: A First Sketch&#58; Numbers
 ---
 
 So, how are we going to work with numbers in electronic circuitry?

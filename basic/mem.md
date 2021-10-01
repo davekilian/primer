@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch&#58; Memory
+title: A First Sketch&#58; Memory
 ---
 
 We have now sketched out a calculator and a way to program it. We said that a computer is a programmable calculator, so what we have now sketched out is a computer, right? Well, technically, yes &mdash; we already have all the necessary elements of a computer! Unfortunately, we're not done: the computer as described so far is so primitive as to be effectively useless in practice. Let me convince you of why:
@@ -36,8 +36,11 @@ This scheme gives programmers a simple way to 'spill over' when you have more da
 
 By happy accident, it also turns out that memory is the solution to a problem we didn't even realize we had yet! We know a program is a list of instructions, but where is the computer storing this list of instructions? Now that we have memory, there's a clear, obvious answer: store the program in memory! The computer will store the address of the next instruction in a register, and read the corresponding instructions from memory one at a time.
 
+One last, important thing to know about memory: when we turn off the computer, it gets wiped! In computing, we say data storage is 'ephemeral' if the data goes away when you shut off the computer, or 'persistent' if the data is retained. Memory is ephemeral, and making it ephemeral lets us make memory significantly cheaper, faster and more durable than it could be were it persistent. We're okay with memory being ephemeral, because we only use it store temporary data: the program we're about to execute, temporary data programs are currently working on, and the like. 
+
 In conclusion,
 
 * Memory is an **array of numbers**
 * Each number is identified by a **memory address**
 * Memory stores **intermediate values** as well as **programs** themselves
+* Memory is **ephemeral** &mdash; turning off the computer wipes all memory

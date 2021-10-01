@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch&#58; Computing
+title: A First Sketch&#58; Computing
 ---
 
 It's been a long journey, this chapter. Thanks for sticking it out thus far! What we have now designed for ourselves is something called the **Von Neumann architecture**, named for John Von Neumann, who first described it in a paper on computing published in the 1940s.

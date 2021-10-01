@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch&#58; Calculation
+title: A First Sketch&#58; Calculation
 ---
 
 Now we have an idea of how to represent a number in a circuit, so it's time to start thinking about the next step: how do we use circuitry to run calculations on binary numbers we're representing using switches? For example, how would we use switches to add two binary numbers?

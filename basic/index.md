@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: A Basic Sketch
+title: A First Sketch
 ---
 
 In the previous chapter, we learned a little about computers and programs. We decided that a computer is a *programmble calculator*, which means that you give a computer a *program* (which is just a sequence of calculations), and the computer *executes* the program by carrying out each step on its internal calculator.
