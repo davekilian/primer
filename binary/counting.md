@@ -17,31 +17,7 @@ We all know how this sytem works. We have 10 *digits*: $0$, $1$, $2$, $3$, $4$, 
 
 Even so, there's value in getting even more explicit. Let's take a closer look at counting using Arabic numerals.
 
-## An *Algorithm* for Counting
-
-An **algorithm** is a process for solving a computational problem. The term originates from math: unless you got to proof-based math courses in college, most of the math you learned in school was algorithmic. For example, division might be a mathematical operation, but *long division* &mdash; the specific set of steps you take to divide a multi-digit number by another multi-digit number &mdash; is an algorithm.
-
-More concretely, an algorithm is a sequence of steps you take when solving a problem. In that way, an algorithm is a lot like a computer program, and indeed, the study of algorithms is a major component of the field of computer science! This is a book about computers and we're talking about math, so let's talk about an algorithm that comes so naturally to you, you probably never even think about it: counting!
-
-> Let's think about how you count in Arabic numerals
->
-> 1-9 is easy.
->
-> Now what? We move to the next *position*, or *decimal place*. We reset the 1s place to 0 and add 1 to the 10s place.
->
-> 10-19. Now what?
->
-> Oh yeah, once again, it's the same idea: reset the 1s place to 0 and add 1 to the 10s place.
->
-> 20 ...
->
-> Okay, so eventually we get to 99. Then what? 
->
-> Well to begin, we reset the 1s place to 0 and add 1 to the 10s place ... except we can't do that, because the 10s place is already 9. So what do we do? Why, the same thing of course! Reset the 10s place to 0, and add 1 to the hundreds place. 99 100
->
-> Okay, so let's think about how to do that *algorithmically*.
->
-> Pseudocode
+> 
 
 ## Digits
 
@@ -179,3 +155,85 @@ So once again, the first few numbers are $1$-$9$. But using our definition, we k
 > Base-2 is a somewhat special basis mathematically, because it's the smallest basis that works with our numbering system. You couldn't have base-1; after all, then your only digit to work with would be $0$ and thus the only number you could represent is $0$.
 
 
+
+
+
+
+
+---
+
+
+
+> Cut content: an algorithm for counting. It took a lot of space, and the way I explained binary afterwards didn't really draw on it. It could be interesting, but I also don't want to do algorithms too much in this book, because algorithms stray too far out of systems and too far into pure CS and mathematics. Here it is for now, anyways, in case we ever want it back:
+
+## An *Algorithm* for Counting
+
+An **algorithm** is a process for solving a computational problem. The term originates from math: unless you got to proof-based math courses in college, most of the math you learned in school was algorithmic. For example, division might be a mathematical operation, but *long division* &mdash; the specific set of steps you take to divide a multi-digit number by another multi-digit number &mdash; is an algorithm.
+
+More concretely, an algorithm is a sequence of steps you take when solving a problem. In that way, an algorithm is a lot like a computer program, and indeed, the study of algorithms is a major component of the field of computer science! This is a book about computers and we're talking about math, so let's talk about an algorithm that comes so naturally to you, you probably never even think about it: counting!
+
+One common way to develop an algorithm is to start with a basic idea, and spell it out more and more specifically, until you can distill a sequence of steps that works. So, even though we already reviewed how to count, let's think about how we count in much greater specific detail:
+
+First, we remember that the digits have a built-in order: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$.
+
+When we count, the first number is just $1$.
+
+To count, we find the next number by just moving to the next digit. So after $1$ comes $2$, then $3$, then $4$, and so on, according to the digit order above.
+
+Once we reach $9$ and try to count past that, the first interesting thing happens: there is no next digit to move to! What do we do? Now it's time to use *positions*, also known as *places* or *decimal places*. To move forward, we reset the ones place to $0$ and add $1$ to the tens place. So after $9$ comes $10$.
+
+As we continue counting, we keep advancing the ones-place digit. The ones place of $1\underline{0}$ is $0$, so we advance that to the next digit &mdash; $1$ &mdash; and get $11$. We can continue the process: $12$, $13$, and so on.
+
+What happens when we hit $19$ and try to count past that? The same thing as last time: reset the ones place to zero and add $1$ to the tens place. So after $19$ comes ... $20$! And after that we can continue to count: $21$, $22$, $23$, and so on.
+
+We're reaching a pretty complete definition of the numeral system. One last thing: as we keep repeating the counting process outlined above, we eventually hit $99$. What happens next? 
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+> The digits 1-9 form an order.
+>
+> The first number is 1.
+>
+> To count, we move to the next digit.
+>
+> Then what happens when we run out of digits?
+
+
+
+As before, the first numbers &mdash; $1$ through $9$ &mdash; are easy. Those numbers are simply the digits themselves. To count, we just have to move to the next digit.
+
+
+
+> Let's think about how you count in Arabic numerals
+>
+> 1-9 is easy.
+>
+> Now what? We move to the next *position*, or *decimal place*. We reset the 1s place to 0 and add 1 to the 10s place.
+>
+> 10-19. Now what?
+>
+> Oh yeah, once again, it's the same idea: reset the 1s place to 0 and add 1 to the 10s place.
+>
+> 20 ...
+>
+> Okay, so eventually we get to 99. Then what? 
+>
+> Well to begin, we reset the 1s place to 0 and add 1 to the 10s place ... except we can't do that, because the 10s place is already 9. So what do we do? Why, the same thing of course! Reset the 10s place to 0, and add 1 to the hundreds place. 99 100
+>
+> Okay, so let's think about how to do that *algorithmically*.
+>
+> Pseudocode
