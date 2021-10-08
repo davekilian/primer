@@ -3,50 +3,100 @@ layout: chapter
 title: Binary&#58; Boolean Math
 ---
 
-> Let's think about the most basic form of math on binary numbers: math on single-digit binary numbers.
+Let's think about the most basic form of math you can do on binary numbers: the math of single-digit binary numbers. In other words, this is math that only uses the numbers $0$ and $1$.
+
+Can you do anything interesting with so little to work with? It turns out, yes!
+
+In computing, when we need to do single-digit binary math, we usually use the **boolean** framework named after George Boole, who outlined it in the mid-1800s.
+
+## Boolean Logic
+
+Boole was interested in the study of logic. In logic, you take a set of facts, and you use them to derive new facts. For example, say you know your boss never brings in an umbrella unless there's rain in the forecast today, and you also know your boss brought in an umbrella today. Using these facts, you can logically derive a new fact: there must be rain in the forecast today!
+
+Specifically, Boole was interested in representing this kind of logic mathematically. Maybe, by making it possible to write down logic operations on paper, we'd be able to work through them mathematically on paper rather than keep it all in our heads. We could potentially work through larger, tougher logic more accurrately!
+
+Here's how Boole's system (which we'd today call boolean math) worked:
+
+First, in boolean logic, every statement is either `true` or `false`. For simplicitly, Boole did not leave room for half-truths or partial correctness! When we think about boolean math from a logical perspective, we often use the terms "true" and "false" as mentioned above; but when we write it down notationally, we often use the binary digits $0$ and $1$ instead:
+
+| Boolean Value | Binary Value |
+| ------------- | ------------ |
+| `false`       | $0$          |
+| `true`        | $1$          |
+
+In modern parlance, a **boolean value** is one of the items in the table above: if you choose to use the logical notation, then a boolean value is either `true` or `false`; if you choose to use the binary notation, a boolean value is a single binary digit: $0$ or $1$. Both notations are equally valid.
+
+What can we do with boolean values? What logical operations did Boole define?
+
+## Not
+
+The "NOT" operation, also known as "negation," is the only boolean operation you can do on a single boolean value. All it does is give the opposite: `NOT(true)` is `false` and `NOT(false)` is `true`.
+
+From a logical perspective, the NOT operation is used when you want to talk about the opposite of something happening. For example
+
+> Example based on logic
 >
-> In other words, this is math that only uses the numbers $0$ and $1$.
+> Mathematical notation
 >
-> Can you do anything interesting with so little? It turns out yes!
+> Truth table
+
+## And
+
+> The two names
 >
-> George Boole first published a book in this area in (year).
+> Example based on logic
 >
-> Boole was interested in the study of logic.
+> Mathematical notation
 >
-> Logic is when you take a set of facts, and derive new facts from them. 
+> Truth table
+
+## Or
+
+> The two names
 >
-> Example
+> Example based on logic
 >
-> Boole was interested in representing logic mathematically. The hope was to make it easier to reason about complex logical operations by writing them down and working through them mathematically, rather than hold it all in your head.
+> Mathematical notation
 >
-> In Boole's model, every statement is either "true" or "false." Boole did not leave room for half-truths or partial correctness! In Boolean mathematics, a Boolean value can either be represented as "true/false" or equivalently, as a single binary digit: $0$ or $1$.
+> Truth table
+
+## Exclusive-Or
+
+> The two names
 >
-> Table mapping true/false to binary 1/0
+> Example based on logic
 >
-> Boole then went and thought up some logical operations you could do on these true/false or 1/0 values.
+> Mathematical notation
 >
-> There's one thing you can do on a single Boolean value by itself: not. Truth table.
+> Truth table
+
+## Other Operations
+
+> Unlike the above, these rarely show up in the construction of computers, so we won't delve too deeply
 >
-> If you have two boolean values, there are more things you can do.
+> Implies and equivalence
 >
-> And: true when both input values are true; false otherwise. Truth table.
+> --
 >
-> Or: true when any input value is true; false otherwise. Truth table.
+> The two names
 >
-> Exclusive-or: true when the input values differ; false otherwise. Truth table
+> Example based on logic
 >
-> All of these operations will be useful when we start thinking about how to implement math in circuitry. There are a few additional operations that aren't typically all that useful in computers, but bear mentioning here for completeness:
+> Mathematical notation
 >
-> Does-imply: when $a$ is true, this is true if $b$ is also true. When $a$ is false, this is always true. Truth table.
+> Truth table
+
+## Compund Statements
+
+> The 'meat' of Boole's framework comes from *combining* these operations.
 >
-> Equivalent: $a \equiv b$ means the two always have the same value. Truth table
+> Some of the operations above can be decomposed into compound statements of lower-order operations. Do xor, implies, equivalent.
 >
-> Boole found that you could combine these operations into *compound* statements. Example
+> Possible to rewrite a compound statement as a different, equivalent compound statement. This is the basis of Boolean algebra. (Is it? Confirm pls)
 >
-> Some of the operations above can be decomposed into compound statements. Do xor, implies, equivalency.
->
-> Once you have a compound statement, there are often ways to transform the statement that can help simplify it.
->
-> De Morgan's law is notable
->
+> Example: De Morgan's law is a classic.
+
+## Logic Gates
+
 > Tie it all back by previewing logic gates: the simplest of transistor networks implement operations like NOT, AND, OR and XOR. The rest of the math we will later build in circuitry will be built using networks of logic gates, not by messing with transistors directly.
+

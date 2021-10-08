@@ -94,7 +94,3 @@ Remember from first chapter that we're going to build a computer out of electric
 Sound familiar? That's great!
 
 Remember that the goal is to build a computer &mdash; a programmable calculator &mdash; using switch-based circuits that do math on binary numbers. Clearly, then, it'd be useful to think a little about how to do math on binary numbers! That's exactly what we'll do on the next page.
-
-
-
-> 
