@@ -3,19 +3,120 @@ layout: chapter
 title: Binary&#58; Counting
 ---
 
-> To gain some insight about binary, let's think about our normal numbering system first
+Binary can look pretty weird for sure, but it shares a lot in common with the 'normal' numbering you and I learned in school. So let's think for a bit ...
+
+## How Do Numbers Work, Anyways?
+
+If you can remember anything about your very first math class in school, it probably involved counting and writing down numbers. Why do we do this first?
+
+Well, there are lots of ways to write down numbers. For example, "$7$" in our regular system is equivalently written as $VII$ in Roman numerals, but both mean the same thing. The way we write down numbers is called a *numeral system*. The job of a numeral system is a lot like the job of a language: just like you can write the same word in many different languages, so can you write the same number in many different numeral systems. And yet, to think of a word you have to have some language &mdash; and to think of a number, you have to have a numeral system. I guess human brains are just weird that way.
+
+The numeral system that you were taught in school is a form of [Arabic numerals](https://en.wikipedia.org/wiki/Arabic_numerals). You can click the link to read a short history of the system: it began as a numeral system for the ancient [Brahmi](https://en.wikipedia.org/wiki/Brahmi_script) script in the South Asian subcontinent, from which it started to spread in every direction. After marching across northern Africa, the system eventually made its way into Europe via Arabic-speakers in Spain ... which is how the numeral system got to be known as "Arabic" to the Europeans even though it originated in South Asia! Throughout its journey, the numeral system continued to evolve into the one we recognize today.
+
+We all know how this sytem works. We have 10 *digits*: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ and $9$. Of those, $0$ is special &mdash; we'll come back to it later &mdash; and the rest of the digits are just the first 9 numbers in our numeral system. What happens when we try to count past nine? Simple! We roll over to the next decimal place: so from $9$, we then go to $10$, $11$, $12$ and so on. Once we hit $19$, we go up to $20$, $21$, $22$ and so on. Only when we hit $99$ do we go to the next decimal place: $99$, $100$, $101$. Every knows this stuff. Too easy!
+
+Even so, let's try and get specific.
+
+## An *Algorithm* for Counting
+
+> This needs to define algorithm
 >
-> Here's our system: we have 10 digits &mdash; $0$ to $9$ &mdash; and the first few numbers are those digits.
+> This needs to define place and digit
 >
-> Then what happens next? We start over, and move to the next decimal place. $10$, $11$, $12$, ...
+> We need to find a nice pseudocode way to explain counting
 >
-> When we hit $19$, do we go to $100$? Nope! We go to $20$. At $29$ we go to $30$ and so on.
+> ---
 >
-> Eventually, we repeat this process until we get to $99$, and when we add $1$, what happens? We roll over the 1s place to $0$ and add $1$ to the 10s place; but the 10s place is also 9! So that has to roll over too, and we have to now move up to the 100s place. So it goes $99$, $100$, $101$
+> Let's really spell it out now. Make sure we're super clear on how to count
 >
-> You have probably known this for a very long time. Why did we spell it out here? Well, I want you to think a little about how we ended up at the numbering system we use
+> We have to define algorithm. It's okay, you know algorithms from math.
 >
-> Why do we have 10 digits?
+> Then let's get really specific; how do you count in Arabic numerals?
+>
+> First do an example that walks through places
+>
+> Second example that uses paces independently
+
+## How Numbers *Really* Work
+
+> New intro. Basically say let's rip Arabic numerals down the studs. It turns out the way we write numbers is based on much higher-level math: it involves tricky things like addition, multiplication, and the special number $0$ baked in. Numeral systems are the intersection between math and language, which really makes this a mind-bender to think about. Luckily, you don't *have* to understand all this to understand binary. So if you get bored or confused, feel free to skip this and move on.
+
+
+
+---
+
+... or is it all that easy? These rules are not arbitrary: they combine the concepts of additional, multiplication and the number $0$ in a clever way. Let's peel back the curtain!
+
+## How Numbers *Really* Work
+
+You see, any numeral system has to solve one key problem: there are infinitely many numbers, and people aren't that good at memorizing stuff. We can't make up words for every number the same way we can make up words for concepts in language: there are just too many numbers! So, instead, we have to find a way that lets us represent any number using just a few things we memorized &mdash; such as those 10 digits.
+
+How does the Arabic numeral system do that? The key idea is the use of *decimal places*. Each place represents some number, and the digit we put in that place says how many of that place.
+
+For example, think of the number $234$. This is actually shorthand for saying I have
+
+* $2$ hundreds, plus
+* $3$ tens, plus
+* $4$ ones
+
+In mathematical notation, we might instead say $234$ is shorthand for $2 \times 100 + 3 \times 10 + 4 \times 1$. Seems easy enough!
+
+Now, where this gets confusing is numbers like $100$. This number says i have ...
+
+* $1$ hundred plus
+* $0$ tends plus
+* $0$ ones
+
+Mathematically, we might instead say $100$ is shorthand for $1 \times 100 + 0 \times 10 + 0 \times 1$. Wait, what? How does saying $100$ devolves to $1 \times 100$ offer any insight whatsoever?
+
+Okay, so we found the tricky part of our numeral system. You see humans have been coming up with systems to write down numbers for a long time &mdash; in fact, pretty much every society that developed written language started by writing numbers, not words &mdash; but it took us until about 1,000 years ago to come up with *this* numeral system. Because *this* numeral system is clever!
+
+The basic idea of our system system involves *decimal places*. Even if you didn't realize it, these are special numbers to which we have assigned names: one, ten, hundred, thousand, and so on. Now, there are infinitely many places, just as there are infinitely many numbers, so even though we give names to the common places, eventually we run out of names and have to use compounds. So for example, the next place after 'thousand' is 'ten-thousand,' then 'hundred-thousand.' Then, after 'million,' there's 'ten-million' and 'hundred-million.'
+
+Then the basic idea of our system is to write every number as a **combination of the places**. This is where the digits come in: the digits are basic numbers that can be multiplied with the place numbers; in turn, the 'place' numbers are strategically picked at every point we run out of digits.
+
+> Why did it take so long to come up with this system? The key is the number $0$.
+>
+> You see, when $0$ was first invented, many people didn't initially accept it as a number: a number defines a quantity, and zero defines the absence of a quantity! Even today, we still find that zero breaks our mathematics in unique ways; for example, you can't divide by zero.
+>
+> Zero is the key to a place-based numeral system, because sometimes you don't have any of a particular place. The number $203$ is two hundreds and three ones, but no (zero) tens. Not having invented zero is part of why it took so long for humanity to come up with something like the Arabic numeral system.
+
+Let's look at numbers again in that light.
+
+So once again, the first few numbers are $1$-$9$. But using our definition, we know the secret pattern: there's a "place" number called one, and each of these is a different number of "ones." So really, $7$ is short for $7 \times 'one'$. When we run out of digits for the ones, we use the next place number: ten. The next number is a single ten, plus no ones: $10$, or $1 \times 'ten' + 0 \times 'one'$.
+
+> Contrast this with Roman numerals: it has no number places. 
+
+
+
+> Some thoughts here
+>
+> * We need to define combination more formally like a linear combination
+> * We need to explain more clearly that "ten" isn't exactly the same thing as "$10$"
+>
+> It might be better to start with the algorithm first, and introduce terms like digit and place in that context. Then we can rewrite this section as an optional 'ripping down to the studs' analysis of how our numeral system works &mdash; and clearly say this is optional, you can skip it if you get bored or it didn't make sense right away.
+>
+> Have a sentence like this: I'm being really careful to write "ten" and not "$10$" because, in this context, they mean slightly different things: "ten" is a number we're basing our system on, and "$10$" is a combination, of a single "ten" and no "ones." In the end, though, "ten" and "$10$" refer to the same number; the difference between the two only has to do with the way we *write* numbers.
+>
+> One more key insight is that the places are defined in terms of digits. Whenever we use up all our digits in all our existing places, the next number is the next place. So the places are
+>
+> $9 + 1$
+>
+> $99 + 1$
+>
+> $999 + 1$
+>
+> $...$
+
+
+
+---
+
+
+
+## Digits
+
+> Arabic numerals might have a beautiful underlying pattern, but it has one arbitrary aspect: why ten digits?
 >
 > Here's a big hint: what can digit mean? In math, it's a number ... in anatomy, it's a finger! Of course, we have 10 digits because we have 10 fingers.
 >
