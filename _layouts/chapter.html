@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="row-fluid">
-    <div class="hidden-print hidden-xs col-sm-3">
+    <div class="hidden-print hidden-sm hidden-xs col-md-4">
         <div class="post-content" style="border-right: 1px solid #eee; padding-right: 1em">
             <h2>Primer:<br>How Computers Work</h2>
             <br>
@@ -11,10 +11,10 @@ layout: default
             {% include primer-toc.html html=content %}
         </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-md-8">
         <div class="post-container" id="chapter">
             <div style="margin-bottom: 3em; margin-top:0">
-                <div class="hidden-print visible-xs post-content">
+                <div class="hidden-print visible-xs visible-sm post-content">
                     <h2>Primer: How Computers Work</h2>
                     <span>A book by <a href="https://www.davekilian.com/">Dave Kilian</a></span>
                     <br><br>
@@ -29,7 +29,7 @@ layout: default
                 <hr/>
                 <a id="nav-prev" style="float:left; display:none">Previous</a>
                 <a id="nav-next" style="float:right; display:none">Next</a>
-                <center><span style="color: #999">Copyright &copy; Dave Kilian 2021</span></center>
+                <center><span style="color: #999">Copyright &copy; Dave Kilian 2022</span></center>
             </div>
             <div class="post-content" id="mobile-toc" style="display:none">
                 {% include primer-toc.html html=content %}
