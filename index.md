@@ -3,25 +3,43 @@ layout: chapter
 title:
 ---
 
-This is a book about how computers work: real, modern computers, like the one you just used to load this page.
+<div class="visible-md visible-lg">
+  <h1>Primer: How Computers Work</h1><p>By <a href="https://www.davekilian.com">Dave Kilian</a></p><hr>
+</div>
 
-It says something that we need a whole book for this. We've come a long way! The first computers may have been huge, power-hungry monsters, but they were simpler in concept than the one you're using right now. It was feasible to fit the entire design of an early computer all in one person's head; today you won't even find one *company* able to do it alone!
+This is a book for people who want to know how computers work!
 
-The meteoric rise in complexity can sometimes seem like a looming crisis, but it's also one of computing's greatest accomplishments: nobody has to know everything about your computer and how it works, and yet we're still making computers faster and better all the time.
+In this book, we'll delve deep inside a computer and see how everything is put together. You'll come away with a very good idea of what goes into a real, modern computer &mdash; like the one you're using to read this book right now! However, you won't learn anything about how to *use* or *program* computers.
 
-That said, there come times when it is useful to understand the big picture of how your computer does all the things it does. And for that, you'll need a whole book &mdash; this one!
+Even though we'll be covering some technical concepts, I aim to make this an easy read. You do not need to be a coder to understand this book. But, the more you know about code, the more I think you'll get out of this book!
 
-## Why Read This Book?
+This book is a culmination of over a decade of learning, collecting notes, and (occasionally) reading some tea leaves. I hope you enjoy it!
 
-**Sheer curiosity**: Why not? Maybe you've been in the field a while, or maybe it's new to you. Either way, it's hard to find good information about how computers work. I myself have certainly been frustrated in the past at how quickly explanations resort to hand-waving. (Okay, sure, "the CPU is the brain of the computer," but what does *that* mean?)
+## Why write this book?
 
-**Getting into the field**: Computing is a hot field, and it's still growing. You can land a very nice job knowing how to program computers, and even more so knowing how to build them. There are plenty of boot camps out there to help you get started coding, but I find they don't tend to help you understand the code that runs your code, or the hardware underneath that &mdash; that's all locked up in high-end college degree programs.
+I'll be up front with you: you do not need this book to be good at using computers. You can even be a pretty great coder without knowing almost anything in this book!
 
-**Improving as a developer**: Even if you're already good at writing software, knowing more about what's going on 'under the hood' will make you better. When you know why your favorite language or API works the way it does, it stops seeming so arbitrary, and it becomes easier to fit these things naturally into what you're trying to do. Better architectures, faster code and less waste!
+Take a look at the device you're using to read this book. Every single aspect of your device, from what you see, to the hardware inside, to the software that it runs, was designed by people. Computers don't come from nature &mdash; *we* made them! Many, many people have collectively poured millions of hours of their lives into designing the device you're using. The next time someone tells you a computer is cold, metal, unfeeling &mdash; you can tell them your computer is one of the most human things ever to exist!
 
-**Making new kinds of computers**: To get bigger and faster computers (like in the cloud), smaller and lighter computers (like phones and wearable computers), or even new kinds of computing nobody's thought of yet, we're going to have to continue to evolve our computing architectures and maybe even invent some new ones. The first step of doing that is to understand what we already have, and why.
+The funny thing is, even though computers are a 100% human invention, people seem to have a hard time explaining how they work. Just try googling for information about how computers work &mdash; I think you'll find that you end up knowing more about computers, but won't get that feeling you really *get* them. You won't be able to tell someone what's *really* going on when you open your laptop and go watch some videos on YouTube.
 
-**Dispelling the magic**: If you've ever said a computing platform is 'magic,' how would you like to become one of the witches and wizards who know these dark inner secrets? It's actually pretty easy! One of my favorite things about computing is nothing is arbitrary: computers are designed by humans, for humans, and everything is there to solve an easy-to-understand problem.
+The point of this book is to help you *get* computers. 
+
+Every explanation of how computers work, including the one in this book, has to find a way to grapple with the ridiculous complexity of a real computing device. Normally, authors tackle this by picking some aspect they consider to be 'core' to the design and just explaining those. I'm going to do something a little different. This book will give you the *whole* picture, but in very little detail. That's why this book is called *Primer*!
+
+My goal is for you to walk away with a clear enough picture of what goes into a computer, physically and in software, to go off and fill in the details for the aspects of the design that's interesting to *you*. 
+
+## Why read this book?
+
+Okay, you ask, so what's in it for me?
+
+**Satisfying your curiosity**: Maybe, like me once, you just want to know how computers work? I'll vouch &mdash; It's worth learning! Underneath a mountain of arcane terms and alphabet soup acronyms are some surprisingly simple and profound ideas. Every aspect of your computer has been designed by humans, for humans, to be easy to understand by humans. Even if you never work on a computer, you'll learn some profoundly cool ways of dealing with and managing big, complex systems.
+
+**Getting into the field**: Computing is a huge, lucrative field, and even in 2022 it seems to only be continuing to heat up. There are plenty of resources out there to help you get started coding &mdash; something this book will not help you with &mdash; but starting out with what you learn in this book will put you ahead of people who just know how to use one or two coding tool.s
+
+**Improving as a developer**: I won't lie, you can get very far as a coder with very little information about how computers run your code. Even so, knowing the platform beneath your code is a superpower! Every thing you learn about how your computer works will help you write more elegant, faster code, write it faster, and debug it more easily.
+
+**Making new kinds of computers**: To get bigger and faster computers (like in the cloud), smaller and lighter computers (like phones and wearable computers), or even new stuff nobody's thought of yet, we're going to have to evolve our computing architectures and maybe even invent some new ones. The first step of that is to understand what we already have, and why what we have is the way it is.
 
 ## What We'll Cover
 
@@ -34,7 +52,7 @@ We'll start at the most basic level: what a computer is, what it does, and how y
 * How computers network together, and how the Internet works
 * Advanced topics and recent developments in the field
 
-Our goal will be to walk you through these major moving pieces and see roughly how they work and how they fit together. We're not going to delve nto the nitty-gritty specifics: the hope is, if you have a general framework of what the pieces are and how they fit together, you can use a lot of the great reference material that's already out there to learn the details. There's plenty of stuff out there for beginners, and many articles for professionals; with this book, I'm hoping to help you bridge the gap between.
+Our goal will be to walk you through these major moving pieces and see roughly how they work and how they fit together. We're not going to delve nto the nitty-gritty specifics: the hope is, if you have a general framework of what the pieces are and how they fit together, you can use a lot of the great reference material that's already out there to learn the details. There's plenty of stuff out there for beginners, and many articles for professionals; with this book, I'm hoping to help you bridge the gap between those two extremes.
 
 This is book is written for anyone to read and understand. You don't have to be a programmer to understand this book, but if you know how to program a lot of the concepts we'll cover will already be familiar, making this a quicker and easier read.
 
@@ -42,7 +60,7 @@ No matter your skill level, I still recommend reading the book linearly. The cha
 
 ## About the Author
 
-I'm a teacher with a background in software engineering. I've written high-performance code for the cloud, and I have backgrounds in graphics, networking and distributed storage.
+I'm a teacher with a background in software engineering. I've written high-performance code for the cloud, and I have background experience in graphics, networking and distributed storage.
 
 I wrote this book because nothing like it exists (as far as I know), and I think it ought to. Back when I was in school I would sometimes trawl the Internet for explanations of everyday inventions and tools, and I remember every explanation of computers falling flat: ending too early, lots of handwaving, and feelings I didn't really understand the pieces and how they fit together. I continued to hit walls in my mission to understand how computers '*really*' work, as I was pulled deeper and deeper into the weeds &mdash; and that's how I ended up working on building these things :-)
 
