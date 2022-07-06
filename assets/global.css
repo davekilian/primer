@@ -181,6 +181,7 @@ div.post-content th
 body
 {
     font-size: 100%;
+    -webkit-font-smoothing: antialiased;
 }
 
 p
