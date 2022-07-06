@@ -8,11 +8,11 @@ title:
 </div>
 Welcome to *Primer*! Like the title says: In this book, you'll learn how computers work.
 
-It's (unfortunately) kind of hard to get a straight answer on how computers work! There's a lot of information out there, but to my knowledge, nobody has gone and done the job of picking the important information and organizing it an easy-to-understand way. That's my goal with this book. Even though we'll be covering some technical concepts, I aim to make this book an easy read for everyone &mdash; non-coders included. I hope you enjoy it!
+It's kind of hard to get a straight answer on how computers work! There's a lot of information out there, but to my knowledge, nobody has gone and done the job of picking the important information and organizing it an easy-to-understand way. That's my goal with this book. Even though we'll be covering some technical concepts, I aim to make this book an easy read for everyone &mdash; non-coders included. I hope you enjoy it!
 
 You can always find the latest version of this book at [https://davekilian.com/primer/](https://davekilian.com/primer). Techies: if you find any typos, mistakes or anything that just could have been written better, please don't hesitate to let me know by [filing a GitHub issue against this book](https://github.com/davekilian/primer/issues). For minor corrections, feel free to fork [the GitHub repo](https://github.com/davekilian/primer) and submit a pull request with a fix. Note that, because of the way this book is published, all content is on the `gh-pages` branch instead of `main` or `master`.
 
-Ready? Then let's get started!
+Here's some information about this book ...
 
 ## Overview
 
