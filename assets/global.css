@@ -198,14 +198,14 @@ li p
 
 blockquote
 {
-    border: 1px solid #ccc;
+    border: 1px solid #888;
     border-radius: 5px;
     box-shadow: 0 .3em 0 #eee;
+    padding: 2em;
 }
 
 blockquote p
 {
-    color: #454545;
     text-align: left;
     text-indent: 0;
 }
