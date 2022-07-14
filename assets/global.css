@@ -158,11 +158,18 @@ div.post-content table
     white-space: nowrap;
 }
 
-div.table-overflows
+div.overflows
 {
     overflow-x: auto;
     margin: auto;
     max-width: 90vw;
+}
+
+div.overflows-inset
+{
+    overflow-x: auto;
+    margin: auto;
+    max-width: 70vw;
 }
 
 div.post-content th,
