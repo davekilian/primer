@@ -138,6 +138,18 @@ h3        { font-size: 1.73em; }
 h2        { font-size: 2.07em; }
 h1, title { font-size: 2.49em; }
 
+h2.cover  { font-size: 4.14em; }
+h1.cover  { font-size: 4.98em; }
+
+h1.cover, h2.cover
+{
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 div.post-content table
 {
     margin: auto;
