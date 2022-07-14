@@ -19,11 +19,11 @@ Computers did a lot of the same kinds of calculations you learned in school: add
 
 Wonder what kinds of computations they did? Let's find out!
 
-Let's try a little exercise to give us a feel for the kind of work computers did. Since I was talking about *Hidden Figures*, how about an astrophysics example? Let's compute our way through part of an *n-body simulation*: something the women from *Hidden Figures* may very well have computed in real life!
+We'll try a little exercise to give us a feel for the kind of work computers did. Since I was talking about *Hidden Figures*, how about an astrophysics example? Let's compute our way through part of an *n-body simulation*: something the women from *Hidden Figures* may very well have computed in real life!
 
 ## ... to Outer Space! 🚀
 
-Let's talk about some 🪐space facts🪐 ...
+It's time for some 🪐space facts🪐 ...
 
 We're used to thinking of gravity as an invisible force that pulls everything down:
 
@@ -45,23 +45,25 @@ But that all changes when you add a third planet to the mix:
 
 ![](figures/fig-2-4.svg)
 
-This is the *3-body problem*, and it's not solved yet &mdash; and people have been *trying* to solve it for hundreds of years! Until we solve it (if ever?) we have to resort to a technique called *simulation* if we want to predict these planets' movements.
+This is the *3-body problem*, and it's not solved yet &mdash; even with people *trying* to solve it for hundreds of years! Until we solve it (if ever?) we have to resort to a technique called *simulation* if we want to predict these planets' movements.
 
-In short, simulations approximate the path by which each body moves (something we don't have equations to mathematically describe) as a sequence of little straight lines (which we have equations for &mdash; simples ones, actually!). The result looks like the blue path in the diagram below, which approximates the "true" path in red:
+In short, simulations approximate the path by which each body moves (something we don't have equations to mathematically describe) as a sequence of little straight lines (which we do have equations for &mdash; simple ones, actually!). The result looks like the blue path in the diagram below, which approximates the "true" path in red:
 
 ![](figures/fig-2-5.svg)
 
-These siulations are the kind of thing you might have found NASA's computers working on! They're big, long, laborious tasks of computation, but they tell us critical things astronomers need to know. I don't want to get bogged down in the physics, so we'll focus on a small but key step: figuring out how hard gravity is pulling on a body at an instant in time.
+These simulations are the kind of thing you might have found NASA's computers working on! They're big, long, laborious tasks of computation, but they tell us critical things astronomers need to know. I don't want to get bogged down in the physics, so we'll focus on a small but key step: figuring out how hard gravity is pulling on a body at an instant in time.
 
 Per *Newton's law of universal gravitation*, we can calculate that using this formula:
 
 $$F = G\dfrac{m_1 m_2}{r^2}$$
 
-I'm writing this formula the 'normal' way, which happens to use notation you study in high school algebra. It's just a more compact way of saying
+This is the 'normal' way of writing the formula: using notation you learn in high school algebra. It's just a more compact way of saying
 
 $$F = (G \times m_1 \times m_2) \div (r \times r)$$
 
-Here's how we'll use this formula, as computers: someone will give us a collection of numbers, one for each letter to the right of the equals sign. We'll multiply and divide the numbers the way the formula tells us to, leaving us with just one number. That resulting number is $F$: the thing they're paying us to calculate! We won't bother understanding the physics behind this formula, because as computers, that's not our job &mdash; we're just here to do some arithmetic!
+Make sense?
+
+So here's how we'll use this formula, as computers: someone will give us a collection of numbers, one for each letter to the right of the equals sign. We'll multiply and divide the numbers the way the formula tells us to, leaving us with just one number. That resulting number is $F$: the thing they're paying us to calculate! We won't bother understanding the physics behind this formula, because as computers, that's not our job &mdash; we're just here to do some arithmetic!
 
 For example, let's say the project scientists give us this table of values:
 
@@ -112,7 +114,7 @@ And boom, now we know what to write for the $F$ column in the first row! Let's a
 
 As computers, our job is now to repeat this process for every row in a table like this. How about you give it a try? Can you find the values of $F$ for the next two rows, by repeating the process we did for the first row?
 
-Feel free to use a calculator like I did &mdash; I promise it's not cheating! 🙂 The kinds of calculator you're used to didn't exist back when computing was a person's job, but those people did have their own kind of calculator: mechanical ones, such as slide rules! Nobody cared if computers used calculators for their work: anything that helps them be more accurate and/or finish faster is fair game! That's why you're good to use a calculator too, if you like.
+Feel free to use a calculator like I did &mdash; I promise it's not cheating! 🙂 The kind of calculator you're used to didn't exist back when computing was a person's job, but those people did have their own kind of calculator: mechanical ones, such as slide rules! Nobody cared if computers used calculators for their work: anything that helps them be more accurate and/or finish faster is fair game! That's why you're good to use a calculator too, if you like.
 
 When you're finished, you can check your answers against mine below:
 
@@ -128,11 +130,11 @@ When you're finished, you can check your answers against mine below:
 
 If you got the right answers, then congratulations: you're now a computer! Hope you enjoyed the experience!
 
-We started this chapter by saying a computer was a 'programmable calculator.' This example demonstrated the calculation aspect of a computer, but what do we mean by *programmable*? For that, let's do a related exercise ...
+We started this chapter by saying a computer was a 'programmable calculator.' This example highlighted the calculation aspect of computing, but what do we mean by *programmable*? For that, let's do a related exercise ...
 
 ## Hired Help
 
-Let's say you and your team have been doing a really big, long simulation, with lots and lots of little calculations you have to string together. You and your team of professional computers aren't getting through the calculations fast enough, so you hire help: you bring in a bunch of students from the local middle school!
+Let's say you and your team have been doing a really big, long version of this simulation, with lots and lots of little calculations you have to string together. You and your team of professional computers aren't getting through the calculations fast enough, so you hire help: you bring in a bunch of students from the local middle school!
 
 For the sake of this example, let's say the middle schoolers know nothing about physics and don't really care to learn &mdash; they just want to pick up a little money to pay for Fortnite skins! They're studious though: they're good at arithmetic, and they follow directions perfectly.
 
@@ -157,11 +159,9 @@ Once you have your directions, you can continue on to the next section and check
 
 ### My Solution
 
-There are many ways to turn our computation into calculator steps. Here's how I would have done it for the first line of the table. For reference, here's that row again by itself:
+There are many ways to turn our computation into calculator steps. Here's how I would have done it for the first line of the table. For reference, here's that row again:
 
 <div class="overflows" markdown="block">
-
-
 | $G$                    | $m_1$                 | $m_2$                | $r$                | $F$  |
 | ---------------------- | --------------------- | -------------------- | ------------------ | ---- |
 | $6.67 \times 10^{-11}$ | $5.97 \times 10^{24}$ | $6.39\times 10^{23}$ | $1.25 \times 10^7$ |      |
@@ -248,19 +248,21 @@ We're now ready to put together what we've learned about programming with what w
 
 ## Programmable Calculators
 
-Now you can see why we were saying "computer" means *programmable calculator*. A computer &mdash; human or machine &mdash; accepts a program (sequence of calculations) and then performs those calculations step by step. Programs are like recipes, while computers are like cooks turning recipes into real dishes of food. In our hired help example, the directions we came up with were the program, and the middle schoolers following the directions were the computers! If we were to follow those directions, we'd be the computers instead!
+Now you can see why we were saying "computer" means *programmable calculator*. A computer &mdash; human or machine &mdash; accepts a program (sequence of calculations) and then performs those calculations step by step. Programs are like recipes, while computers are like cooks following those recipes. In our hired help example, the directions we came up with were the program, and the middle schoolers following the directions were the computers! If we were to follow those directions, we'd be the computers instead!
 
 Programs and computers are so linked, it's almost like they're two sides of the same coin. A program does nothing until it's computed, and a computer does nothing unless programmed, but combine the two and something interesting happens! That's why, in the introduction to this book, we said that we need to understand the interaction between software (programs) and hardware (computers) to really get what's going on in your computer.
 
 ## Welcome to the Machine
 
-I don't think it'll come as a shock if I tell you that computing-as-a-profession is gone. Human computers were replaced by computing machines a long time ago &mdash; so long, we've all kinda mostly forgotten that computing ever was a human's job in the first place! Like most times machines have replaced man, we made computing machines in the name of efficiency. The machines one-upped us in three important ways:
+I don't think it'll come as a shock if I tell you that computing-the-job is gone. Human computers were replaced by computing machines a long time ago &mdash; so long, we've all kinda mostly forgotten that computing ever was a human's job in the first place! As if often the case, the reason we replaced humans with machines was efficiency. The machines one-upped us in three important ways:
 
 **Faster**: Early electronic computers could do almost a hundred rows of our simulation table *every second* &mdash; way faster than a human could hope to be able to even read numbers from the table or write down answers, let alone do any of the math!
 
 **Cheaper**: You have to pay people wages if you want them to compute for you; computers only cost the electricity it takes to run them! Sure, buying a computer costs you a bunch of money up front, but then again, so does training people.
 
-**Accurate**: People make mistakes, and when they do, they have to check their work: that costs even more time and money! Electronic computers are unerringly accurate, although they can be to a fault: unlike people, machines don't notice when there's a mistake in the *program*!
+**Accurate**: People make mistakes, and when they do, they have to check their work: that costs even more time and money! Electronic computers are unerringly accurate.
+
+There is one downside from the move from man to machine: unlike people, a machines aren't capable of noticing when there's a mistake in the *program* &mdash; they just do exactly what the program says, no matter what!
 
 In the next chapter we'll talk a little about how these computing machines work and why they're made that way. But first, now that you know a little more about computers, there's one last thing I want to tell you about this book...
 
@@ -270,7 +272,7 @@ When I say a computer is a "programmable calculator," I'm sort of asking you to 
 
 One of the most beautiful yet surprising things about computing is that all these things really do, fundamentally boil down to running calculations. Computers were originally invented to automate the work of doing arithmetic for us, just like we described in this chapter, but then we discovered over time our computers could also do all this other stuff too &mdash; stuff our computers were never originally designed to do! Stuff that has changed the way we live.
 
-Yet, it's a bit too simplistic to redue something like streaming a YouTube video to "just a math problem." That hides a lot of what's going on &mdash; and a lot of the important discoveries we made along the way from the olden days to now. That's the stuff this book is about. You should finish this book with a very good idea of how you get from programming a calculator to modern computing and all it entails.
+Yet, it's a bit too simplistic to reduce something like streaming a YouTube video to "just a math problem." That hides a lot of what's going on &mdash; and a lot of the important discoveries we've made since the olden days. That's the stuff this book is about. You'll finish this book with a very good idea of how you get from programming a calculator to modern computing.
 
 We'll get there, but first we have some more foundation to lay. Onward to the next chapter!
 
