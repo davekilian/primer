@@ -3,35 +3,21 @@ layout: chapter
 title: About This Book
 ---
 
-This book describes real-world, practical computers: the kind you just used to pull up this book! For the most part, I won't discriminate between phones, laptops, tablets, desktop computers with monitors, server blades in a data center &mdash; I'll just say "computer" to mean any or all these things. It turns out they're all roughly the same on the inside anyways!
+This is book is about the *how*, *why* and *what-if* of computing. Pick up a phone, a laptop, or any other kind of computer. We want to answer the following questions about this thing:
 
-A major focus of the book will be the interaction between the two kinds of 'stuff' your computer is made of:
+* How does it work?
+* Why does it work that way?
+* If things had gone differently, how it might have worked instead?
+* What's going to change about these as technology evolves?
 
-* **Hardware**, the real, physical silicon that runs your software code
-* **Software**, the program code that tells the hardware what to do
+The insides of your computer tell a story, of people, computers, problems and solutions. If you tried to understand a computer by dividing it up into pieces, you'd end up with an absurd level of complexity and still be missing important context. The modern computer is best understood as a story of evolving designs, each step adding or changing something simple for a perfectly logical reason. In this book we will follow the trail of the steps that got us to where we are today. We'll see some of the paths not taken, and maybe even catch a glimpse of the path ahead.
 
-Hardware engineering and software development are different worlds entirely! In this book, we'll need to learn a little about each. You'll walk away knowing what kinds of things hardware engineers and software developers do, and you'll have a pretty good idea of how the hardware and the software fit together.
+This is a book for programmers, but we won't do much programming in this book. I hope to reshape the way you think about your 'platform' &mdash; the hardware and software that supports your code. You can get far without understanding how it works, but so long as you don't, you have no choice but to accept it for what it is. But if you learn it, you can change it. You replace it with something better. You can leave it be, but become a more conscientious consumer, writing simpler code that integrates more neatly runs faster.
 
-As we'll see, a lot of the "fitting together" is accomplished using software code. This "systems" code plays a critical role in making your computer work the way it does, but it's often forgotten: hardware people see it as part of the software, and software people bundle it up with the hardware. But this code is where a lot of the important stuff happens &mdash; it's a shame it isn't more widely understood! We'll get our hands dirty in systems code throughout the book. Although the code we're going to talk about has a reputation for being complex and arcane, I think you'll find it pleasantly simple once you understand what it needs to do, and why!
+If there's one thing frontend devs, backend devs, mobile devs, game devs, data scientists, AI and blockchain programming all have in common, it's this: they all need computers! Making better computers benefits them and is profitable for you. Plus, it's fun! Becoming an expert at building computers means understanding what exists and how we got here.
 
-Speaking of which, "why" will be a recurring question throughout this book! Tech is unlike the other arms of STEM: in science and math, it's usually not quite right to ask "why" something is the way it is: it just *is*. But in tech, everything happens for a reason! Someone had some problem they were trying to solve, and thought this would be the best way to solve the problem. This book is about problems and solutions: the ones that went into the design of your computer.
+For me, this book is the "missing piece" of my college degree. In computer science, you deliberately abstract away as much as you can about the underlying computer, in the hope of making your findings as broadly applicable to as many computers as possible. In computer engineering, you focus narrowly on electronics and circuitry and thus miss out on the broader picture. The topics of this book are closer to the "systems" discipline of oddball topics that don't fit into either discipline, like operating systems, compilers, databases and networking. Computer science, engineering and systems are all pieces of the puzzle of how computers work, and my goal with this book is to weave them together into a whole.
 
-If you're now worring this book is about to go over your head, don't be! Like I said, you can get everything you need to out of this book without being a coder or a computer pro of any kind.
+Since the design of a computer is best understood evolutionally, this book is structured as a roughly historical walk of evolving designs. But this is not a history book; the goal is to show how one idea leads into the next, and sometimes provide context as to why some problems were tackled sooner than others. This is not meant to be a detailed accounting of every step that lead us to where we are today; this is better handled elsewhere.
 
-## Why read this book?
-
-**For the way of thinking**: This is my personal answer! I love the kind of thinking you do when you work on computers &mdash; puzzles that can be broken down into little pieces and solved in an orderly way. This book is about laying out and solving those puzzles. It'll be fun! 🙂
-
-**For the sake of curiosity**: If you've ever wondered how computing devices work or how we came up with these things in the first place, this book will give you the *full* answer! No handwaving, promise!
-
-I mentioned before you do not need to be a coder to read this book, but if you're a coder, here are some more immediate benefits you'll get out of this book:
-
-**Faster, cleaner code**: The more you understand about the hardware and software platform that runs your applications, the easier it'll be for you to think up solutions that fit the platform &mdash; and that means shorter development cycles, cleaner code, and better performance! When you deeply understand your platform, everything just clicks.
-
-**New kinds of computers**: Understanding the "why" behind the decisions that went into your computer will help you chart a new path into new kinds of computers &mdash; big computers like the cloud, little computers like wearables, or maybe even something else!
-
-Finally, I'd be remiss not to mention there's big money working on the kinds of hardware and software problems we describe in this book. Computing platforms are at the core of every major software company, and developers who specialize in the kinds of things we talk about in this book are highly sought after &mdash; they make the big bucks!
-
-## So ...
-
-Feeling convinced? In that case, let's get started!
+Our journey begins at the critical point just *before* computers were machines . . .
